@@ -1,0 +1,46 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <h4 class="modal-title">Conectar Empresa</h4>
+    </div>
+    <div class="modal-body">
+      <div>
+          <div class="row">
+          <div class="row" style="width: 300px;margin: 0 auto;">
+              <div class="file-wrap text-center" ng-show="loading">
+                <div class="item-loading">
+                  <img style="height:40px;" src="images/loading.svg">
+                  <p>Conectando por favor espera...</p>
+                </div>
+              </div>
+            <div class="text-center"  ng-hide="loading">
+              <a href="#!profile" ui-sref="dashboard.perfil"><img style="position:relative;width:100px;height:100px;" preload-image ng-src="{{$root.user.metadata.gallery[0].URL}}" default-image="images/missing-company.png" fallback-image="images/loading.svg" class="img-circle thumb-photo"></a>
+              <div class="form-group"></div>
+            </div>
+          </div>
+            <div class="col-lg-12" ng-hide="loading">
+                <div id="form-container" style="background:none;!important">
+                      <div style="margin-top:10px;">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <label>Seleccione la Empresa:</label>
+                              <company-field key="_id" label="name" ng-model="$parent.company._id"></company-field>
+                            </div>
+                            <div class="col-lg-12" ng-show="$parent.company._id">
+                              <div class="form-group">
+                                  <label>
+                                    <input icheck type="checkbox"  ng-model="form.data.remenber" class="info-bounce">
+                                    Recordar esta empresa:
+                                  </label>
+                               </div>
+                            </div>
+                          </div>
+                      </div>
+                </div>
+            </div>    
+          </div>
+      </div>
+    </div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;!important">
+        <button type="button" style="height:40px;" class="custom-btn btn-block custom-btn-primary" ng-click="ok()"><i class="glyphicon glyphicon-triangle-right"></i>Conectar</button>
+    </div>
+</div>

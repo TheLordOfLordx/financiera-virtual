@@ -1,0 +1,60 @@
+<div ng-init="load()" ng-controller="ProfileCtrl">
+<div class="container">
+      <div class="row">
+        <div class="col-lg-6" >
+          <div class="panel panel-info" style="padding:0px;!important;">
+            <div class="panel-heading" style="color: #ffffff;background-color: #01171d;border-color: #484848;">
+              <h3 class="panel-title">{{$root.user.full_name}}</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" ng-src="{{$root.user.data.gallery[0].URL || 'images/no-user-image.gif'}}" class="img-circle img-responsive"> </div>
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Rol:</td>
+                        <td>{{$root.user.type}}</td>
+                      </tr>
+                        <tr>
+                        <td>Nombres:</td>
+                        <td>{{$root.user.name}}</td>
+                      </tr>
+                      <tr>
+                        <td>Apellidos:</td>
+                        <td>{{$root.user.last_name}}</td>
+                      </tr>
+                      <tr>
+                        <td>Email:</td>
+                        <td>{{$root.user.email}}</td>
+                      </tr>
+                        <td>Telefono:</td>
+                        <td>{{$root.user.metadata.telefono || 'sin numero telefonico'}}</td>
+                      </tr>
+                        <tr>
+                        <td>Dirección:</td>
+                        <td>{{$root.user.metadata.telefono || 'sin dirección residencial'}}</td>
+                      </tr>
+                      <tr>
+                        <td>Email:</td>
+                        <td><a href="mailto:info@support.com">{{$root.user.email}}</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                  <a class="custom-btn custom-btn-primary" ng-click="update()">Actualizar Información</a>
+                  <a class="custom-btn custom-btn-primary" ng-click="showGallery = showGallery ? false : true">Cambiar imagen de perfil</a>
+                </div>
+              </div>
+            </div>
+                <div class="panel-footer">
+                    <a ui-sref="dashboard()"  href="#/dashboard" data-original-title="Broadcast Message" data-toggle="cerrar" type="button" class="text-right btn btn-sm btn-danger "><i class="glyphicon glyphicon-remove"></i>Cerrar</a>
+                </div>
+          </div>
+        </div>
+		<div class="col-lg-6 animated slideInRight" ng-show="showGallery">
+			<image-uploader area="circle" title="Sube tu imagen de perfil" button-text="Subir" items="1" label="" ng-model="$root.user.data.gallery"><image-uploader>
+		</div>
+      </div>
+    </div>
+</div>

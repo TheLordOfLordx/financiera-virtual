@@ -1,0 +1,109 @@
+<div id="block-1" class="container no-margin no-padding onerow">
+    <div class="container block-1 no-margin no-padding">
+    <div class="onepcssgrid-1200">
+      <div class="onerow">
+        <div class="col12" style="position:relative;top:50px;">
+        <div class="col6" style="border-right:1px solid #EAE8E8;" ng-controller="RegistrationCtrl">
+            <h1 class="text-dark text-center">Registrarse.</h1>
+            <p class="text-center no-margin" style="color:#9A9A9A;font-size:18px;">con</p>
+            <div class="col6" style="position:relative;top:10px;">
+              <div class="form-group right">
+                <button class="btn btn-primary transparent btn-large medium-rounded icon-text"><i class="icon icon-facebook"></i>facebook</button>
+              </div>
+            </div>
+            <div class="col6 last" style="position:relative;top:10px;">
+              <div class="form-group left">
+                <button class="btn btn-primary transparent btn-large medium-rounded icon-text"><i class="icon icon-twitter"></i>twitter</button>
+              </div>
+            </div>
+            <div class="col12">
+              <p class="text-center no-margin" style="color:#9A9A9A;font-size:18px;">O</p>
+            </div>
+            <div class="col12">
+                <form name="signUp">
+                  <div class="col6" style="position:relative;top:15px;">
+                    <div class="panel">
+                        <div class="form-group">
+                          <input type="text" required name="firstname" ng-model="form.data.name"  class="form-control" placeholder="Nombres">
+                        </div>
+                        <div class="form-group">
+                          <input type="text" required name="lastname" ng-model="form.data.last_name"  class="form-control" placeholder="Apellidos">
+                        </div>
+                        <div class="form-group">
+                          <input type="email" required name="email" ng-model="form.data.email"  class="form-control" placeholder="Correo electronico">
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col6 last" style="position:relative;top:15px;">
+                    <div class="panel">
+                      <div class="form-group">
+                        <input type="password" required name="password" ng-model="form.data.password"  class="form-control" placeholder="Clave">
+                      </div>
+                      <div class="form-group">
+                        <input type="password" required name="confirmPassowrd" ng-model="form.data.confirm"  class="form-control" placeholder="Confirmar clave">
+                      </div>              
+                    </div>
+                  </div>                  
+                </form>
+                <div class="col12 text-center">
+                    <div class="form-group">
+                      <input type="checkbox" required id="c1" name="cb">
+                      <label for="c1">Acepto todos los terminos y condiciones.</label>
+                    </div>                 
+                </div> 
+
+            </div>
+            <div class="col12" style="position:relative;">
+              <div class="form-group">
+                <button ng-click="register()" style="width:30%;margin:0 auto;" class="btn btn-primary block btn-large medium-rounded">Crear cuenta</button>
+              </div>
+            </div>      
+        </div>
+        <div class="col6 last" style="height:400px;background-image: url(images/shopping.jpg);box-sizing: border-box;
+    background-size: cover;">
+            <div style="display:none;">
+              <h1 class="text-dark text-center">Ingresar.</h1>
+              <p class="text-center no-margin" style="color:#9A9A9A;font-size:18px;">Con</p>
+              <div class="col6" style="position:relative;top:10px;">
+                <div class="form-group right">
+                  <button class="btn btn-primary transparent btn-large medium-rounded icon-text"><i class="icon icon-facebook"></i>facebook</button>
+                </div>
+              </div>
+              <div class="col6 last" style="position:relative;top:10px;">
+                <div class="form-group left">
+                  <button class="btn btn-primary transparent btn-large medium-rounded icon-text"><i class="icon icon-twitter"></i>twitter</button>
+                </div>
+              </div>
+              <div class="col12" style="margin-bottom: 20px;">
+                <p class="text-center no-margin" style="color:#9A9A9A;font-size:18px;">Or</p>
+              </div>
+              <div class="col12">
+                <div class="col12">
+                  <div class="form-group">
+                    <input type="email" name="username" ng-model="form.data.email" class="form-control" placeholder="Correo">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" name="password" ng-model="form.data.password" class="form-control" placeholder="Clave">
+                  </div>               
+                </div>
+              </div>
+              <div class="col12">
+                <div class="form-group">
+                  <button ng-click="login()" style="width:30%;margin:0 auto;" class="btn btn-primary block btn-large medium-rounded">Entrar</button>
+                </div>
+                <br />
+                <br />
+              </div>
+              <div class="col6 text-center">
+                <a href="#/forgot" sref="forgot" class="text-dark"> Olvidaste tu clave?</a>
+              </div>
+              <div class="col6 last text-center">
+                <a href="" class="text-dark">No soy mienbro aun?</a>
+              </div>              
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+<div ng-init="load()">
+<div class="row">
+	<div class="sp-sub-header " style="height:60px;background-color: #00232d;box-sizing: border-box;
+padding: 10px;">	
+		<div class="col-lg-4 row">
+			<div class="form-group">
+				 <producto-field 
+				  	key="_id"
+				  	id="product_field" 
+				  	label="producto"
+				  	on-enter="isEmpty()"
+				  	set-focus="focuset"
+				  	search-by="['idcomposed', 'refMixed', 'producto']"
+				  	set-object="_productObj"
+				  	ng-model="_product">
+			  	<producto-field>
+	    	</div>
+		</div>
+		<div class="col-lg-4">
+          <div class="form-group">
+            <cliente-field key="_id" ng-init="form._client = setDefault" label="full_name" ng-model="form._client"></cliente-field>
+          </div>	
+		</div>
+		<div class="col-lg-2" style="position:relative;top:15%;">
+            <label class="text-white">
+            <input ng-change="setDefaultClient()" icheck type="checkbox"  ng-model="defaultOption" class="info-bounce">
+                cliente por defecto.
+            </label>
+		</div>
+		<div class="col-lg-2">
+		<div class="btn-group" ng-class='{open: open}'>
+		    <button ng-click="facturar('Facturado')" class="btn custom-btn-primary ">Facturar</button>
+		    <button class="btn custom-btn-primary dropdown-toggle" data-toggle="dropdown" ng-click='open=!open'><span class="caret"></span></button>
+		    <ul class="dropdown-menu">
+		        <li><a ng-click="facturar('Remision')" style="color:#fcfcfc!important;">Remisión</a></li>
+		    </ul>
+		</div>
+            <button ng-show="records.length > 0 && rs"  ng-click="facturar()" style="top:4px;position:relative;border-radius:5px;" class="animated fadeInRight custom-btn btn-success btn-block"><i class="fa fa-credit-card"></i>&nbsp;Ver Pagos</button>  
+		</div>
+	</div>
+	<div class="content" ng-show="records.length == 0">
+	    <div ng-class="records.length == 0 ? 'table_wrap table_height' : ''">
+	      <div ng-class="records.length == 0 ? 'row table-responsive table_inner' : 'row'">
+	          <div class="controls" ng-show="records.length == 0">
+	            <h4 >No hay registros para mostrar</h4>
+	          </div>
+	      </div>
+	    </div>  
+	</div>
+			<div ng-show="records.length > 0" style="background-color:  rgb(0, 13, 17);height: auto;width: 100%;
+    height: 50px;">
+				<div class="col-lg-12">
+					<div class="col-lg-2">
+						<label class="text-white">Total IVA</label>
+						<h4 class="no-margin" style="color:gray;!important;position: relative;">{{TotalIva | currency:"$ "}}</h4>
+					</div>
+					<div class="col-lg-2">
+						<label class="text-white">Subtotal</label>
+						<h4 class="text-white no-margin" style="color: gray!important;position: relative;">{{subTotal | currency:"$ "}}</h4>
+					</div>
+					<div class="col-lg-2">
+						<label class="text-white">Descuento</label>
+						<h4 class="text-white no-margin" style="color: gray!important;position: relative;">{{descuento || 0 | currency:"$ "}}</h4>
+					</div>
+					<div class="col-lg-2">
+						<label class="text-white">Total</label>
+						<h4 class="no-margin" style="position: relative;color:gray!important;">{{total | currency:"$ "}}</h4>
+					</div>
+					<div class="col-lg-4 text-right" ng-show="grocery">
+						<label class="text-white">Descargando de</label>
+						<h4 class="no-margin" style="position: relative;color: #1ab394!important;">{{grocery}}</h4>
+					</div>
+				</div>
+			</div>	
+</div>	
+	<div class="row">
+<div class="col-lg-12 content" ng-show="records.length > 0">
+        <div class="hpanel">
+            <div class="panel-body">
+            <div class="row">
+            	<div class="col-lg-4">
+		            <div class="form-group">
+					<label>Buscar</label>
+					<input type="text" ng-model="search" class="form-control input-sm m-b-md" id="filter" placeholder="Buscar en la tabla">
+		            	
+		            </div>            		
+            	</div>
+            </div>
+                <div class="table-responsive">
+					<table class="table table-hover">
+					    <thead>
+					      <tr>
+					      	<th>Cantidad</th>
+					        <th>Codigo</th>
+					        <th>Producto</th>
+					        <th>Base</th>
+					        <th>V. Iva</th>
+					        <th>Descuento</th>
+					        <th>Precio de Venta</th>
+					        <th>Existencias</th>
+					        <th style="width: 36px;"></th>
+					        <th style="width: 36px;"></th>
+					        <th style="width: 36px;"></th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr  dir-paginate="record in records |filter:search |itemsPerPage: 5 " pagination-id="productoFacturacionEntity">
+					      	<td>{{record.cantidad}}</td>
+					        <td><span class="label label-primary">{{record.idcomposed}}</span></td>
+					        <td>{{record.producto}}</td>
+					        <td>{{record.precio_baseFacturado || (record.precio + record.valor_utilidad)   | currency:"$ "}}</td>
+					        <td>{{record.ivaFacturado || record.valor_iva  | currency:"$ "}}</td>
+					        <td>{{record.descuento || 0 | currency:"$ "}}</td>
+					        <td>{{record.precio_VentaFacturado || record.precio_venta   | currency:"$ "}}</td>
+					        <td ng-init="getExistencias()">{{record.existencias || 0}}</td>
+			                <td><button ng-click="agregarCantidad()" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus"></i>&nbsp;Cantidad</button></td>
+			                <td><button ng-click="agregarDescuento()" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus"></i>&nbsp;Descuento</button></td>
+					        <td><button ng-click="delete()" type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>&nbsp;Quitar</button></td>
+					      </tr>
+					    </tbody>
+					  </table>
+                </div>
+				<div class="col-lg-12">
+					<dir-pagination-controls class="pull-right" pagination-id="productoFacturacionEntity"></dir-pagination-controls>
+				</div>
+            </div>
+            <div class="panel-footer">
+                Listado de Productos Para Facturar
+            </div>
+        </div>
+    </div>
+	</div>
+</div>

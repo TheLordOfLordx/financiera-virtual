@@ -1,0 +1,41 @@
+<div ng-controller="ProductdetailCtrl" ng-init="load()">
+<div class="row">
+		<div class="container" style="top: 20px;position: relative;">
+			<div class="col-lg-6 text-center">
+			<sp-gallery-preview images="record.data.gallery"></sp-gallery-preview>
+			</div>
+			<div class="col-lg-6" style="border-left: 1px solid #e2e2e2;">
+				<h3 class="no-margin">{{record.data.producto}}<span ng-show="record._category" style="font-size: 12px;color: #a5a5a5;">&nbsp;- en&nbsp;{{record._category.text}}</span><span ng-show="!record._category" style="font-size: 12px;color: #a5a5a5;">&nbsp;- sin categoria&nbsp;</span></h3>
+				<p>{{record.data.descripcion}}</p>
+				<span style="float: left;position: relative;top: -2px;color: #ff5e1b;"><i class="glyphicon glyphicon-triangle-right"></i></span>
+				<hr />
+				<div class="row">
+					<div class="col-lg-4">
+						<h4>Base</h4>
+						<p>{{record.data.precio | currency:"$ "}}</p>
+					</div>
+					<div class="col-lg-4">
+						<h4>Precio de venta</h4>
+						<p>{{record.data.precio_venta | currency:"$ "}}</p>
+					</div>
+					<div class="col-lg-4">
+						<h4>Utilidad</h4>
+						<p>{{record.data.valor_utilidad | currency:"$ "}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>Etiquetas</h3>
+						<span style="margin-right:3px;" ng-repeat="tag in record.data.tags" class="label label-success">{{tag}}</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<h3>Referencias</h3>
+						<span style="margin-right:3px;" ng-repeat="ref in record._reference.reference" class="label label-primary">{{ref}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

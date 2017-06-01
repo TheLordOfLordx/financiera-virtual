@@ -1,0 +1,34 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Formularios</h4>
+    </div>
+  	<div class="modal-body">
+        <div class="table-responsive">
+           <table class="table table-hover">
+            <thead>
+              <th>Menu</th>
+              <th>Formulario</th>
+              <th>Ver</th>
+              <th>Crear</th>
+              <th>Actualizar</th>
+              <th>Eliminar</th>
+            </thead>
+            <tbody>
+              <tr ng-repeat="record in record">
+                <td>{{record._menu.split('mnu')[1] || 'no definido'}}</td>
+                <td>{{record._form.split('frm')[1] || 'no definido'}}</td>
+                <td>{{record.access.view  ? 'Permitido' : 'No'|| 'no definido' }}</td>
+                <td>{{record.access.create ? 'Permitido' : 'No'  || 'no definido' }}</td>
+                <td>{{record.access.update ? 'Permitido' : 'No' || 'no definido'}}</td>
+                <td>{{record.access.delete ? 'Permitido' : 'No' || 'no definido'}}</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>      
+        </div>
+  	</div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button type="button" style="height:40px;"  class="custom-btn btn-block custom-btn-primary" ng-click="ok()">OK</button>
+    </div>
+</div>

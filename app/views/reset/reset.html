@@ -1,0 +1,30 @@
+  <div class="row forgot-page" ng-controller="ResetPasswordCtrl">
+    <div class="wrap" style="position:relative;top:50px;">
+        <h1 class="text-white text-center">Cambiar Contraseña?</h1>
+        <div class="panel" style="background-color: rgba(0, 0, 0, 0.3)!important;width: 500px;margin: 0 auto;
+        position: relative;
+        float: none;">
+        <div class="alert alert-success animated rubberBand" ng-show="success">
+          <a class="close" ng-click="success = false;">&times;</a>
+          <strong>Listo!</strong> Se ha cambiado su contraseña.
+        </div>
+        <div class="alert alert-danger" ng-show="failed">
+          <a class="close" ng-click="failed = false;">&times;</a>
+          <strong>Error!</strong> Este enlace Expiro.
+        </div>
+          <form name="resetForm" novalidate>
+              <div class="form-group">
+              <label class="text-white">Nueva Contraseña:</label>
+                <input type="password" required name="password" ng-model="form.data.newpwd" class="form-control" placeholder="Nueva Contraseña">
+              </div>
+              <div class="form-group">
+              <label class="text-white">Confirmar Contraseña:</label>
+                <input type="password" required name="confirm" ng-model="form.data.confirm" class="form-control" placeholder="Confirmar Contraseña">
+              </div>
+              <div class="form-group">
+                <button style="padding:10px;border-radius:5px;" ng-click="reset()" class="custom-btn custom-btn-primary">Cambiar</button>
+              </div>               
+          </form>
+        </div>    
+    </div>
+  </div>  

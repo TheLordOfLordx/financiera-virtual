@@ -1,0 +1,53 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Lote de productos</h4>
+    </div>
+  	<div class="modal-body">
+          <div class="table-responsive">
+              <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>Pedido</th>
+                      <th>Codigo</th>
+                      <th>Producto</th>
+                      <th>Categoria</th>
+                      <th>Base</th>
+                      <th>Precio de Venta</th>
+                      <th>Cliente</th>
+                      <th>Vendedor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr 
+                    dir-paginate="record in results = (listadoProducts  
+                      | dateRange:filter._ini:filter._end 
+                      | filter:search 
+                      | filter:{_client : { _id : filter._client}} 
+                      | filter:{_seller : { _id : filter._seller}} 
+                      | filter:{ idcomposed : _productObj.idcomposed } 
+                      | orderBy:'-createdAt'
+                      | itemsPerPage: 5 )" 
+                    pagination-id="previewEntity">
+                      <td><span class="label label-success">{{record.pedido}}</span></td>
+                      <td><span class="label label-primary">{{record.idcomposed}}</span></td>
+                      <td>{{record.producto}}</td>
+                      <td>{{record._category.text || 'Sin Categoria'}}</td>
+                      <td>{{record.precio  | currency:"$ "}}</td>
+                      <td>{{record.precio_venta || record.precio || 0  | currency:"$ "}}</td>
+                      <td>{{record._client.full_name.toLowerCase() != "" ? record._client.full_name.toLowerCase() : record._client.data.representante_legal.toLowerCase()}}</td>
+                      <td>{{record._seller.full_name.toLowerCase()}}</td>
+                      <td></td>
+                    </tr>
+                      <tr >
+                        <td colspan="8" class="text-right"><strong>Numero de items:</strong></td>
+                        <td colspan="2" class="text-left">{{results.length || 0}}</td>
+                      </tr>
+                  </tbody>
+                </table>
+                </div>
+  	</div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button type="button" style="height:40px;" class="custom-btn btn-block custom-btn-primary" ng-click="ok()">OK</button>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <h4 class="modal-title">Editar Empresa</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row" ng-init="selected = 'informacion'">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <button style="border-top-right-radius: 10px;border-top-left-radius: 10px;" ng-class="selected=='informacion' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='informacion'" class="custom-btn btn-block">información</button> 
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <button style="border-top-right-radius: 10px;border-top-left-radius: 10px;" ng-class="selected=='localizacion' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='localizacion';" class="custom-btn btn-block">Localización</button>
+          </div>  
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <button style="border-top-right-radius: 10px;border-top-left-radius: 10px;" ng-class="selected=='logo' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='logo';" class="custom-btn btn-block">Logo</button>
+          </div>  
+        </div>
+      </div>
+        <form name="formEditarEmpresa">
+            <div ng-show="selected == 'informacion'" ng-cloak style="margin-top:10px;">
+                <div class="row">
+                  <div class="col-lg-12">
+                          <!-- form-profile.html -->
+                          <div class="form-group">
+                              <label for="name"  >Empresa*:</label>
+                              <input type="text" focus-on="selected == 'informacion'" required class="form-control input-sm" placeholder="Empresa" name="name" ng-model="$parent.formEdit.data.empresa">
+                          </div>
+                            <div class="form-group">
+                              <label>Sucursal:</label>
+                              <company-field key="_id" label="name" ng-model="$parent.formEdit._parent"></company-field>
+                          </div>
+                          <div class="form-group">
+                              <label for="name" >Nit*:</label>
+                              <input type="text"  required class="form-control input-sm" placeholder="Nit" name="name" ng-model="$parent.formEdit.data.nit">
+                              </div>
+                          <div class="form-group">
+                              <label for="name" >Describe tu empresa..</label>
+                              <input type="text"  required class="form-control input-sm" placeholder="Breve descripción de la empresa"  name="description" ng-model="$parent.formEdit.data.descripcion">
+                           </div>
+                           <div class="form-group">
+                              <label >Celuar*:</label>
+                              <input type="text" class="form-control input-sm" name="celular" international-phone-number ng-model="$parent.formEdit.data.celular">
+                          </div>
+                          <div class="form-group">
+                              <label for="text" >Telefono:</label>
+                              <input type="text"  required class="form-control input-sm" name="telefono" placeholder="Telefono" ng-model="$parent.formEdit.data.telefono">
+                          </div> 
+                          <div class="form-group">
+                              <label for="text">Fax:</label>
+                              <input type="text"  required class="form-control input-sm" name="fax" placeholder="Fax" ng-model="$parent.formEdit.data.fax">
+                          </div>   
+                          <div class="form-group row">
+                          <div class="col-lg-12">
+                              <a ng-click="selected = 'localizacion'" class="custom-btn custom-btn-primary btn-block">
+                              Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                              </a>
+                          </div>
+                          </div>
+                  </div>
+                </div>
+            </div>
+            <div ng-show="selected == 'localizacion'" ng-cloak style="margin-top:10px;">
+                <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                      <label for="name">Departamento*:</label>
+                      <departamento-field required ng-model="$parent.formEdit.data.departamento"></departamento-field>
+                  </div>
+                  <div class="form-group">
+                      <label for="name" >Ciudad*:</label>
+                      <ciudad-field required ng-model="$parent.formEdit.data.ciudad"></ciudad-field>
+                  </div>
+                  <div class="form-group">
+                      <label for="name" >Dirección*:</label>
+                      <input type="text" required class="form-control input-sm" placeholder="Direccion" name="address" ng-model="$parent.formEdit.data.direccion">
+                  </div>
+                  <div class="form-group row">
+                      <div class="col-lg-12">
+                          <a ng-click="selected = 'logo'" class="custom-btn custom-btn-primary btn-block">
+                          Siguiente <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                          </a>
+                      </div>
+                  </div>  
+                </div>
+                </div>
+            </div>
+            <div ng-show="selected == 'logo'" ng-cloak style="margin-top:10px;">
+                <div class="row">
+                      <image-uploader area="circle" title="Sube tu imagen corporativa" button-text="Cargar Imagen" items="1" label="text-dark" ng-model="formEdit.data.gallery"><image-uploader>
+                </div>
+            </div>                           
+    </form>        
+  </div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button type="button" style="height:40px;" class="custom-btn btn-block custom-btn-primary" ng-click="ok()">Actualizar</button>
+    </div>
+</div>
+

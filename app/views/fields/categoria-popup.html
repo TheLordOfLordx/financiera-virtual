@@ -1,0 +1,17 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Categorias</h4>
+    </div>
+  	<div class="modal-body">
+	  	<div>
+		  	<form novalidate>
+				<js-tree tree-data="scope" tree-model="records"></js-tree>
+		  	</form>
+	  	</div>
+  	</div>
+    <div class="modal-footer custom-modal-header">
+        <button type="button"  class="custom-btn btn-danger" ng-click="cancel()">Cancelar</button>
+        <button type="button" class="custom-btn custom-btn-primary" ng-click="ok()">Aceptar</button>
+    </div>
+</div>

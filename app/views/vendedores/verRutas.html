@@ -1,0 +1,30 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Rutas</h4>
+    </div>
+  	<div class="modal-body">
+        <div class="table-responsive">
+           <table class="table table-hover">
+            <thead>
+              <th>Departamento</th>
+              <th>Ciudad</th>
+              <th>Barrios</th>
+              <th>Ruta</th>
+            </thead>
+            <tbody>
+              <tr ng-repeat="record in record">
+                <td>{{record.data.departamento || 'no definido'}}</td>
+                <td>{{record.data.ciudad.toLowerCase() || 'no definido'}}</td>
+                <td>{{record.data.barrios.join(', ') || 'no definido'}}</td>
+                <td>{{record.data.ruta ? record.data.ruta : 'no definido' }}</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>      
+        </div>
+  	</div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button type="button" style="height:40px;"  class="custom-btn btn-block custom-btn-primary" ng-click="ok()">OK</button>
+    </div>
+</div>

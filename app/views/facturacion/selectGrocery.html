@@ -1,0 +1,28 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <h4 class="modal-title">Bodega de descargue</h4>
+    </div>
+    <div class="modal-body">
+      <div>
+          <div class="row">
+            <div class="col-lg-12" ng-hide="loading">
+                <div id="form-container" style="background:none;!important">
+                  <form name="selectGrocery">
+                      <div style="margin-top:10px;">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <label>Bodega de descargue:</label>
+                              <selectize config="myConfig" required options="myGroceries" ng-model="$parent._grocery"></selectize>
+                            </div>
+                          </div>
+                      </div>                    
+                  </form>
+                </div>
+            </div>    
+          </div>
+      </div>
+    </div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;!important">
+        <button ng-disabled="!selectGrocery.$valid" type="button" style="height:40px;" class="custom-btn btn-block custom-btn-primary" ng-click="ok()">Ok.</button>
+    </div>
+</div>

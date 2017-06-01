@@ -1,0 +1,18 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Localizacion</h4>
+    </div>
+  	<div class="modal-body" style="padding:0px!important;">
+		<section id="map" ng-controller="locationCtrl"  ng-init="load()">
+		  <div style="height:400px;" ui-map="myMap" ui-options="mapOptions" class="map-canvas"
+		        ui-event="{'map-click': 'addMarker($event, $params)', 'map-zoom_changed': 'setZoomMessage(myMap.getZoom())' }"
+		  ></div>
+		</section>
+  	</div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;margin-top:0px!important;">
+        <button type="button" style="height:40px;"  class="custom-btn btn-block custom-btn-primary" ng-click="ok()">OK</button>
+    </div>
+</div>
+
+ 

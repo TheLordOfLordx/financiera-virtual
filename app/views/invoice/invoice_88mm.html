@@ -1,0 +1,129 @@
+<p style="text-align:center;font-family: monospace;margin: 0px;padding: 0px;">{{_company.data.empresa}}</p>
+<p style="text-align:center;font-family: monospace;margin: 0px;padding: 0px;">DIRECCION:{{_company.data.direccion}}</p>
+<p style="text-align:center;font-family: monospace;margin: 0px;padding: 0px;">NIT:{{_company.data.nit}}</p>
+<p style="text-align:center;font-family: monospace;margin: 0px;padding: 0px;">REGIMEN COMUN</p>
+<p style="text-align:center;font-family: monospace;margin: 0px;padding: 0px;">FACTURA DE VENTA Nº:{{id}}</p>
+<p style="text-align:center;font-family: monospace;margin: 0px;padding: 0px;">FECHA:{{createdAt}}</p>
+{{#if _client.full_name}}
+<p style="text-align:center;font-family: monospace;margin: 0px;padding: 0px;">CLIENTE:{{_client.full_name}}</p>
+{{else}}
+<p style="text-align:center;font-family: monospace;margin: 0px;padding: 0px;">CLIENTE:{{_client.data.razon_social}}</p>
+{{/if}}
+<p style="text-align:center;font-family: monospace;margin: 0px;padding: 0px;">VENDEDOR:{{_seller.full_name}}</p>
+<hr>
+<table>
+	<thead>
+		<tr>
+			<td style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">PLU.</td>
+			<td style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">CANT.</td>
+			<td style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">PROD.</td>
+			<td style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">V. UNI.</td>
+			<td style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">V. DTO</td>
+			<td style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">TOTAL</td>
+		</tr>
+	</thead>
+	<tbody>
+	  {{#each _product}}
+			<tr>
+				<td style="font-size:10px;font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">{{idcomposed}}</td>
+				<td style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">{{cantidad}}</td>
+				<td style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">{{producto}}</td>
+				<td style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">{{formatCurrency vlUnicoP}}</td>
+				<td style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">{{formatCurrency vlUnicoD}}</td>
+				<td style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">{{formatCurrency precio_VentaFacturado}}</td>
+			</tr>
+	  {{/each}}
+
+	</tbody>
+</table>
+<table style="width:100%;">
+	<tbody>
+		<tr>
+			<td style="font-size:10px;text-align:right;font-family: monospace;margin: 0px;padding: 0px;">SUBTOTAL:</td>
+			<td style="font-size:10px;text-align:right;font-family: monospace;margin: 0px;padding: 0px;">{{formatCurrency data.subtotal}}</td>
+		</tr>
+		<tr>
+			<td style="font-size:10px;text-align:right;font-family: monospace;margin: 0px;padding: 0px;">DESCUENTO P.:</td>
+			<td style="font-size:10px;text-align:right;font-family: monospace;margin: 0px;padding: 0px;">{{formatCurrency data.descuento}}</td>
+		</tr>
+		<tr>
+			<td style="font-size:10px;text-align:right;font-family: monospace;margin: 0px;padding: 0px;">DESCUENTO G.:</td>
+			<td style="font-size:10px;text-align:right;font-family: monospace;margin: 0px;padding: 0px;">{{formatCurrency 0}}</td>
+		</tr>
+		<tr>
+			<td style="font-size:10px;text-align:right;font-family: monospace;margin: 0px;padding: 0px;">IVA:</td>
+			<td style="font-size:10px;text-align:right;font-family: monospace;margin: 0px;padding: 0px;">{{formatCurrency data.TotalIva}}</td>
+		</tr>
+		<tr>
+			<td style="font-size:10px;text-align:right;font-family: monospace;margin: 0px;padding: 0px;">TOTAL:</td>
+			<td style="font-size:10px;text-align:right;font-family: monospace;margin: 0px;padding: 0px;">{{formatCurrency data.total}}</td>
+		</tr>
+		<tr>
+			<td style="font-size:10px;text-align:right;font-family: monospace;margin: 0px;padding: 0px;">CANCELO:</td>
+			<td style="font-size:10px;text-align:right;font-family: monospace;margin: 0px;padding: 0px;">{{formatCurrency data.received}}</td>
+		</tr>
+	</tbody>
+</table>
+<hr>
+<p style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">MED DE PAGO</p>
+<table style="width:100%;">
+	<thead>
+		<tr>
+			<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;">TIPO.</td>
+			<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;text-align:right;">TOTAL</td>
+		</tr>
+	</thead>
+	<tbody>
+	  {{#each _payments}}
+		{{#if data.value}}
+				<tr>
+					<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;">{{data.descripcion}}</td>
+					{{#if data.totalEfectivo}}
+						<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;text-align:right;">{{formatCurrency data.totalEfectivo}}</td>
+					{{else}}
+						<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;text-align:right;">{{formatCurrency data.value}}</td>
+					{{/if}}
+				</tr>		
+		{{/if}}
+	  {{/each}}
+	  <tr>
+	    <td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;">CAMBIO.</td>
+		<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;text-align:right;">{{formatCurrency data.change}}</td>
+	  </tr>
+	</tbody>
+</table>
+<hr>
+<p style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">DISCRIMINACION IVAS</p>
+<table style="width:100%;">
+	<thead>
+		<tr>
+			<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;">IVA.</td>
+			<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;">VLR IVA.</td>
+			<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;">BASE/IMP</td>
+			<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;">TOTAL</td>
+		</tr>
+	</thead>
+	<tbody>
+	  {{#each data.ivadetails}}
+			<tr>
+				<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;">{{tipo}}</td>
+				<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;">{{formatCurrency viva}}</td>
+				<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;">{{formatCurrency base}}</td>
+				<td style="font-size:10px;font-family: monospace;margin: 0px;padding: 0px;">{{formatCurrency total}}</td>
+			</tr>		
+	  {{/each}}
+	</tbody>
+</table>
+<br />
+<br />
+<br />
+<p style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">Impreso por :</p>
+<p style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">www.shoply.com.co.</p>
+<p style="font-size:10px;text-align:center;font-family: monospace;margin: 0px;padding: 0px;">Nit : 1103102286</p>
+<br />
+<br />
+<br />
+
+
+
+

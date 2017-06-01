@@ -1,0 +1,377 @@
+<div class="inmodal" ng-init="loadCreate()">
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Agregar Producto</h4>
+    </div>
+  	<div class="modal-body" ng-init="selected ='basic'">
+      <div class="row">
+        <div class="file-wrap" style="height: 150px;" ng-show="loading">
+          <div class="item-loading text-center" style="position:relative;top:25%;">
+            <img style="height:30px;" src="images/loading.svg">
+            <p>cargando datos...</p>
+          </div>
+        </div>
+       </div>
+	  	<div class="row">
+	  		<div class="col-lg-2">
+	  			<div class="form-group">
+	  				<button style="border-top-right-radius: 10px;border-top-left-radius: 10px;" ng-class="selected=='basic' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='basic'" class="custom-btn btn-block">Información</button>	
+	  			</div>
+	  		</div>
+	  		<div class="col-lg-2">
+		  		<div class="form-group">
+		  			<button style="border-top-right-radius: 10px;border-top-left-radius: 10px;" ng-class="selected=='prices' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='prices';" class="custom-btn btn-block">Precios</button>
+		  		</div>	
+	  		</div>
+	  		<div class="col-lg-2">
+		  		<div class="form-group">
+		  			<button style="border-top-right-radius: 10px;border-top-left-radius: 10px;" ng-class="selected=='stock' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='stock';" class="custom-btn btn-block">Inventario</button>
+		  		</div>	
+	  		</div>
+	  		<div class="col-lg-2">
+		  		<div class="form-group">
+		  			<button style="border-top-right-radius: 10px;border-top-left-radius: 10px;" ng-class="selected=='album' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='album';" class="custom-btn btn-block">Apariencia</button>
+		  		</div>	
+	  		</div>
+	  		<div class="col-lg-2">
+		  		<div class="form-group">
+		  			<button style="border-top-right-radius: 10px;border-top-left-radius: 10px;" ng-class="selected=='Component' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='Component';" class="custom-btn btn-block">Componentes</button>
+		  		</div>	
+	  		</div>
+	  	</div>
+  	<div class="row" ng-show="selected == 'album'">
+  	<div class="col-lg-6">
+	        <legend class="text-center" style="font-size:14px!important;margin-bottom:5px;">Caracteristicas</legend>
+	        <div class="col-lg-8">
+		        <div class="form-group">
+		        	<label>Color:</label>
+					<input type="text" placeholder="Color" required class="form-control input-sm" ng-model="$parent.apariencia.descripcionColor">
+					<a ng-show="recentsColors && recentsColors.length > 0"  href="" ng-click="loadRecent()" class="label label-primary">({{recentsColors.length}}) colores recientes.</a>
+		        </div>
+	        </div>
+	        <div class="col-lg-2">
+	        	<label>Color:</label>
+				<div colorpicker="hex" type="text" class="form-control" ng-model="$parent.apariencia.color" style="width:20px;height:30px;background-color:{{apariencia.color}};"></div>	        	
+	        </div>
+	        <div style="position: relative;top: 20px;display: inline-block;">
+				<button class="custom-btn custom-btn-primary"ng-click="addColor()">Agregar</button>
+	        </div>
+	        <div class="col-lg-12">
+            <div class="table-responsive">
+               <table class="table table-hover">
+                <thead>
+                  <th>Descripcion</th>
+                  <th>Color</th>
+                  <th>Predeterminado</th>
+                  <th></th>
+                </thead>
+                <tbody>
+                  <tr dir-paginate="color in  $parent.form.data.color | itemsPerPage: 4" pagination-id="colorEntity">
+                    <td>{{color.descripcion}}</td>
+                    <td><span style="background-color:{{color.color}};" class="label">&nbsp;&nbsp;&nbsp;</span></td>
+                    <td>            
+                    	<label class="text-dark">
+            				<input icheck type="radio" ng-change="setDefaultColor($index)" ng-value="true" name="predeterminado" ng-model="color.predeterminado" class="info-bounce">
+                				
+            			</label></td>
+                    <td class="text-right">
+                    <a style="width:auto;" ng-click="removeColor()" class="custom-btn-tiny btn-block btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;Quitar</a>
+                    </td> 
+                  </tr>
+                  <tr ng-show="!$parent.form.data.color || $parent.form.data.color.length == 0">
+                  	<td colspan="3"><p class="text-center"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;Aun no se han agregado colores</p></td>
+                  </tr>
+                </tbody>
+              </table>
+          		<dir-pagination-controls class="pull-right" pagination-id="colorEntity"></dir-pagination-controls>            
+            </div>
+	        </div>
+  	</div>
+  	<div class="col-lg-6">
+  		<image-uploader area="square" title="Galeria del producto" button-text="Cargar imagenes" ng-model="form.data.gallery"><image-uploader>  		
+  	</div>
+  	</div>
+  	<div class="row" ng-show="selected == 'stock'">
+	  	<div class="col-lg-6">
+			  <div class="form-group">
+			    <label>Stock minimo:</label>
+			    <input type="number" placeholder="Stock minimo" required class="form-control input-sm" ng-model="$parent.form.data.stockMin">
+				<span class="form-input-message">Define la cantidad minima en inventario.</span>
+			  </div>	
+	  	</div>
+	  	<div class="col-lg-6">
+			  <div class="form-group">
+			    <label>Stock Maximo:</label>
+			    <input type="number" placeholder="Stock maximo" required class="form-control input-sm" ng-model="$parent.form.data.stockMax">
+				<span class="form-input-message">Define la cantidad maxima en inventario.</span>
+
+			  </div>	
+	  	</div>
+		<div class="col-lg-12">
+            <label class="text-dark">
+            <input icheck type="checkbox"  ng-model="$parent.form.data.negativo" class="info-bounce">
+                Vender en negativo.
+            </label>
+		</div> 		
+  	</div>
+  	<div class="row" ng-show="selected == 'prices'">
+	  	<div class="col-lg-4">
+		  <div class="form-group">
+		    <label>Precio base:</label>
+		    <input type="number" focus-on="selected == 'prices'" placeholder="Precio base" required class="form-control input-sm" ng-model="$parent.form.data.precio">
+		    <span class="form-input-message">Define el costo de tu producto.</span>
+		  </div>			  		
+	  	</div>
+	  	<div class="col-lg-4">
+			 <div class="form-group">
+			    <label>% Utilidad:</label>
+			    <input type="number" placeholder="Utilidad" required class="form-control input-sm" ng-model="$parent.form.data.utilidad">
+		      	<span class="form-input-message">Valor en % de la utilidad.</span>
+
+			</div>	
+	  	</div>
+	  	<div class="col-lg-4">
+		  <div class="form-group">
+		    <label>Iva:</label>
+		    <iva ng-model="$parent.form._iva" set-object="$parent.iva" ></iva>
+		    <span class="form-input-message">Selecciona el impuesto.</span>
+		  </div>
+	  	</div>
+	  	<div class="col-lg-6">
+		  <div class="form-group">
+		    	<label>Valor utilidad:</label>
+			    <input type="number" disabled placeholder="Valor utilidad" required class="form-control input-sm" ng-model="$parent.form.data.valor_utilidad">
+		      	<span class="form-input-message">Valor en $ de la utilidad.</span>
+
+		  </div>
+	  	</div>
+	  	<div class="col-lg-6">
+		  <div class="form-group">
+		    <label>Valor Iva:</label>
+			 <input type="number" disabled placeholder="Valor iva" required class="form-control input-sm" ng-model="$parent.form.data.valor_iva">
+		      <span class="form-input-message">Valor en $ del impuesto.</span>
+		  </div>
+	  	</div>
+		<div class="col-lg-4">
+			<div class="form-group">
+				 <service-field 
+				  	key="_id"
+				  	id="product_field" 
+				  	label="producto"
+				  	on-enter="isEmpty()"
+				  	set-focus="focuset"
+				  	search-by="['idcomposed', 'refMixed', 'producto']"
+				  	set-object="$parent._serviceAddObj"
+				  	ng-model="$parent._serviceAdd">
+			  	<service-field>
+	    	</div>
+		</div>
+		<div class="col-lg-12">
+		  	<div class="table-responsive">
+				<table class="table table-hover">
+				    <thead>
+				      <tr>
+				        <th>Codigo</th>
+				        <th>Servicio</th>
+				        <th>Cantidad</th>
+				        <th>Medida/Cantidad</th>
+				        <th>Base</th>
+				        <th>Base + Iva</th>
+				        <th></th>
+				      </tr>
+				    </thead>
+				    <tbody>
+	                  <td ng-show="!recordsServices || recordsServices.length == 0" colspan="6" style="text-align:center!important;"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;{{'No se han agregado servicios aún;'}}</td>
+				      <tr pagination-id="ProductComponentEntity" dir-paginate="record in recordsServices |filter:search |itemsPerPage: 5 ">
+				        <td>{{record.idcomposed}}</td>
+				        <td>{{record.producto}}</td>
+				        <td>
+			        	<input ng-change="onTypeQtyService()" type="number" ng-model="record.cantidad" class="form-control input-sm" >				        	
+			        	</td>
+			        	<td>{{record.unidadDeMedida || 'no definida'}}</td>
+			        	<td>{{record.data.baseComponent || record.precio || record.precio_venta || 0  | currency:"$ "}}</td>
+			        	<td>{{record.data.baseIva || (record.precio || record.precio_venta + record.valor_iva) || 0  | currency:"$ "}}</td>
+				       	<td><button ng-click="removeServicefromComponentList()" type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>&nbsp;Quitar</button></td>
+				        <td></td>
+				      </tr>
+				      <tr ng-show="totalBaseService">
+				      	<td colspan="5" class="text-right"><strong>Total Base</strong></td>
+				      	<td colspan="6" class="text-left">{{totalBaseService || 0 | currency:"$ "}}</td>
+			      	  </tr>
+				    </tbody>
+				  </table>			  		
+		  	</div>				
+		</div>
+		<div class="col-lg-12">
+			<dir-pagination-controls class="pull-right" pagination-id="ProductComponentEntity"></dir-pagination-controls>
+		</div>
+	  	<div class="form-group">
+	  		
+	  	</div>	  		
+  	</div>
+  	<div ng-show="selected=='basic'" class="row">
+	  	<form name="formProducto" novalidate ng-init="$parent.form = null">
+		  	<div class="col-lg-6">
+				  <div class="form-group">
+				    <label>Producto:</label>
+				    <input type="text" focus-on="selected == 'basic'" required placeholder="Producto" class="form-control input-sm" ng-model="$parent.form.data.producto">
+				  	<span class="form-input-message">Escriba el nombre del producto</span>	  		
+				  
+				  </div>
+		  	</div>
+		  	<div class="col-lg-6">
+				<div class="form-group">
+				    <label>Estado:</label>
+				    <estado-producto ng-init="$parent.form.data.estado = 'Habilitado'" required ng-model="$parent.form.data.estado"></estado-producto>
+				    <span class="form-input-message">Selecciona el estado del producto</span>
+			  	</div>
+		  	</div>
+		  	<div class="col-lg-12">
+				  <div class="form-group">
+				    <label>Descripcion:</label>
+				    <input type="text"  placeholder="Descripción" required class="form-control input-sm" ng-model="$parent.form.data.descripcion">
+				    <span class="form-input-message">Describe brevemente tu producto</span>
+
+				  </div>		  		
+		  	</div>
+		  	<div class="col-lg-6">
+			  <div class="form-group">
+				<label>Categoria:</label>
+		      	<categoria key="_id" label="text" ng-model="form._category"></categoria>
+				<span class="form-input-message">Debes elejir donde estara tu producto.</span>
+			  </div>
+		  	</div>
+		  	<div class="col-lg-6">
+				<div class="form-group">
+				    <label>Casa Comercial:</label>
+		  			<casa-comercial key="_id" label="name" ng-model="form._commercial_home"></casa-comercial>
+					<span class="form-input-message">Elija la casa comercial.</span>
+			  	</div>		  		
+		  	</div>
+		  	<div class="col-lg-6">
+				<div class="form-group">
+				    <label>Referencias:</label>
+		  			<reference-field key="_id" label="reference" ng-model="$parent.form._reference"></reference-field>
+					<span class="form-input-message">Escribe la referencia y presiona [ENTER].</span>
+			  	</div>		  		
+		  	</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+				    <label>Etiquetas:</label>
+		  			<selectize config="{plugins: ['remove_button'], create:true, maxItems:10, placeholder:'Escribe la etiqueta  y presiona ENTER'}" options='[]' ng-model="$parent.form.data.tags"></selectize>
+					<span class="form-input-message">Escribe las Etiquetas y presiona [ENTER].</span>
+			  	</div>				
+			</div>
+			<div class="col-lg-4">
+				<div class="form-group">
+					<label>Embalaje</label>
+					<input type="number" placeholder="Embalaje" required class="form-control input-sm" ng-model="$parent.form.data.embalaje">
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="form-group">
+					<label>Cantidad</label>
+					<input type="number" placeholder="Cantidad" required class="form-control input-sm" ng-model="$parent.form.data.cantidad">
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="form-group">
+					<label>Unidade de Medida</label>
+					<div ng-class="{'input-group': $parent.form.data.unidadDeMedida != 'UND'}" class="form-group">
+						<selectize
+							ng-change="setUnidadValue()" 
+							config="{maxItems:1, placeholder:'Unidad de Medida', labelField:'label', valueField :'value' }" 
+							options='unidades' 
+							ng-model="$parent.form.data.unidadDeMedida">
+						</selectize>
+						<span class="input-group-btn" ng-show="$parent.form.data.unidadDeMedida != 'UND'">
+							<button ng-click="conversiones()" class="btn custom-btn-primary" style="top: -3px;padding:4px 12px;!important" type="button">Conversión</button>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12">
+	            <label class="text-dark">
+	            <input icheck type="checkbox"  ng-model="$parent.form.data.servicio" class="info-bounce">
+	                Producto Servicio.
+	            </label>
+			</div> 
+	  		</form>
+		</div>
+	<div class="row" ng-show="selected == 'Component'">
+		<div class="col-lg-4">
+			<div class="form-group">
+				 <producto-field 
+				  	key="_id"
+				  	id="product_field" 
+				  	label="producto"
+				  	placeholder="Componente"
+				  	on-enter="isEmpty()"
+				  	set-focus="focuset"
+				  	search-by="['idcomposed', 'refMixed', 'producto']"
+				  	set-object="$parent._productAddObj"
+				  	ng-model="$parent._productAdd">
+			  	<producto-field>
+	    	</div>
+		</div>
+		<div class="col-lg-12">
+		  	<div class="table-responsive">
+				<table class="table table-hover">
+				    <thead>
+				      <tr>
+				        <th>Codigo</th>
+				        <th>Componente</th>
+				        <th>Base</th>
+				        <th>Base + Iva</th>
+				        <th>Cantidad</th>
+				        <th>Precio Componente</th>
+				        <th>Unidad</th>
+				        <th></th>
+				      </tr>
+				    </thead>
+				    <tbody>
+	                  <td ng-show="!recordsProductos || recordsProductos.length == 0" colspan="6" style="text-align:center!important;"><i class="glyphicon glyphicon-info-sign"></i>&nbsp;{{'No se han agregado componentes aún;'}}</td>
+				      <tr ng-init="setBaseComponente()" pagination-id="ProductComponentEntity" dir-paginate="record in recordsProductos |filter:search |itemsPerPage: 5 ">
+				        <td>{{record.idcomposed}}</td>
+				        <td>{{record.producto}}</td>
+						<td>{{record.precio || 0  | currency:"$ "}}</td>
+			        	<td>{{(record.precio_venta || record.precio  )|| 0  | currency:"$ "}}</td>
+				        <td>
+			        	<input ng-change="onTypeQty()" type="number" ng-model="record.cantidad" class="form-control input-sm" >				        	
+			        	</td>
+			        	<td>{{record.data.baseComponent || record.precio_venta | currency:"$ "}}</td>
+			        	<td>{{record.conversion ? record.conversion.unidadText : record.unidadDeMedida}}</td>
+				       	<td><button ng-click="removefromComponentList()" type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></button></td>
+				        <td></td>
+				      </tr>
+				      <tr>
+				      	<td colspan="5" class="text-right"><strong>Total</strong></td>
+				      	<td colspan="6" class="text-left">{{totalBase || 0 | currency:"$ "}}</td>
+			      	  </tr>
+				    </tbody>
+				  </table>			  		
+		  	</div>				
+		</div>
+		<div class="col-lg-12">
+			<dir-pagination-controls class="pull-right" pagination-id="ProductComponentEntity"></dir-pagination-controls>
+		</div>
+	</div>
+	</div>
+
+
+	<div class="row" style="border: none;background-color: #000D11;color: #FFF;margin:0px;position: relative;
+    bottom: -15px;">
+		<div class="col-lg-12">
+		  <div class="col-lg-6 text-left">
+		  	<h4 style="color:white !important">Precio de Venta :</h4>	
+		  </div>
+		  <div class="col-lg-6 text-right" ng-init="$parent.form.data.precio_venta = 0;">
+		  	<h4 style="color:white!important">{{$parent.form.data.precio_venta | currency:"COP$ "}}</h4>
+		  </div>			
+		</div>
+	</div>
+
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button type="button" style="height:40px;" class="custom-btn btn-block custom-btn-primary" ng-click="ok()">Agregar</button>
+    </div>
+</div>

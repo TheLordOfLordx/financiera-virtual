@@ -1,0 +1,49 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Editar Categoria</h4>
+    </div>
+  	<div class="modal-body"  ng-init="selected ='basic'">
+	  	<div class="row">
+	  		<div class="col-lg-3">
+	  			<div class="form-group">
+	  				<button ng-class="selected=='basic' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='basic'" class="custom-btn btn-block">información Basica</button>	
+	  			</div>
+	  		</div>
+	  		<div class="col-lg-3">
+		  		<div class="form-group">
+		  			<button ng-class="selected=='icon' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='icon';" class="custom-btn btn-block">Icono</button>
+		  		</div>	
+	  		</div>
+	  	</div>
+  	<div class="row">
+	  	<div class="col-lg-12" ng-show="selected == 'basic'">
+		  	<form name="formEditCategoria" novalidate ng-init="$parent.form = null">
+				  <div class="form-group">
+				    <label>Categoria:</label>
+				    <input type="text" required placeholder="Categoria" class="form-control input-sm" ng-model="formEdit.text">
+				  </div>
+				  <div class="form-group">
+				    <label>Descripcion:</label>
+				    <input type="text" placeholder="Descripción" required class="form-control input-sm" ng-model="formEdit.data.descripcion">
+				  </div>
+				  <div class="row">
+					<div class="col-lg-12">
+			            <label class="text-dark">
+			            <input icheck type="checkbox"  ng-model="formEdit.materiales" class="info-bounce">
+			                Categoria Materiales.
+			            </label>
+					</div> 				  	
+				  </div>
+		  	</form>  		
+	  	</div>
+	  	<div ng-show="selected == 'icon'">
+			<image-uploader area="circle" title="Icono Categoria" button-text="Cargar imagenes" ng-model="formEdit.data.gallery"><image-uploader>
+	  	</div>  		
+  	</div>
+
+  	</div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button type="button" style="height:40px;" class="custom-btn btn-block custom-btn-primary" ng-click="ok()">Actualizar</button>
+    </div>
+</div>

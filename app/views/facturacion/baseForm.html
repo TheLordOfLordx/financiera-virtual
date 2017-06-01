@@ -1,0 +1,36 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Detalle Tarjeta</h4>
+    </div>
+  	<div class="modal-body">
+    	<div>
+  	  	<form name="formBaseFacturacion" novalidate>
+          <div>
+            <div class="form-group">
+            <label>Codigo Verificaciòn:</label>
+                <input type="text" focus-on="true" tabindex="1" required class="form-control input-sm" placeholder="Codigo Verificaciòn" name="codigoTarjeta" ng-model="$parent.method.data.cardCode">
+            </div>    
+          </div>
+
+  	  	</form>
+    	</div>
+   	</div>
+          <div  style="background-color:rgb(8, 8, 8);position:relative;float:left;width:100%;height:100%;">
+            <div class="col-lg-4">
+              <label class="text-white">Total Tarjeta:</label>
+              <h5 style="color:#009ddc;!important;top: -9px;position: relative;" class="no-margin monospace">{{totalCard| currency:"COP $"}}</h5>
+            </div>
+            <div class="col-lg-4">
+              <label class="text-white">Base:</label>
+              <h5 style="color:#009ddc;!important;top: -9px;position: relative;" class="no-margin monospace">{{( totalCard / 1.16) || 0 | currency:"COP $"}}</h5>
+            </div>
+            <div class="col-lg-4">
+              <label class="text-white">Iva:</label>
+              <h5 style="color:#009ddc;!important;top: -9px;position: relative;" class="no-margin monospace">{{(totalCard) - ( totalCard / 1.16) || 0 | currency:"COP $"}}</h5>
+            </div>
+          </div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button tabindex="1" style="height:40px;" type="button" tabindex="{{paymentMethods.length + 1}}" class="custom-btn custom-btn-primary btn-block" ng-click="ok()">Confirmar</button>
+    </div>
+</div>

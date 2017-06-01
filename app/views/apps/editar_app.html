@@ -1,0 +1,227 @@
+<div class="inmodal">
+  <phone ng-show="selected == 'apariencia'" class="animated bounceInRight">
+    <speaker></speaker>
+    <screen>
+      <div class="screen-wrapper">
+        <div class="mobile-header" style="background-color:{{formEdit.data.headerColor}}">
+          <h5 class="text-center no-margin" style="top: 12px;position: relative;color: {{formEdit.data.headerText}}">{{formEdit.data.name || 'Aplicacion de Prueba'}}</h5>
+        </div>
+        <div class="mobile-content">
+          <div class="content-inner">
+            <div class="product-box">
+              <img class="mobile-image-product" src="/images/missing-image.png">
+              <div class="mobile-product-description">
+                <h5 class="text-dark text-left">Nombre del Producto</h5>
+                <h6 class="no-margin text-left">Descripción del producto</h6>
+                <h6 class="no-margin text-left">$30.000COP</h6>
+              </div>
+              <div style="height: 40px;width: 100%;position: relative;background-color: {{formEdit.data.productButtonBackground}};" >
+                <div class="row">
+                  <div class="col-lg-4">
+                    <span style="top:12px;position:relative;font-size:10px;"><i style="font-size:18px;color:{{formEdit.data.productBotonColor}}" class="fa fa-heart"></i></span>
+                  </div>
+                  <div class="col-lg-4">
+                    <span style="top:12px;position:relative;font-size:10px;"><i style="font-size:18px;color:{{formEdit.data.productBotonColor}}" class="fa fa-comment"></i></span>
+                  </div>
+                  <div class="col-lg-4">
+                    <span style="top:12px;position:relative;font-size:10px;"><i style="font-size:18px;color:{{formEdit.data.productBotonColor}}" class="fa fa-shopping-cart"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-footer" style="background-color:{{form.data.footerColor}}">
+          <div class="row" style="line-height:0px;">
+            <div class="col-lg-4">
+              <span style="top:12px;position:relative;"><i style="font-size:18px;color:{{formEdit.data.footerText}}" class="fa fa-cube"></i></span>
+            </div>
+            <div class="col-lg-4">
+              <span style="top:12px;position:relative;"><i style="font-size:18px;color:{{formEdit.data.footerText}}" class="fa fa-shopping-cart"></i><span style="color:{{formEdit.data.notificatorIconColor}}; position: relative; top: -8px;right: 5px;background-color: {{formEdit.data.notificatorBackgroundColor}};" class="badge">5</span></span>
+            </div>
+            <div class="col-lg-4">
+              <span style="top:12px;position:relative;"><i style="font-size:18px;color:{{formEdit.data.footerText}}" class="fa fa-bars"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </screen>
+    <button class="mobile-button">&#9776;</button>
+  </phone>
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Editar App</h4>
+    </div>
+    <div class="modal-body modal-body-pattern">
+      <div class="row">
+        <div class="file-wrap" style="height: 150px;" ng-show="loading">
+          <div class="item-loading text-center" style="position:relative;top:25%;">
+            <img style="height:30px;" src="images/loading.svg">
+            <p>Esto puede tardar unos minutos por favor espere...</p>
+          </div>
+        </div>
+       </div>
+      <div class="row" ng-hide="loading">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <button ng-class="selected=='informacion' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='informacion'" class="custom-btn btn-block">Información</button> 
+          </div>
+        </div>
+        <div class="col-lg-4">
+        <div class="form-group">
+          <button ng-class="selected=='apariencia' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='apariencia';" class="custom-btn btn-block">Apariencia</button>
+        </div>  
+        </div>
+        <div class="col-lg-4">
+        <div class="form-group">
+          <button ng-class="selected=='fondos' ? 'custom-btn-primary' : 'custom-btn-default'" ng-click="selected='fondos';" class="custom-btn btn-block">Pantallas</button>
+        </div>  
+        </div>
+      </div>
+      <div>
+          <div class="row" ng-hide="loading">
+            <!-- form.html -->
+            <div class="col-lg-12" ng-init="selected = 'informacion'">
+            <form name="appEditForm">
+              
+                <div id="form-container" style="background:none;!important">
+                      <div ng-show="selected == 'informacion'" ng-cloak style="margin-top:10px;">
+                        <div class="row">
+                             <div class="col-lg-12" ng-hide="loading">
+                                    <div class="form-group">  
+                                          <label>Aplicación:</label>
+                                          <input  required type="text" ng-model="formEdit.data.name" class="form-control" placeholder="Aplicación">
+                                    </div>
+                                    <div class="form-group">  
+                                          <label>Versión:</label>
+                                          <input  required type="text" ng-model="formEdit.data.version" class="form-control" placeholder="Versión">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="comment">Observación:</label>
+                                      <textarea ng-model="formEdit.data.observacion" placeholder="Observación" class="form-control" rows="5"></textarea>
+                                    </div>
+                             </div>      
+                        </div>
+                      </div>
+                      <div ng-show="selected == 'apariencia'" ng-cloak style="margin-top:10px;">
+                        <fieldset class="col-lg-6 no-margin">
+                            <legend class="text-center" style="font-size:14px!important;margin-bottom:5px;">Cabezera</legend>
+                            <div class="col-lg-6">
+                              <div class="form-group">  
+                                    <label>Fondo:</label>
+                                    <div colorpicker="hex" type="text" class="form-control" ng-model="formEdit.data.headerColor" style="width:20px;height:20px;background-color:{{formEdit.data.headerColor}};"></div>
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                              <div class="form-group">  
+                                  <label>Color de Texto:</label>
+                                  <div colorpicker="hex" type="text" class="form-control" ng-model="formEdit.data.headerText" style="width:20px;height:20px;background-color:{{formEdit.data.headerText}};"></div>
+                              </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-lg-6 no-margin">
+                            <legend class="text-center" style="font-size:14px!important;margin-bottom:5px;">Pie</legend>
+                            <div class="col-lg-6">
+                              <div class="form-group">  
+                                    <label>Fondo:</label>
+                                    <div colorpicker="hex" type="text" class="form-control" ng-model="formEdit.data.footerColor" style="width:20px;height:20px;background-color:{{formEdit.data.footerColor}};"></div>
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                              <div class="form-group">  
+                                  <label>Color de Texto:</label>
+                                  <div colorpicker="hex" type="text" class="form-control" ng-model="formEdit.data.footerText" style="width:20px;height:20px;background-color:{{formEdit.data.footerText}};"></div>
+                              </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-lg-6 no-margin">
+                            <legend class="text-center" style="font-size:14px!important;margin-bottom:5px;">Boton Primario</legend>
+                            <div class="col-lg-6">
+                              <div class="form-group">  
+                                    <label>Fondo:</label>
+                                    <div colorpicker="hex" type="text" class="form-control" ng-model="formEdit.data.primaryButtonBackground" style="width:20px;height:20px;background-color:{{formEdit.data.primaryButtonBackground}};"></div>
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                              <div class="form-group">  
+                                  <label>Color de Texto:</label>
+                                  <div colorpicker="hex" type="text" class="form-control" ng-model="formEdit.data.primaryButtonColor" style="width:20px;height:20px;background-color:{{formEdit.data.primaryButtonColor}};"></div>
+                              </div>
+                            </div>
+                        </fieldset>
+                          <fieldset class="col-lg-6 no-margin">
+                            <legend class="text-center" style="font-size:14px!important;margin-bottom:5px;">Botones del Producto</legend>
+                              <div class="col-lg-6">
+                                <div class="form-group">  
+                                      <label>Fondo:</label>
+                                      <div colorpicker="hex" type="text" class="form-control" ng-model="formEdit.data.productButtonBackground" style="width:20px;height:20px;background-color:{{formEdit.data.productButtonBackground}};"></div>
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="form-group">  
+                                    <label>Color de Botones:</label>
+                                    <div colorpicker="hex" type="text" class="form-control" ng-model="formEdit.data.productBotonColor" style="width:20px;height:20px;background-color:{{formEdit.data.productBotonColor}};"></div>
+                                </div>
+                              </div>
+                          </fieldset>                          
+                          <fieldset class="col-lg-6 no-margin">
+                            <legend class="text-center" style="font-size:14px!important;margin-bottom:5px;">Notificador</legend>
+                              <div class="col-lg-6">
+                                <div class="form-group">  
+                                      <label>Fondo:</label>
+                                      <div colorpicker="hex" type="text" class="form-control" ng-model="formEdit.data.notificatorBackgroundColor" style="width:20px;height:20px;background-color:{{formEdit.data.notificatorBackgroundColor}};"></div>
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="form-group">  
+                                    <label>Color de Icono:</label>
+                                    <div colorpicker="hex" type="text" class="form-control" ng-model="formEdit.data.notificatorIconColor" style="width:20px;height:20px;background-color:{{formEdit.data.notificatorIconColor}};"></div>
+                                </div>
+                              </div>
+                          </fieldset>                          
+                      </div>
+                      <div ng-show="selected == 'fondos'" ng-cloak style="margin-top:10px;">
+                        <fieldset class="col-lg-6 no-margin no-padding">
+                            <legend class="text-center" style="font-size:14px!important;margin-bottom:5px;">Splash (1200px X 1200 px)</legend>
+                           <uploader-drop
+
+                            ng-model="form.splash" 
+                            ext="['psd', 'jpeg', 'png', 'ai', 'jpg']" 
+                            selector="splash"
+                            size = "3"
+                           
+                            ></uploader-drop>
+                        </fieldset>
+                        <fieldset class="col-lg-6 no-margin no-padding">
+                            <legend class="text-center" style="font-size:14px!important;margin-bottom:5px;">Icono (192px X 192px)</legend>
+                            <uploader-drop 
+
+                            ng-model="form.icono" 
+                            ext="['psd', 'jpeg', 'png', 'ai', 'jpg']" 
+                            selector="icono"
+                            size = "3"
+                            
+                            ></uploader-drop>
+                        </fieldset>
+                        <fieldset class="col-lg-6 no-margin no-padding">
+                            <legend class="text-center" style="font-size:14px!important;margin-bottom:5px;">Fondo de inicio de session</legend>
+                            <uploader-drop 
+
+                            ng-model="form.loginBackground" 
+                            ext="['jpeg', 'png', 'ai', 'jpg']" 
+                            selector="loginBackground"
+                            size = "3"
+                            
+                            ></uploader-drop>
+                        </fieldset>
+                      </div>                        
+                </div>
+            </form>
+            </div> 
+          </div>
+      </div>
+    </div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button type="button" style="height:40px;" class="custom-btn btn-block custom-btn-primary" ng-click="ok()">Actualizar</button>
+    </div>
+</div>

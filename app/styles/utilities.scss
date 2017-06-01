@@ -1,0 +1,38 @@
+@import "variables.scss";
+
+.left{
+	float: left;
+}
+
+.right{
+	float: right;
+}
+
+.no-padding{
+	padding: 0px!important;
+}
+
+.no-margin{
+	margin: 0px!important;
+}
+
+.primary{
+	background-color: $primary-color;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.img-circle.thumb-photo{
+    width: 30px;
+    height: 30px;
+}
+
+.no-list{
+	list-style: none;
+}
+
+.fw{
+	width: 100%;
+}

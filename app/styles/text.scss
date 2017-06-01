@@ -1,0 +1,63 @@
+@import "variables.scss";
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+h1 { font-size: 36px; }
+h2 { font-size: 30px; }
+h3 { font-size: 24px; }
+h4 { font-size: 18px; }
+h5 { font-size: 14px; }
+h6 { font-size: 12px; }
+
+h1.title{
+	font-weight: initial;
+}
+
+h1.strong{
+	font-weight: bold;
+}
+
+h1.title.tiny{
+	font-weight: 200;
+}
+
+.strong{
+	font-weight: bold;
+}
+
+.text-primary{
+	color : $primary-color;
+}
+
+.text.light{
+	color : $light-color;
+}
+
+.text-dark{
+	color:$dark-color;	
+}
+.text-white{
+	color : $white-color !important;
+}
+
+.text-center{
+	text-align: center;
+}
+.text-left{
+	text-align: left!important;
+}
+.text-right{
+	text-align: right!important;
+}
+.text-justify{
+	text-align: justify;
+}
+
+

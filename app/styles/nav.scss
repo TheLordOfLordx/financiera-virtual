@@ -1,0 +1,70 @@
+@import "variables.scss";
+
+.nav-container{
+	height: auto;
+	width: 100%;
+	background-color: $primary-color;
+	padding: 5px;
+	vertical-align: middle;
+	box-sizing: border-box;
+	position: relative;
+	float: left;
+}
+
+.nav-container-fluid{
+    position: relative;
+    float: left;
+    width: 100%;
+}
+
+.nav-items{
+	position: relative;
+	float: left;
+	height: auto;
+	width: 100%;
+}
+
+.nav-items ul{
+    height: auto;
+    position: relative;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+.menu-list{
+	padding: 5px!important;
+	width: 100%;
+	text-align: center;
+}
+
+.menu-item {
+	list-style: none;
+	display: inline-block;
+    margin-right: 5px;
+    padding: 5px;
+}
+
+.menu-item a{
+	font-size: 12px;
+	text-decoration: none;
+	cursor: pointer!important;
+}
+
+.menu-item a:hover{
+	color:#F95C07;
+}
+
+.profile-info{
+	height: 80px;
+    background-color:#01171d;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #01171d;
+}
+
+.profile-info .metadata span{
+	display: block;
+    text-align: center;
+    font-size: x-small;
+    color: white;
+}

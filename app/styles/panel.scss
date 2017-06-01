@@ -1,0 +1,48 @@
+@import "variables.scss";
+
+.panel{
+  box-sizing: border-box;
+  padding: 5px;
+  height: auto;
+  position: relative;
+  background-color: $white;
+  float: left;
+  width: 100%;
+}
+
+.panel.md{
+	padding: 30px;
+}
+
+.panel.sm{
+	padding: 15px;
+}
+
+.panel.xs{
+	padding: 10px;
+}
+
+.panel-white{
+	background-color: $white;
+}
+.panel-dark{
+	background-color: $dark;
+}
+.panel-light{
+	background-color: $light;
+}
+
+.container{
+	padding: 5px;
+	display: block;
+	margin: 5px;
+	float: left;
+	width: 100%;
+}
+
+
+
+
+
+
+

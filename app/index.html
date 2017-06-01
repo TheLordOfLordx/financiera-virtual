@@ -1,0 +1,218 @@
+<!doctype html>
+<html  ng-app="shoplyApp">
+  <head>
+    <meta charset="utf-8">
+    <title page-title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="favicon.ico" />
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap-css/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css" />
+    <link rel="stylesheet" href="bower_components/jstree/dist/themes/default/style.css" />
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
+    <link rel="stylesheet" href="bower_components/cropperjs/dist/cropper.css" />
+    <link rel="stylesheet" href="bower_components/intl-tel-input/build/css/intlTelInput.css" />
+    <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" href="bower_components/selectize/dist/css/selectize.css" />
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.css" />
+    <link rel="stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/jstree-bootstrap-theme/dist/themes/proton/style.css" />
+    <link rel="stylesheet" href="bower_components/colorpicker/dist/colorPickerStyle.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body>
+  <div id="non-printable" class="wrap" style="min-height: 100%;position: relative;">
+    <!-- Simple splash screen-->
+    <div class="splash">
+        <div class="splash-title">
+            <h1><img src="images/shoply_i.png"></h1><p></p>
+            <img style="width: 25px;" src="images/loading.svg"/>
+        </div> 
+    </div>
+    
+    <!--[if lt IE 7]>
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div ng-include="'views/home/header.html'" ng-hide="$root.state.includes('public')"></div>
+
+    <div ui-view class="row" style="background-image: url(images/pattern.png);"></div>  
+    
+    <div ng-include="'views/home/footer.html'" style="position: relative;width: 100%;height: 50px;right: 0px;" ng-hide="$root.state.includes('public')" ></div>
+  </div>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-81699966-1');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src='bower_components/jquery/dist/jquery.js'></script>
+    <script src='bower_components/angular/angular.js'></script>
+    <script src='bower_components/angular-animate/angular-animate.js'></script>
+    <script src='bower_components/angular-cookies/angular-cookies.js'></script>
+    <script src='bower_components/angular-resource/angular-resource.js'></script>
+    <script src='bower_components/angular-route/angular-route.js'></script>
+    <script src='bower_components/angular-sanitize/angular-sanitize.js'></script>
+    <script src='bower_components/angular-touch/angular-touch.js'></script>
+    <script src='bower_components/angular-ui-router/release/angular-ui-router.js'></script>
+    <script src='bower_components/firebase/firebase.js'></script>
+    <script src='bower_components/angularfire/dist/angularfire.js'></script>
+    <script src='bower_components/bootstrap-css/js/bootstrap.min.js'></script>
+    <script src='bower_components/sweetalert/dist/sweetalert.min.js'></script>
+    <script src='bower_components/angular-bootstrap/ui-bootstrap-tpls.js'></script>
+    <script src='bower_components/jsTree-directive/jsTree.directive.js'></script>
+    <script src='bower_components/jstree/dist/jstree.js'></script>
+    <script src='bower_components/angularUtils-pagination/dirPagination.js'></script>
+    <script src='bower_components/toastr/toastr.js'></script>
+    <script src='bower_components/cropperjs/dist/cropper.js'></script>
+    <script src='bower_components/intl-tel-input/build/js/intlTelInput.min.js'></script>
+    <script src='bower_components/intl-tel-input/lib/libphonenumber/build/utils.js'></script>
+    <script src='bower_components/international-phone-number/releases/international-phone-number.js'></script>
+    <script src='bower_components/ng-img-crop/compile/minified/ng-img-crop.js'></script>
+    <script src='bower_components/moment/min/moment.min.js'></script>
+    <script src='bower_components/moment/locale/es.js'></script>
+    <script src='bower_components/ngDatepicker/src/js/ngDatepicker.js'></script>
+    <script src='bower_components/js-xls/dist/xls.js'></script>
+    <script src='bower_components/js-xlsx/dist/xlsx.js'></script>
+    <script src='bower_components/es6-promise/promise.js'></script>
+    <script src='bower_components/alasql/dist/alasql.min.js'></script>
+    <script src='bower_components/iCheck/icheck.min.js'></script>
+    <script src='bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js'></script>
+    <script src='bower_components/sifter/sifter.js'></script>
+    <script src='bower_components/microplugin/src/microplugin.js'></script>
+    <script src='bower_components/selectize/dist/js/selectize.js'></script>
+    <script src='bower_components/angular-selectize2/dist/angular-selectize.js'></script>
+    <script src='bower_components/handlebars/handlebars.js'></script>
+    <script src='bower_components/angular-recaptcha/release/angular-recaptcha.js'></script>
+    <script src='bower_components/metisMenu/dist/metisMenu.js'></script>
+    <script src='bower_components/angular-preload-image/angular-preload-image.js'></script>
+    <script src='bower_components/angular-hotkeys/build/hotkeys.js'></script>
+    <script src='bower_components/bootstrap/dist/js/bootstrap.js'></script>
+    <script src='bower_components/angular-ui-utils/ui-utils.js'></script>
+    <script src='bower_components/angular-ui-map/ui-map.js'></script>
+    <script src='bower_components/colorpicker/dist/colorPicker.js'></script>
+    <script src='bower_components/file-saver/FileSaver.js'></script>
+    <script src='bower_components/json-export-excel/src/json-export-excel.js'></script>
+    <script src='bower_components/angular-i18n/angular-locale_es-co.js'></script>
+    <script src='bower_components/underscore/underscore.js'></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.full.min.js"></script>
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/shoply.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/user.js"></script>
+        <script src="scripts/controllers/registration.js"></script>
+        <script src="scripts/controllers/profile.js"></script>
+        <script src="scripts/controllers/seller.js"></script>
+        <script src="scripts/controllers/client.js"></script>
+        <script src="scripts/controllers/routes.js"></script>
+        <script src="scripts/controllers/contadores.js"></script>
+        <script src="scripts/controllers/casaComercial.js"></script>
+        <script src="scripts/controllers/existencias.js"></script>
+        <script src="scripts/services/account.js"></script>
+        <script src="scripts/controllers/request.js"></script>
+        <script src="scripts/controllers/vista-previa.js"></script>
+        <script src="scripts/controllers/location.js"></script>
+        <script src="scripts/controllers/employe.js"></script>
+        <script src="scripts/controllers/permiso.js"></script>
+        <script src="scripts/controllers/grocery.js"></script>
+        <script src="scripts/controllers/entradas.js"></script>
+        <script src="scripts/controllers/salidas.js"></script>
+        <script src="scripts/controllers/lotes.js"></script>
+        <script src="scripts/controllers/apps.js"></script>
+        <script src="scripts/services/api.js"></script>
+        <script src="scripts/services/permission.js"></script>
+        <script src="scripts/services/constants.js"></script>
+        <script src="scripts/services/storage.js"></script>
+        <script src="scripts/services/sound.js"></script>
+        <script src="scripts/services/modal.js"></script>
+        <script src="scripts/services/shoppingcart.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/requestdetail.js"></script>
+        <script src="scripts/controllers/productos.js"></script>
+        <script src="scripts/controllers/reset.js"></script>
+        <script src="scripts/directives/estadoproducto.js"></script>
+        <script src="scripts/directives/iva.js"></script>
+        <script src="scripts/directives/choose.js"></script>
+        <script src="scripts/directives/cropper.js"></script>
+        <script src="scripts/directives/cliente.js"></script>
+        <script src="scripts/directives/requestType.js"></script>
+        <script src="scripts/directives/estadopedido.js"></script>
+        <script src="scripts/directives/company.js"></script>
+        <script src="scripts/directives/empleado.js"></script>
+        <script src="scripts/directives/bodega.js"></script>
+        <script src="scripts/directives/sp-sidebar.js"></script>
+        <script src="scripts/directives/sp-sidebar-header.js"></script>
+        <script src="scripts/directives/sp-header-toolbar.js"></script>
+        <script src="scripts/directives/entidades.js"></script>
+        <script src="scripts/directives/focus.js"></script>
+        <script src="scripts/directives/references.js"></script>
+        <script src="scripts/directives/sp-gallery-preview.js"></script>
+        <script src="scripts/controllers/productdetail.js"></script>
+        <script src="scripts/controllers/produccion.js"></script>
+        <script src="scripts/controllers/ivas.js"></script>
+        <script src="scripts/directives/uploader.js"></script>
+        <script src="scripts/directives/uploader-drop.js"></script>
+        <script src="scripts/directives/location.js"></script>
+        <script src="scripts/directives/routes.js"></script>
+        <script src="scripts/directives/system.js"></script>
+        <script src="scripts/directives/vendedor.js"></script>
+        <script src="scripts/directives/perfil.js"></script>
+        <script src="scripts/directives/casaComercial.js"></script>
+        <script src="scripts/filters/selectedItems.js"></script>
+        <script src="scripts/filters/datefilter.js"></script>
+        <script src="scripts/statics/departamentos.js"></script>
+        <script src="statics/permisos.js"></script>
+        <script src="statics/permisos.js"></script>
+        <script src="statics/selectize_no_results.js"></script>
+        <script src="scripts/statics/municipios.js"></script>
+        <script src="scripts/controllers/categoria.js"></script>
+        <script src="scripts/directives/categoria.js"></script>
+        <script src="scripts/directives/producto.js"></script>
+        <script src="scripts/controllers/categorydetail.js"></script>
+        <script src="scripts/controllers/dashboard.js"></script>
+        <script src="scripts/controllers/header.js"></script>
+        <script src="scripts/controllers/changepassword.js"></script>
+        <script src="scripts/controllers/company.js"></script>
+        <script src="scripts/controllers/facturacion.js"></script>
+        <script src="scripts/controllers/devoluciones.js"></script>
+        <script src="scripts/controllers/arqueo.js"></script>
+        <script src="scripts/controllers/forgot.js"></script>
+        <script src="scripts/controllers/formasPagos.js"></script>
+        <script src="scripts/services/sweetalert.js"></script>
+        <script src="scripts/controllers/transportador.js"></script>
+        <script src="scripts/directives/iconpicker.js"></script>
+        <!-- endbuild -->
+        <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer
+></script>
+        <script src="http://181.54.214.104:8080/socket.io/socket.io.js"></script>
+        <script async defer src='//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDAEkAD9WrBiSRB0QXyLDPCUKd3Lh9hYcg'></script>
+        <script type="text/javascript">
+            $(window).bind("load", function () {
+                $('.splash').css('display', 'none')
+            });
+        </script>        
+</body>
+</html>

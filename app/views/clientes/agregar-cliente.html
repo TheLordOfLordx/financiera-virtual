@@ -1,0 +1,179 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Crear Cliente</h4>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="status-buttons" class="text-center">
+            <a href="" ng-click="selected = 'natural'"><span>1</span> Persona Natural</a>
+            <a href="" ng-click="selected = 'juridica'"><span>2</span> Persona Juridica</a>
+        </div>        
+      </div>
+    </div>
+  	<div class="modal-body">
+    	<div>
+          <div class="row">
+            <!-- form.html -->
+            <div class="col-lg-12" ng-init="selected = 'natural'">
+                <div id="form-container" style="background:none;!important">
+                    <form name="clienteNaturalForm">
+                      <div ng-show="selected == 'natural'" ng-cloak style="margin-top:10px;">
+                          <div class="row">
+                              <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                      <label>Nombres:</label>
+                                      <input type="text" required name="firstname" ng-model="formPersonaNatural.name"  class="form-control input-sm" placeholder="Nombres">
+                                    </div>                                  
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                      <label>Apellidos</label>
+                                      <input type="text" required name="lastname" ng-model="formPersonaNatural.last_name"  class="form-control input-sm" placeholder="Apellidos">
+                                    </div>                                  
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                      <label>Documento:</label>
+                                       <selectize config="{create:true, maxItems:1, valueField: 'value', labelField: 'text', placeholder:'Tipo de documento'}" options='[{value:"CC", text:"Cedula de Ciudadania"}, {value:"CE", text:"Cedula de Extranjeria"},  {value:"DI", text:"Documento de Identidad"}]' ng-model="formPersonaNatural.data.documento"></selectize>
+                                    </div>                                  
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                      <label>Numero de Documento:</label>
+                                      <input type="text" required name="numero_documento" ng-model="formPersonaNatural.data.numero_documento"  class="form-control input-sm" placeholder="Numero de Documento">
+                                    </div>                                  
+                                </div>
+                              </div>
+                                  <div class="form-group">
+                                    <label>Correo:</label>
+                                    <input type="email" required name="email" ng-model="formPersonaNatural.email"  class="form-control input-sm" placeholder="Correo electronico">
+                                  </div>
+                                  <div class="row">
+                                    <div class="col-lg-6">
+                                      <div class="form-group">
+                                        <label>Celular:</label>
+                                        <input type="text" class="form-control input-sm" placeholder="Celular" international-phone-number ng-model="formPersonaNatural.data.phone">
+                                      </div>                                      
+                                    </div>
+                                    <div class="col-lg-6">
+                                      <div class="form-group">
+                                        <label>Fijo:</label>
+                                        <input type="text" required name="fijo" ng-model="formPersonaNatural.data.fijo"  class="form-control input-sm" placeholder="Telefono fijo">
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div class="row">
+                                    <div class="col-lg-6">
+                                      <div class="form-group">
+                                          <label>Departamento:</label>
+                                          <departamento-field required ng-model="formPersonaNatural.data.departamento"></departamento-field>
+                                      </div>                                      
+                                    </div>
+                                    <div class="col-lg-6">
+                                      <div class="form-group">
+                                          <label>Ciudad:</label>
+                                          <ciudad-field required ng-model="formPersonaNatural.data.ciudad"></ciudad-field>
+                                      </div>                                      
+                                    </div>
+                                      <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Barrio:</label>
+                                            <input type="text" required name="Barrio" ng-model="formPersonaNatural.data.barrio"  class="form-control input-sm" placeholder="Barrio">
+                                        </div>                                      
+                                      </div>
+                                    <div class="col-lg-6">
+                                      <div class="form-group">
+                                          <label>Dirección:</label>
+                                         <input type="text" required name="Direcion" ng-model="formPersonaNatural.data.direccion"  class="form-control input-sm" placeholder="Direccion">
+                                      </div>                                      
+                                    </div>
+                                  </div>
+                              </div>        
+                          </div>
+                      </div>
+                      </form>
+                      <form name="clienteJuridicoForm">
+                        <div ng-show="selected == 'juridica'" ng-cloak style="margin-top:10px;">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                      <label>NIT:</label>
+                                      <input type="text" required name="nit" ng-model="formPersonaJuridica.data.nit"  class="form-control input-sm" placeholder="Nit">
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Razon Social:</label>
+                                      <input type="text" required name="razon" ng-model="formPersonaJuridica.data.razon_social"  class="form-control input-sm" placeholder="Razon Social">
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Representante Legal:</label>
+                                      <input type="text" required name="representante" ng-model="formPersonaJuridica.data.representante_legal"  class="form-control input-sm" placeholder="Representante Legal">
+                                    </div>
+                                    <div class="form-group">
+                                      <label>Correo:</label>
+                                      <input type="email" required name="email" ng-model="formPersonaJuridica.email"  class="form-control input-sm" placeholder="Correo electronico">
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-lg-4">
+                                        <div class="form-group">
+                                          <label>Celular:</label>
+                                          <input type="text" placeholder="Numero de celular" class="form-control input-sm" international-phone-number ng-model="formPersonaJuridica.data.phone">
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-4">
+                                        <div class="form-group">
+                                          <label>Fijo:</label>
+                                          <input type="text" required name="fijo" ng-model="formPersonaJuridica.data.fijo"  class="form-control input-sm" placeholder="Telefono fijo">
+                                        </div>
+                                      </div>
+                                      <div class="col-lg-4">
+                                        <div class="form-group">
+                                          <label>Fax:</label>
+                                          <input type="text" required name="fax" ng-model="formPersonaJuridica.data.fax"  class="form-control input-sm" placeholder="Fax">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Departamento:</label>
+                                            <departamento-field required ng-model="formPersonaJuridica.data.departamento"></departamento-field>
+                                        </div>                                      
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Ciudad:</label>
+                                            <ciudad-field required ng-model="formPersonaJuridica.data.ciudad"></ciudad-field>
+                                        </div>                                      
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Barrio:</label>
+                                            <input type="text" required name="Barrio" ng-model="formPersonaJuridica.data.barrio"  class="form-control input-sm" placeholder="Barrio">
+                                        </div>                                      
+                                      </div>
+                                    <div class="col-lg-6">
+                                      <div class="form-group">
+                                          <label>Dirección:</label>
+                                         <input type="text" required name="Direcion" ng-model="formPersonaJuridica.data.direccion"  class="form-control input-sm" placeholder="Direccion">
+                                      </div>                                      
+                                    </div>
+                                    </div>
+                                </div>        
+                            </div>
+                        </div>                        
+                      </form>
+                </div>
+            </div>    
+          </div>
+    	</div>
+  	</div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button type="button" style="height:40px;" class="custom-btn custom-btn-primary btn-block" ng-click="ok()">Agregar</button>
+    </div>
+</div>

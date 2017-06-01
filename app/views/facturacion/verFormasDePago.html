@@ -1,0 +1,30 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Formas de Pago</h4>
+    </div>
+  	<div class="modal-body">
+        <div class="table-responsive">
+           <table class="table table-hover">
+            <thead>
+              <th>Forma de pago</th>
+              <th>Valor</th>
+              <th>Con tarjeta</th>
+              <th>Voucher</th>
+            </thead>
+            <tbody>
+              <tr ng-repeat="record in records" ng-show="record.data.value">
+                <td>{{record.data.descripcion}}</td>
+                <td>{{record.data.value || 0 | currency:"$ "}}</td>
+                <td>{{record.data.card ? 'SI' : 'NO'}}</td>
+                <td>{{record.data.code ? record.data.code : 'NO'}}</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>      
+        </div>
+  	</div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button type="button" style="height:40px;"  class="custom-btn btn-block custom-btn-primary" ng-click="ok()">OK</button>
+    </div>
+</div>

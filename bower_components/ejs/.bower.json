@@ -1,0 +1,14 @@
+{
+  "name": "ejs",
+  "homepage": "https://github.com/mde/ejs",
+  "version": "2.5.1",
+  "_release": "2.5.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.5.1",
+    "commit": "b694b992dc97e8e4164dd5cf17a90f554edb57ea"
+  },
+  "_source": "https://github.com/mde/ejs.git",
+  "_target": "^2.5.1",
+  "_originalSource": "https://github.com/mde/ejs.git"
+}

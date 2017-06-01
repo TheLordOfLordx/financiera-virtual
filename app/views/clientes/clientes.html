@@ -1,0 +1,64 @@
+<div ng-init="load()">
+  <div class="content" ng-show="!records || records.length == 0">
+    <div class="table_wrap table_height">
+      <div class="row table-responsive table_inner">
+          <div class="controls" ng-show="records.length == 0 && Records">
+            <h4 >No hay registros para mostrar</h4>
+          </div>
+          <p class="text-center" ng-show="!Records">
+           <img style="width:50px;" src="images/loading.svg">
+          </p>
+      </div>
+    </div>  
+  </div>
+<div class="col-lg-12 content" ng-show="records.length > 0">
+        <div class="hpanel">
+            <div class="panel-body">
+            <div class="form-group">
+			<label>Buscar</label>
+			<input type="text" ng-model="search" class="form-control input-sm m-b-md" id="filter" placeholder="Buscar en la tabla">
+            	
+            </div>
+                <div class="table-responsive">
+					<table class="table table-hover">
+					    <thead>
+					      <tr>
+					        <th>Documento</th>
+					        <th>Numero</th>
+					        <th>Nombres / RS</th>
+					        <th>Apellidos / RL</th>
+					        <th>Email</th>
+					        <th>Telefono</th>
+					        <th>Departamento</th>
+					        <th>Ciudad</th>
+					        <th style="width: 36px;"></th>
+					        <th style="width: 36px;"></th>
+					        <th style="width: 36px;"></th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr  dir-paginate="record in records |filter:search |itemsPerPage: 5 " pagination-id="ClienteEntity">
+					        <td>{{record.data.documento || 'Nit' || 'no definido'}}</td>
+					        <td>{{record.data.numero_documento || record.data.nit || 'no definido'}}</td>
+					        <td>{{record.name || record.username || record.data.representante_legal || 'no definido'}}</td>
+					        <td>{{record.last_name || 'no definido'}}</td>
+					        <td>{{record.email || 'no definido'}}</td>
+					        <td>{{record.data.phone || 'no definido' }}</td>
+					        <td>{{record.data.departamento.toLowerCase() || 'no definido'}}</td>
+					        <td>{{record.data.ciudad.toLowerCase() || 'no definido'}}</td>
+     						<td><button ng-click="editForm()" type="button" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Editar</button></td>
+					        <td><button ng-click="delete()" type="button" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i>&nbsp;Borrar</button></td>
+					      </tr>
+					    </tbody>
+					  </table>
+                </div>
+				<div class="col-lg-12">
+					<dir-pagination-controls class="pull-right" pagination-id="ClienteEntity"></dir-pagination-controls>
+				</div>
+            </div>
+            <div class="panel-footer">
+                Listado de Clientes
+            </div>
+        </div>
+    </div>
+</div>

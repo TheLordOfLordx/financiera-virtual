@@ -1,0 +1,84 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <h4 class="modal-title">Editar Permiso</h4>
+    </div>
+  	<div class="modal-body">
+      <div class="row">
+        <div class="file-wrap" style="height: 150px;" ng-show="loading">
+          <div class="item-loading text-center" style="position:relative;top:25%;">
+            <img style="height:30px;" src="images/loading.svg">
+            <p>Esto puede tardar unos minutos por favor espere...</p>
+          </div>
+        </div>
+       </div>
+    	<div>
+          <div class="row" ng-hide="loading">
+            <form name="formEditarPermiso">
+              <div class="col-lg-6">
+                <label>Menu:</label>
+                <selectize config='{valueField: "id", labelField:"nombre", maxItems: 1, placeholder:"Menu"}' options='menus' ng-model="formEdit.data._menu"></selectize>                  
+              </div>
+              <div class="col-lg-6">
+                <label>Formularios:</label>
+                <selectize config='{valueField: "id", labelField:"nombre", maxItems: 1, placeholder:"Formularios"}' options='formsCollectionEdit' ng-model="formEdit.data._form"></selectize>                  
+              </div>
+              <div class="col-lg-3">
+                  <label>
+                    <input icheck type="checkbox"  ng-model="formEdit.data.access.view" class="info-bounce">
+                    Ver Listado
+                  </label>
+              </div>
+              <div class="col-lg-3">
+                  <label>
+                    <input icheck type="checkbox"  ng-model="formEdit.data.access.create" class="info-bounce">
+                    Crear
+                  </label>
+              </div>
+              <div class="col-lg-3">
+                  <label>
+                    <input icheck type="checkbox"  ng-model="formEdit.data.access.update" class="info-bounce">
+                    Editar
+                  </label>
+              </div>
+              <div class="col-lg-3">
+                  <label>
+                    <input icheck type="checkbox"  ng-model="formEdit.data.access.delete" class="info-bounce">
+                    Borrar
+                  </label>
+              </div>
+              <div class="col-lg-12 text-right form-group">
+                  <button  style="border-radius: 5px;" type="button" style="border-radius: 5px;" class="custom-btn custom-btn-primary" ng-click="addMenuEdit()"><i class="glyphicon glyphicon-plus"></i>&nbsp;Agregar</button>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                <h4 class="text-center" ng-show="!formEdit.data.permission || formEdit.data.permission.length == 0" ><i class="fa fa-exclamation-triangle"></i>&nbsp;no hay menus configurados</h4>                  
+                <ul class="sp-list"> 
+                    <li class="sp-list-item sp-choice" dir-paginate="record in formEdit.data.permission |filter:search | itemsPerPage: 3 " pagination-id="permissionEditEntity"> 
+                      <div class="sp-item-image text-center">
+                        <i style="font-size: 50px;position: relative;top: 15%;" class="fa {{record.menuIcon}}"></i>
+                      </div>
+                      <a class="trash" ng-click="removeFromListEdit()" href=""><i class="glyphicon glyphicon-trash"></i></a>
+                      <h4>{{record.menuText}}</h4>
+                      <p class="sp-text" style="top: -3px!important;">Formulario:&nbsp;{{record.formText.toLowerCase() || 'Sin Formulario'}}&nbsp;&nbsp;</p>
+                      <p><span  ng-show="record.access.view" style="margin-right:5px;" class="label label-primary ng-binding">Ver : Permitido</span><span ng-show="record.access.create"  style="margin-right:5px;" class="label label-primary">Crear : Permitido</span><span  ng-show="record.access.update" style="margin-right:5px;" class="label label-primary ng-binding">Editar : Permitido</span><span   ng-show="record.access.delete" style="margin-right:5px;" class="label label-primary ng-binding">Borrar : Permitido</span></p>
+                     {{barrio}}</span></p>
+                      <div class="row">
+                        <div class="sp-footer">
+
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                  </div>
+              </div>
+              <div class="col-lg-12">
+                <dir-pagination-controls class="pull-right" pagination-id="permissionEditEntity"></dir-pagination-controls>
+              </div>
+            </form>
+          </div>
+    	</div>
+  	</div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button type="button" style="height:40px;" class="custom-btn btn-block custom-btn-primary" ng-click="ok()">Actualizar</button>
+    </div>
+</div>

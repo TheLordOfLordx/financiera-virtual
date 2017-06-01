@@ -1,0 +1,29 @@
+<div class="inmodal" ng-controller="CasaComercialCtrl">
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Editar Casa Comercial</h4>
+    </div>
+  	<div class="modal-body">
+    	<div>
+  	  	<form name="formEditCasaComercial" novalidate>
+          <div class="row">
+              <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Descripcion larga *:</label>
+                    <input type="text" name="descripcionlg" placeholder="Descripcion Larga" ng-model="formEdit.data.descripcion_larga" class="form-control">
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Descripcion Corta *:</label>
+                    <input type="text" name="descripcionlg" placeholder="Descripcion Larga" ng-model="formEdit.data.descripcion_corta" class="form-control">
+                  </div>
+              </div>
+          </div>
+  	  	</form>
+    	</div>
+  	</div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button type="button" style="height:40px;"  class="custom-btn btn-block custom-btn-primary" ng-click="ok()">Actualizar</button>
+    </div>
+</div>

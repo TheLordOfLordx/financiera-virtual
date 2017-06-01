@@ -1,0 +1,64 @@
+<div class="inmodal">
+    <div class="modal-header text-center custom-modal-header">
+        <!--<i class="fa fa-sliders color-success h-modal-icon"></i>-->
+        <h4 class="modal-title">Tallas y Cantidades</h4>
+    </div>
+  	<div class="modal-body">
+    <div class="row">
+        <div class="col-lg-4">
+          <div class="form-group">
+              <label for="name" >Producto:</label>
+              <input type="text"  required class="form-control input-sm" placeholder="Pedido" name="name" ng-model="set.idcomposed" readonly>
+              <span class="form-input-message">{{set.descripcion}}.</span>
+         </div>
+        </div>  
+        <div class="col-lg-4">
+          <div class="form-group">
+              <label for="name" >Vendedor:</label>
+              <input type="text"  required class="form-control input-sm" placeholder="Cliente" name="name" ng-model="set._seller.full_name" readonly>
+         </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+              <label for="name" >Cliente:</label>
+
+              <input type="text" ng-show="set._client.full_name.toLowerCase() != ''"  required class="form-control input-sm" placeholder="Cliente" name="name" ng-model="set._client.full_name" readonly>
+              <input type="text" ng-show="set._client.data.representante_legal"  required class="form-control input-sm" placeholder="Cliente" name="name" ng-model="set._client.data.representante_legal" readonly>
+               <span class="form-input-message">Pedido N° {{set.pedido}}.</span>
+          </div>
+        </div>
+    
+    </div>
+    	<div>
+  	  	<form name="VertallasCantidades" novalidate>
+                <h4>Tallas</h4>
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th ng-repeat="talla in set.data.tallas" >{{talla.talla}}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr  
+                          pagination-id="TallasEntity">
+                          <td dir-paginate="cantidad in set.data.tallas | 
+                          filter:search | 
+                          itemsPerPage: 30 " >
+                          <input type="number" ng-show="allowWrite" required class="form-control input-sm" placeholder="" ng-model="cantidad.cantidad">
+                          <p ng-show="!allowWrite">{{cantidad.cantidad || 0}}</p></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                        </div>
+                <div class="col-lg-12">
+                  <dir-pagination-controls class="pull-right" pagination-id="TallasEntity"></dir-pagination-controls>
+                </div>        
+  	  	</form>
+    	</div>
+  	</div>
+    <div class="modal-footer custom-modal-footer" style="padding:0px;">
+        <button type="button" style="height:40px;" class="custom-btn btn-block custom-btn-primary" ng-click="ok()">Cerrar</button>
+    </div>
+</div>

@@ -6,24 +6,17 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="icon" href="favicon.ico" />
+    
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap-css/css/bootstrap.min.css" />
     <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css" />
-    <link rel="stylesheet" href="bower_components/jstree/dist/themes/default/style.css" />
     <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
     <link rel="stylesheet" href="bower_components/cropperjs/dist/cropper.css" />
-    <link rel="stylesheet" href="bower_components/intl-tel-input/build/css/intlTelInput.css" />
     <link rel="stylesheet" href="bower_components/ng-img-crop/compile/minified/ng-img-crop.css" />
-    <link rel="stylesheet" href="bower_components/angular-bootstrap-colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" href="bower_components/selectize/dist/css/selectize.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.css" />
-    <link rel="stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.css" />
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/jstree-bootstrap-theme/dist/themes/proton/style.css" />
-    <link rel="stylesheet" href="bower_components/colorpicker/dist/colorPickerStyle.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -31,7 +24,6 @@
     <!-- endbuild -->
   </head>
   <body>
-  <div id="non-printable" class="wrap" style="min-height: 100%;position: relative;">
     <!-- Simple splash screen-->
     <div class="splash">
         <div class="splash-title">
@@ -46,12 +38,8 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-include="'views/home/header.html'" ng-hide="$root.state.includes('public')"></div>
+    <div ui-view></div>  
 
-    <div ui-view class="row" style="background-image: url(images/pattern.png);"></div>  
-    
-    <div ng-include="'views/home/footer.html'" style="position: relative;width: 100%;height: 50px;right: 0px;" ng-hide="$root.state.includes('public')" ></div>
-  </div>
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
@@ -65,61 +53,43 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src='bower_components/jquery/dist/jquery.js'></script>
-    <script src='bower_components/angular/angular.js'></script>
-    <script src='bower_components/angular-animate/angular-animate.js'></script>
-    <script src='bower_components/angular-cookies/angular-cookies.js'></script>
-    <script src='bower_components/angular-resource/angular-resource.js'></script>
-    <script src='bower_components/angular-route/angular-route.js'></script>
-    <script src='bower_components/angular-sanitize/angular-sanitize.js'></script>
-    <script src='bower_components/angular-touch/angular-touch.js'></script>
-    <script src='bower_components/angular-ui-router/release/angular-ui-router.js'></script>
-    <script src='bower_components/firebase/firebase.js'></script>
-    <script src='bower_components/angularfire/dist/angularfire.js'></script>
-    <script src='bower_components/bootstrap-css/js/bootstrap.min.js'></script>
-    <script src='bower_components/sweetalert/dist/sweetalert.min.js'></script>
-    <script src='bower_components/angular-bootstrap/ui-bootstrap-tpls.js'></script>
-    <script src='bower_components/jsTree-directive/jsTree.directive.js'></script>
-    <script src='bower_components/jstree/dist/jstree.js'></script>
-    <script src='bower_components/angularUtils-pagination/dirPagination.js'></script>
-    <script src='bower_components/toastr/toastr.js'></script>
-    <script src='bower_components/cropperjs/dist/cropper.js'></script>
-    <script src='bower_components/intl-tel-input/build/js/intlTelInput.min.js'></script>
-    <script src='bower_components/intl-tel-input/lib/libphonenumber/build/utils.js'></script>
-    <script src='bower_components/international-phone-number/releases/international-phone-number.js'></script>
-    <script src='bower_components/ng-img-crop/compile/minified/ng-img-crop.js'></script>
-    <script src='bower_components/moment/min/moment.min.js'></script>
-    <script src='bower_components/moment/locale/es.js'></script>
-    <script src='bower_components/ngDatepicker/src/js/ngDatepicker.js'></script>
-    <script src='bower_components/js-xls/dist/xls.js'></script>
-    <script src='bower_components/js-xlsx/dist/xlsx.js'></script>
-    <script src='bower_components/es6-promise/promise.js'></script>
-    <script src='bower_components/alasql/dist/alasql.min.js'></script>
-    <script src='bower_components/iCheck/icheck.min.js'></script>
-    <script src='bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js'></script>
-    <script src='bower_components/sifter/sifter.js'></script>
-    <script src='bower_components/microplugin/src/microplugin.js'></script>
-    <script src='bower_components/selectize/dist/js/selectize.js'></script>
-    <script src='bower_components/angular-selectize2/dist/angular-selectize.js'></script>
-    <script src='bower_components/handlebars/handlebars.js'></script>
-    <script src='bower_components/angular-recaptcha/release/angular-recaptcha.js'></script>
-    <script src='bower_components/metisMenu/dist/metisMenu.js'></script>
-    <script src='bower_components/angular-preload-image/angular-preload-image.js'></script>
-    <script src='bower_components/angular-hotkeys/build/hotkeys.js'></script>
-    <script src='bower_components/bootstrap/dist/js/bootstrap.js'></script>
-    <script src='bower_components/angular-ui-utils/ui-utils.js'></script>
-    <script src='bower_components/angular-ui-map/ui-map.js'></script>
-    <script src='bower_components/colorpicker/dist/colorPicker.js'></script>
-    <script src='bower_components/file-saver/FileSaver.js'></script>
-    <script src='bower_components/json-export-excel/src/json-export-excel.js'></script>
-    <script src='bower_components/angular-i18n/angular-locale_es-co.js'></script>
-    <script src='bower_components/underscore/underscore.js'></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.js"></script>
+    <script src="bower_components/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <script src="bower_components/cropperjs/dist/cropper.js"></script>
+    <script src="bower_components/ng-img-crop/compile/minified/ng-img-crop.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="bower_components/moment/locale/es.js"></script>
+    <script src="bower_components/ngDatepicker/src/js/ngDatepicker.js"></script>
+    <script src="bower_components/iCheck/icheck.min.js"></script>
+    <script src="bower_components/sifter/sifter.js"></script>
+    <script src="bower_components/microplugin/src/microplugin.js"></script>
+    <script src="bower_components/selectize/dist/js/selectize.js"></script>
+    <script src="bower_components/angular-selectize2/dist/angular-selectize.js"></script>
+    <script src="bower_components/angular-recaptcha/release/angular-recaptcha.js"></script>
+    <script src="bower_components/angular-preload-image/angular-preload-image.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+    <script src="bower_components/angular-ui-map/ui-map.js"></script>
+    <script src="bower_components/tether/dist/js/tether.js"></script>
+    <script src="bower_components/angular-facebook/lib/angular-facebook.js"></script>
+    <script src="bower_components/nouislider/distribute/nouislider.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.full.min.js"></script>
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/shoply.js"></script>
         <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/home.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/user.js"></script>
@@ -180,6 +150,7 @@
         <script src="scripts/directives/system.js"></script>
         <script src="scripts/directives/vendedor.js"></script>
         <script src="scripts/directives/perfil.js"></script>
+        <script src="scripts/directives/slider.js"></script>
         <script src="scripts/directives/casaComercial.js"></script>
         <script src="scripts/filters/selectedItems.js"></script>
         <script src="scripts/filters/datefilter.js"></script>
@@ -207,12 +178,10 @@
         <!-- endbuild -->
         <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer
 ></script>
-        <script src="http://181.54.214.104:8080/socket.io/socket.io.js"></script>
-        <script async defer src='//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyDAEkAD9WrBiSRB0QXyLDPCUKd3Lh9hYcg'></script>
         <script type="text/javascript">
             $(window).bind("load", function () {
                 $('.splash').css('display', 'none')
             });
-        </script>        
+        </script> 
 </body>
 </html>

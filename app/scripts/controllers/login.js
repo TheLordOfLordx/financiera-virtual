@@ -8,7 +8,7 @@
  * Controller of the shoplyApp
  */
 angular.module('shoplyApp')
-  .controller('LoginCtrl', function ($scope, sweetAlert, modal, constants, $state, storage, account, $rootScope) {
+  .controller('LoginCtrl', function ($scope, sweetAlert, constants, $state, storage, account, $rootScope, Facebook) {
   	$scope.load = function(){
       if(storage.get("rememberEmail")){
         $scope.fromStore = true;
@@ -17,6 +17,40 @@ angular.module('shoplyApp')
         $scope.form.data.email = storage.get("rememberEmail");
       }
   	}
+
+    $scope.$watch(function() {
+      return Facebook.isReady();
+    }, function(newVal) {
+      $scope.facebookReady = true;
+    });
+
+    $scope.getLoginStatus = function() {
+      Facebook.getLoginStatus(function(response) {
+        if(response.status === 'connected') {
+          $scope.loggedIn = true;
+          
+          $scope.me(function(data){
+            $scope.user = data;
+          });
+        } else {
+          $scope.loggedIn = false;
+        }
+      });
+    };
+
+    $scope.me = function(callback) {
+      Facebook.api('/me', { "fields" :"id, name, email, first_name, last_name, picture" }, callback);
+    };
+
+    $scope.facebook_login = function() {
+      Facebook.login(function(response) {
+        if(response.status == 'connected'){
+          $scope.me(function(data){
+           $scope.user  = data;
+          })          
+        }
+      }, { scope:'email' } );
+    };
 
   	$scope.login = function(){
   		if($scope.loginForm.$invalid){

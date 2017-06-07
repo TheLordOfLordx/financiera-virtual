@@ -19,23 +19,16 @@ angular
     'ui.router',
     'firebase',
     'selectize',
-    'ui.bootstrap',
-    'jsTree.directive',
     'angularUtils.directives.dirPagination',
-    'internationalPhoneNumber',
     'ngImgCrop',
     'angular-preload-image',
     'jkuri.datepicker',
-    'colorpicker.module',
     'vcRecaptcha',
-    'cfp.hotkeys',
     'ui.map',
-    'tb-color-picker',
-    'ngJsonExportExcel'
+    'facebook'
   ])
-  .config(function ($stateProvider, ipnConfig,  $httpProvider, constants, $urlRouterProvider) {
-        ipnConfig.defaultCountry = 'co'
-        ipnConfig.preferredCountries = ['pl', 'de', 'fr', 'uk', 'es'];
+  .config(function ($stateProvider, $httpProvider, constants, $urlRouterProvider, FacebookProvider) {
+        FacebookProvider.init('448351572192242');
         $httpProvider.interceptors.push(function($injector, $q, sweetAlert, storage) {
         var rootScope = $injector.get('$rootScope');
 
@@ -117,7 +110,7 @@ angular
       $stateProvider
           .state('home', {
               url: '/',
-              templateUrl: 'views/home/content.html',
+              templateUrl: 'views/home/home.html',
               data: {
                 pageTitle: 'Home'
               }
@@ -137,7 +130,7 @@ angular
               }
           })
           .state('login', {
-              url: '/entrar',
+              url: '/login',
               templateUrl: 'views/login/login.html',
               data: {
                 pageTitle: 'Entrar'
@@ -181,13 +174,12 @@ angular
                   pageTitle: 'Administración'
                 }
           });
-  }).run(["$rootScope", "constants", "storage", "$state","sounds", "api","$window","permission",  function($rootScope, constants, storage, $state, sounds, api, $window, permission){
+  }).run(["$rootScope", "constants", "storage", "$state","sounds", "api", "$window", function($rootScope, constants, storage, $state, sounds, api, $window){
         $rootScope.currency = constants.currency;
         $rootScope.base = constants.uploadFilesUrl;
         $rootScope.isLogged = storage.get('user');
         $rootScope.user = storage.get('user');
         $rootScope.state = $state;
-        $rootScope.acl = permission;
         $rootScope.online = navigator.onLine;
 
         $window.addEventListener("offline", function() {

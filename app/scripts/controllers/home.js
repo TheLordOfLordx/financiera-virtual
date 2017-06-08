@@ -9,5 +9,5 @@
  */
 angular.module('shoplyApp')
   .controller('HomeCtrl', function ($scope) {
-  	
+  	$scope.currentDate = new Date();
   });

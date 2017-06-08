@@ -81,22 +81,21 @@
             <div class="col-md-4 content-center">
                 <div class="row">
                     <div class="col-lg-6">
-                        <h5 class="animated fadeInRight text-left">¿Cuánto dinero necesitas?</h5>
-                        <slider ng-model="form.data.money" initial="200000" range="[100000, 1000000]"></slider>
+                        <h5 class="text-left">¿Cuánto dinero necesitas?</h5>
+                        <slider step="50000" ng-model="form.data.money" initial="200000" range="[100000, 1000000]"></slider>
                         <div class="row">
                             <div class="col-lg-6 text-left">{{''}}</div>
-                            <div class="col-lg-6 text-right">{{form.data.money[0] || 0 | currency:"$ "}}</div>
+                            <div style="font-size:20px;margin-top: 20px;" class="col-lg-6 text-right">{{form.data.money[0] || 0 | currency:"COP $ "}}</div>
                         </div>
                         <br />
                         <br />
                         <br />
                         <br />
-                        <br />
-                        <h5 class="animated fadeInRight text-left">¿Cuándo puedes pagar?</h5>
-                        <slider ng-model="form.data.date" initial="150" range="[100, 500]"></slider>
+                        <h5 class="text-left">¿Cuándo puedes pagar?</h5>
+                        <slider step="1" ng-model="form.data.days" initial="5" range="[1, 30]"></slider>
                         <div class="row">
                             <div class="col-lg-6 text-left">{{}}</div>
-                            <div class="col-lg-6 text-right">{{5000}}</div>                            
+                            <div style="font-size:20px;margin-top: 20px;" ng-init="form.data.date = currentDate" class="col-lg-6 text-right">{{'en ' + form.data.days + ' dias.'}}</div>                            
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -106,16 +105,50 @@
    
                         </div>
                         <div class="content">
-
+                                <div class="input-group">
+                                  <span style="font-size: 13px;color: #00999f;" class="input-group-addon"><strong>Interes:</strong></span>
+                                  <input type="text" class="form-control text-right" placeholder="Username">
+                                </div>
+                                <div class="input-group">
+                                  <span style="font-size: 13px;color: #00999f;" class="input-group-addon"><strong>Plataforma:</strong></span>
+                                  <input type="text" class="form-control text-right" placeholder="Username">
+                                </div>
+                                <div class="input-group">
+                                  <span style="font-size: 13px;color: #00999f;" class="input-group-addon"><strong>IVA:</strong></span>
+                                  <input type="text" class="form-control text-right" placeholder="Username">
+                                </div>
+                                <div class="input-group">
+                                  <span style="font-size: 13px;color: #00999f;" class="input-group-addon"><strong>TOTAL:</strong></span>
+                                  <input type="text" class="form-control text-right" placeholder="Username">
+                                </div>
+                                <button class="btn btn-primary btn-block"><i class="now-ui-icons business_money-coins"></i>&nbsp;Solicitar</button>
                         </div>
-                        <div class="footer text-center">
-
+                        <div class="footer text-center row">
+                            <div class="col-md-3">
+                                <i style="font-size:25px;color: gray;" class="now-ui-icons shopping_credit-card"></i>
+                                <p style="color:gray;font-size:10px;">C. Bancaria</p>
+                            </div>
+                            <div class="col-md-3">
+                                <i style="font-size:25px;color: gray;" class="now-ui-icons tech_mobile"></i>
+                                <p style="color:gray;font-size:10px;">Celular</p>
+                            </div>
+                            <div class="col-md-3">
+                                <i style="font-size:25px;color: gray;" class="now-ui-icons ui-1_email-85"></i>
+                                <p style="color:gray;font-size:10px;">Email</p>
+                            </div>
+                            <div class="col-md-3">
+                                <i style="font-size:25px;color: gray;" class="now-ui-icons business_badge"></i>
+                                <p style="color:gray;font-size:10px;">Colombiano +18</p>
+                            </div>
                         </div>
                     </form>
-                </div>
-                    </div>                    
-                </div>
 
+                </div>
+                    </div>
+                    <div class="col-lg-12">
+
+                    </div>                      
+                </div>
             </div>
         </div>
         <footer class="footer">

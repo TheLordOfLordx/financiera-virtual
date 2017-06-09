@@ -136,10 +136,10 @@ angular
                 pageTitle: 'Entrar'
               } 
           })
-          .state('registrarse', {
-                url: '/registrarse',
-                templateUrl: 'views/registrarse/registrarse.html',
-                controller:'RegistrationCtrl',
+          .state('signup', {
+                url: '/signup',
+                templateUrl: 'views/signup/signup.html',
+                controller:'signupCtrl',
                 data: {
                   pageTitle: 'Registrarse'
                 }

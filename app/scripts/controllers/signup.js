@@ -8,7 +8,7 @@
  * Controller of the shoplyApp
  */
 angular.module('shoplyApp')
-  .controller('RegistrationCtrl', function ($scope, account, $state, sweetAlert, modal, storage) {
+  .controller('signupCtrl', function ($scope, account, $state, sweetAlert, storage) {
   	
   	$scope.register = function(){
       var _success = function(data){

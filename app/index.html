@@ -28,7 +28,7 @@
     <div class="splash">
         <div class="splash-title">
             <h1><img src="images/shoply_i.png"></h1><p></p>
-            <img style="width: 25px;" src="images/loading.svg"/>
+            <i style="font-size:30px;" class="now-ui-icons loader_gear spin"></i>
         </div> 
     </div>
     
@@ -93,7 +93,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/user.js"></script>
-        <script src="scripts/controllers/registration.js"></script>
+        <script src="scripts/controllers/signup.js"></script>
         <script src="scripts/controllers/profile.js"></script>
         <script src="scripts/controllers/seller.js"></script>
         <script src="scripts/controllers/client.js"></script>
@@ -180,7 +180,9 @@
 ></script>
         <script type="text/javascript">
             $(window).bind("load", function () {
-                $('.splash').css('display', 'none')
+                setTimeout(function(){  
+                    $('.splash').css('display', 'none');
+                }, 2000);
             });
         </script> 
 </body>

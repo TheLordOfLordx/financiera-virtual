@@ -95,11 +95,11 @@
                                         <p  class="label-strong-primary">{{ form.data.money[0] | currency:"$ "}}</p>
                                     </div>
 
-                                    <div class="col-lg-6 text-left">
+                                    <div class="col-lg-6 text-left" ng-init="get_interests()">
                                         <label style="color:#101010;">Interes:</label>
                                     </div>
                                     <div class="col-lg-6 text-right">
-                                        <p  class="label-strong-primary">{{form.data.interest[0] || 0 | currency:"$ "}}</p>
+                                        <p  class="label-strong-primary">{{form.data.interests}}</p>
                                     </div> 
 
                                     <div class="col-lg-6 text-left">
@@ -120,7 +120,7 @@
                                         <label style="color:#101010;">Total a Pagar:</label>
                                     </div>
                                     <div class="col-lg-6 text-right">
-                                        <p class="label-strong-primary">{{form.data.summary[0] || 0 | currency:"$ "}}</p>
+                                        <p class="label-strong-primary" >{{form.data.summary[0] || 0 | currency:"$ "}}</p>
                                     </div>
                                 </div>
                                 <br />

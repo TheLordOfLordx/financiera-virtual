@@ -102,6 +102,12 @@ angular.module('shoplyApp')
       return  new Date(today.getTime() + (days * 24 * 3600 * 1000));
     }
 
+    $scope.get_interests = function(){
+      if($scope.form.data.money){
+           $scope.form.data.interests = ($scope.form.data.money[0] * (0.1817 / 100));
+      }
+    }
+
     $scope.$watch('form.data.days', function(o, n){
         if(n){
             $scope.form.data.pay_day = $scope.pay_day(n[0]);      
@@ -110,5 +116,16 @@ angular.module('shoplyApp')
         if(o){
             $scope.form.data.pay_day = $scope.pay_day(o[0]);      
         }
+    });
+
+    $scope.$watch('form.data.money', function(o, n){
+        console.log("scope", $scope.form)
+        /*if(n){
+            $scope.form.data.interests = (n[0] * (0.1817 / 100));      
+        }
+
+        if(o){
+            $scope.form.data.interests = (o[0] * (0.1817 / 100));      
+        }*/
     });
   });

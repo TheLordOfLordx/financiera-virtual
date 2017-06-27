@@ -112,7 +112,21 @@ angular
               url: '/',
               templateUrl: 'views/home/home.html',
               data: {
-                pageTitle: 'Home'
+                pageTitle: 'Inicio'
+              }
+          })
+          .state('home.empezar', {
+              url: 'home/empezar',
+              templateUrl: 'views/forms/register.html',
+              data: {
+                pageTitle: 'Registrarse y Continuar'
+              }
+          })
+          .state('home.continuar', {
+              url: 'home/continuar',
+              templateUrl: 'views/forms/login.html',
+              data: {
+                pageTitle: 'Ingresar y Continuar'
               }
           })
           .state('about', {
@@ -220,8 +234,14 @@ angular
         });*/
 
       $rootScope.$on('$stateChangeStart', function(event, nextRoute, toParams, fromState, fromParams){
-            if($rootScope.grid)
-              delete $rootScope.grid;
+            console.log("nextRoute", nextRoute);
+
+            if(nextRoute.name === 'home.empezar' || nextRoute.name === 'home.continuar'){
+                $rootScope.switch_summary = true; 
+            }else{
+                $rootScope.switch_summary = false; 
+            }
+
             if(window.modal){
               window.modal.close();
             }

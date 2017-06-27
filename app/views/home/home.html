@@ -95,11 +95,11 @@
                                         <p  class="label-strong-primary">{{ form.data.money[0] | currency:"$ "}}</p>
                                     </div>
 
-                                    <div class="col-lg-6 text-left" ng-init="get_interests()">
+                                    <div class="col-lg-6 text-left">
                                         <label style="color:#101010;">Interes:</label>
                                     </div>
                                     <div class="col-lg-6 text-right">
-                                        <p  class="label-strong-primary">{{form.data.interests}}</p>
+                                        <p  class="label-strong-primary">{{ form.data.interests }}</p>
                                     </div> 
 
                                     <div class="col-lg-6 text-left">
@@ -201,21 +201,21 @@
                                 <label style="color:#101010;">Monto Solicitado:</label>
                             </div>
                             <div class="col-lg-6 text-right">
-                                <p  class="label-strong-primary">{{ form.data.money[0] | currency:"$ "}}</p>
+                                <p  class="label-strong-primary">{{ form.data.money[0] | currency:"$ ":0}}</p>
                             </div>
 
                             <div class="col-lg-6 text-left">
                                 <label style="color:#101010;">Interes:</label>
                             </div>
                             <div class="col-lg-6 text-right">
-                                <p  class="label-strong-primary">{{form.data.interest[0] || 0 | currency:"$ "}}</p>
+                                <p  class="label-strong-primary">{{form.data.interests || 0 | currency:"$ ":0}}</p>
                             </div> 
 
                             <div class="col-lg-6 text-left">
                                 <label style="color:#101010;">Gestión de Credito:</label>
                             </div>
                             <div class="col-lg-6 text-right">
-                                <p  class="label-strong-primary">{{form.data.system_quote[0] || 0 | currency:"$ "}}</p>
+                                <p  class="label-strong-primary">{{form.data.system_quote || 0 | currency:"$ "}}</p>
                             </div> 
                             <div class="col-lg-6 text-left">
                                 <label style="color:#101010;"><i class="now-ui-icons ui-1_calendar-60" ></i>&nbsp;Fecha de Pago:</label>
@@ -229,7 +229,7 @@
                                 <label style="color:#101010;">Total a Pagar:</label>
                             </div>
                             <div class="col-lg-6 text-right">
-                                <p class="label-strong-primary">{{form.data.summary[0] || 0 | currency:"$ "}}</p>
+                                <p class="label-strong-primary" style="color:green;!important">{{form.data.total_payment || 0 | currency:"$ ":0}} COP</p>
                             </div>
                         </div>
                         <br />

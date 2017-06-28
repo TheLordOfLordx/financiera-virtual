@@ -26,6 +26,12 @@
             border-left: none;
             background-color: $transparent-bg;
         }
+
+        & ~ .input-group-addon{
+            border: 1px solid $primary-color;
+            border-left: none;
+            background-color: $transparent-bg;
+        }
     }
 
     .has-success &,

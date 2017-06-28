@@ -8,14 +8,16 @@
  * Controller of the shoplyApp
  */
 angular.module('shoplyApp')
-  .controller('HomeCtrl', function ( $scope, $filter, Facebook, $timeout ) {
+  .controller('HomeCtrl', function ( $scope, $filter, Facebook, $timeout, storage ) {
   	$scope.current_date = new Date();
-  	
+    $scope.form = {};
+    $scope.form.data = {};
+    $scope.form.data.system_quote = 5000;
+
     $scope.load = function(){
       if(storage.get("rememberEmail")){
         $scope.fromStore = true;
-        $scope.form = {};
-        $scope.form.data = {};
+
         $scope.form.data.email = storage.get("rememberEmail");
       }
       
@@ -103,7 +105,7 @@ angular.module('shoplyApp')
     }
 
     $scope.totalize = function(){
-      $scope.form.data.total_payment = ($scope.form.data.money[0]) + ($scope.form.data.interests) + ($scope.form.data.system_quote || 0);
+      $scope.form.data.total_payment = ($scope.form.data.amount[0]) + ($scope.form.data.interests) + ($scope.form.data.system_quote || 0);
     }
 
     $scope.$watch('form.data.days', function(o, n){
@@ -116,7 +118,7 @@ angular.module('shoplyApp')
         }
     });
 
-    $scope.$watch('form.data.money', function(o, n){
+    $scope.$watch('form.data.amount', function(o, n){
         if(n){
               $scope.form.data.interests = (n[0] * (1.817 / 100));
               $scope.totalize();      

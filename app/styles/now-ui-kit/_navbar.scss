@@ -130,6 +130,13 @@
         padding-top: 20px;
     }
 
+    &.navbar-transparent-no-padding{
+        background-color: $transparent-bg !important;
+        box-shadow: none;
+        color: $white-color;
+        padding-top: 8px;
+    }
+
     &.bg-white:not(.navbar-transparent){
         a:not(.dropdown-item){
             color: $default-color;

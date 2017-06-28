@@ -34,18 +34,20 @@ angular.module('shoplyApp')
               if( input !== correct ) {
                 dots.forEach( function(dot){
                   $(dot).addClass( 'wrong' )
+                  $( document.body ).addClass( 'wrong' );
                 } );
               }
               else {
                 dots.forEach(function(dot){
-                  $(dot).addClass( 'correct' ) 
+                  $(dot).addClass( 'correct' );
+                  $( document.body ).addClass( 'correct' ); 
                 });
               }
               setTimeout(function() {
-                dots.forEach( function(dod){
+                dots.forEach( function(dot){
                   dot.className = 'dot' 
                 });
-                
+
                 input = '';
               }, 900);
               setTimeout(function() {

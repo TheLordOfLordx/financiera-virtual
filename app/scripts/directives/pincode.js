@@ -32,15 +32,20 @@ angular.module('shoplyApp')
             
             if( input.length >= 4 ) {
               if( input !== correct ) {
-                dots.forEach( (dot) => $(dot).addClass( 'wrong' ) );
-                $( document.body ).addClass( 'wrong' );
+                dots.forEach( function(dot){
+                  $(dot).addClass( 'wrong' )
+                } );
               }
               else {
-                dots.forEach( (dot) => $(dot).addClass( 'correct' ) );
-                $( document.body ).addClass( 'correct' );
+                dots.forEach(function(dot){
+                  $(dot).addClass( 'correct' ) 
+                });
               }
               setTimeout(function() {
-                dots.forEach( (dot) => dot.className = 'dot' );
+                dots.forEach( function(dod){
+                  dot.className = 'dot' 
+                });
+                
                 input = '';
               }, 900);
               setTimeout(function() {

@@ -129,6 +129,13 @@ angular
                 pageTitle: 'Ingresar y Continuar'
               }
           })
+          .state('home.sms', {
+              url: 'home/sms',
+              templateUrl: 'views/forms/sms-checking.html',
+              data: {
+                pageTitle: 'Verificando...'
+              }
+          })
           .state('about', {
               url: '/acercade',
               templateUrl: 'views/aboutus/aboutus.html',
@@ -236,7 +243,7 @@ angular
       $rootScope.$on('$stateChangeStart', function(event, nextRoute, toParams, fromState, fromParams){
             console.log("nextRoute", nextRoute);
 
-            if(nextRoute.name === 'home.empezar' || nextRoute.name === 'home.continuar'){
+            if(nextRoute.name === 'home.empezar' || nextRoute.name === 'home.continuar' || nextRoute.name === 'home.sms'){
                 $rootScope.switch_summary = true; 
             }else{
                 $rootScope.switch_summary = false; 

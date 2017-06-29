@@ -1,4 +1,4 @@
-$background-color: #375ffa;
+$background-color: #101010;
 $pinpad-color: #212121;
 $dot-size: .8em;
 $number-size: 2.5em;
@@ -27,7 +27,7 @@ $number-size: 2.5em;
 	}
 }
 #pin {
-	background: $primary-color;
+	background: $background-color;
 	width: 20em; min-width: 320px;
 	display: flex;
 	justify-content: center;

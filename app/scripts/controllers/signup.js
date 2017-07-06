@@ -8,12 +8,11 @@
  * Controller of the shoplyApp
  */
 angular.module('shoplyApp')
-  .controller('signupCtrl', function ($scope, account, $state, sweetAlert, storage) {
-  	
+  .controller('signupCtrl', function ($scope, account, $state, sweetAlert, storage, Facebook) {
   	$scope.register = function(){
       var _success = function(data){
         if(data){
-           sweetAlert.swal("Registro completado.", "Te has registrado correctamente.", "success");
+           toastr.success('Gracias por Registrarte :)');
            delete $scope.formRegister;
            $state.go('login');
         }
@@ -26,11 +25,13 @@ angular.module('shoplyApp')
       };
 
       if($scope.signup.$valid){
-        if($scope.formRegister.data.password != $scope.formRegister.data.confirm){
+        if($scope.formRegister.data.password != $scope.formRegister.data.confirm_password){
             sweetAlert.swal("Formulario Incompleto.", "las contraseñas no coinciden.", "error");
             return;
         }
-          account.usuario().register(angular.extend($scope.formRegister.data, {username : $scope.formRegister.data.email})).then(_success, _error);
+        
+        account.usuario().register(angular.extend($scope.formRegister.data, {username : $scope.formRegister.data.email})).then(_success, _error);
+      
       }else if($scope.signup.$invalid){
             modal.incompleteForm();
       }

@@ -31,6 +31,7 @@ angular.module('shoplyApp')
           
           $scope.me(function(data){
             $scope.user = data;
+            $state.go(constants.login_state_sucess);
           });
         } else {
           $scope.loggedIn = false;
@@ -47,6 +48,7 @@ angular.module('shoplyApp')
         if(response.status == 'connected'){
           $scope.me(function(data){
            $scope.user  = data;
+           $state.go(constants.login_state_sucess);
           })          
         }
       }, { scope:'email' } );
@@ -59,14 +61,11 @@ angular.module('shoplyApp')
       }
 
         var _success = function(res){
-          if(res.user.type == "EMPLOYE" || res.user.type == "ADMINISTRATOR" || res.user.type == "OWNER"){
+          if(res.user.type == "CLIENT" || res.user.type == "ADMINISTRATOR"){
               var  _user =  res.user;
-              var  _permission = res.user._permission;
               var  _token = res.token;
-
               storage.save('token', _token);
               storage.save('user', _user);
-
               $rootScope.isLogged = res.user;
               $rootScope.user = storage.get('user');
               $state.go(constants.login_state_sucess);          

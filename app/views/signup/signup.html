@@ -1,4 +1,4 @@
-<div class="login-page" ng-controller="LoginCtrl" ng-init="getLoginStatus()">
+<div class="login-page" ng-controller="signupCtrl" ng-init="getLoginStatus()">
     <!-- Navbar -->
     <nav class="navbar navbar-toggleable-md bg-primary fixed-top navbar-transparent " color-on-scroll="500">
         <div class="container">
@@ -80,42 +80,42 @@
         <div class="container">
             <div class="col-md-4 content-center">
                 <div class="card card-login card-padding">
-                    <form class="form" method="" action="">
+                    <form class="form" name="signup" method="" action="">
                         <div class="content">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Nombres" value="">
+                                    <input type="text" ng-model="formRegister.data.name" class="form-control" placeholder="Nombres" value="">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Apellidos" value="">
+                                    <input type="text" ng-model="formRegister.data.last_name" class="form-control" placeholder="Apellidos" value="">
                                 </div>
                             </div>
                         </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Corre Electronico" value="">
+                                <input type="email" ng-model="formRegister.data.email" class="form-control" placeholder="Corre Electronico" value="">
                             </div>
                             <div class="input-group form-group-no-border">
                                 <span class="input-group-addon">
                                     <i class="now-ui-icons tech_mobile"></i>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Numero Celular">
+                                <input type="text" ng-model="formRegister.data.metadada.phone" class="form-control" placeholder="Numero Celular">
                             </div>
                             <div class="form-group">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Contraseña" value="">
+                                    <input type="password" ng-model="formRegister.data.password" class="form-control" placeholder="Contraseña">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Repetir Contraseña" value="">
+                                    <input type="password" ng-model="formRegister.data.confirm_password" class="form-control" placeholder="Repetir Contraseña">
                                 </div>
                             </div>
                         </div>
                         <div class="footer text-center">
-                            <a  href="" class="btn btn-primary btn-round btn-lg btn-block">Registrarme</a>
+                            <a  href="" ng-disabled="signup.$invalid" ng-click="register()" class="btn btn-primary btn-round btn-lg btn-block">Registrarme</a>
                             <a href="" ng-click="facebook_login()" class="btn btn-round btn-lg btn-block btn-facebook-auth"><i class="fa fa-facebook" ></i>&nbsp;{{user ? user.name : 'Entrar con Facebook'}}</a>
                         </div>
                         <div class="pull-left">

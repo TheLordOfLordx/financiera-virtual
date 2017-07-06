@@ -89,6 +89,12 @@
                                 <div class="content">
                                 <div class="row">
                                     <div class="col-lg-6 text-left">
+                                        <label style="color:#101010;"><i class="now-ui-icons ui-1_calendar-60" ></i>&nbsp;Fecha de Pago:</label>
+                                    </div>
+                                    <div class="col-lg-6 text-right">
+                                        <p style="color:#101010;"><span class="badge badge-primary">{{ form.data.pay_day || current_date | date:"yyyy - MM - dd" }}</span></p>
+                                    </div> 
+                                    <div class="col-lg-6 text-left">
                                         <label style="color:#101010;">Monto Solicitado:</label>
                                     </div>
                                     <div class="col-lg-6 text-right">
@@ -107,12 +113,6 @@
                                     </div>
                                     <div class="col-lg-6 text-right">
                                         <p  class="label-strong-primary">{{form.data.system_quote || 0 | currency:"$ "}}</p>
-                                    </div> 
-                                    <div class="col-lg-6 text-left">
-                                        <label style="color:#101010;"><i class="now-ui-icons ui-1_calendar-60" ></i>&nbsp;Fecha de Pago:</label>
-                                    </div>
-                                    <div class="col-lg-6 text-right">
-                                        <p style="color:#101010;"><span class="badge badge-primary">{{ form.data.pay_day || current_date | date:"yyyy - MM - dd" }}</span></p>
                                     </div> 
                                     <hr style="1px dashed #858585 !important;" />                       
 
@@ -198,6 +198,12 @@
                         <div class="content">
                         <div class="row">
                             <div class="col-lg-6 text-left">
+                                <label style="color:#101010;"><i class="now-ui-icons ui-1_calendar-60" ></i>&nbsp;Fecha de Pago:</label>
+                            </div>
+                            <div class="col-lg-6 text-right">
+                                <p style="color:#101010;"><span class="badge badge-primary">{{ form.data.pay_day || current_date | date:"yyyy - MM - dd" }}</span></p>
+                            </div> 
+                            <div class="col-lg-6 text-left">
                                 <label style="color:#101010;">Monto Solicitado:</label>
                             </div>
                             <div class="col-lg-6 text-right">
@@ -216,12 +222,6 @@
                             </div>
                             <div class="col-lg-6 text-right">
                                 <p  class="label-strong-primary">{{form.data.system_quote || 0 | currency:"$ ":0 }}</p>
-                            </div> 
-                            <div class="col-lg-6 text-left">
-                                <label style="color:#101010;"><i class="now-ui-icons ui-1_calendar-60" ></i>&nbsp;Fecha de Pago:</label>
-                            </div>
-                            <div class="col-lg-6 text-right">
-                                <p style="color:#101010;"><span class="badge badge-primary">{{ form.data.pay_day || current_date | date:"yyyy - MM - dd" }}</span></p>
                             </div> 
                             <hr style="1px dashed #858585 !important;" />                       
 

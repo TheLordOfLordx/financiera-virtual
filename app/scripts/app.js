@@ -10,6 +10,7 @@
  */
 angular
   .module('shoplyApp', [
+    'ui.bootstrap',
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -129,6 +130,13 @@ angular
                 pageTitle: 'Ingresar y Continuar'
               }
           })
+          .state('activation', {
+              url: 'activation/:activation',
+              templateUrl: 'views/activation/activation.html',
+              data: {
+                pageTitle: 'Activar Cuenta'
+              }
+          })
           .state('home.sms', {
               url: 'home/sms',
               templateUrl: 'views/forms/sms-checking.html',
@@ -163,6 +171,14 @@ angular
                 controller:'signupCtrl',
                 data: {
                   pageTitle: 'Registrarse'
+                }
+          })
+          .state('profile', {
+                url: '/profile',
+                templateUrl: 'views/profile/profile.html',
+                controller:'profileCtrl',
+                data: {
+                  pageTitle: 'Perfil'
                 }
           })
           .state('forgot', {

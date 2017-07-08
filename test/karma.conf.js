@@ -51,6 +51,7 @@ module.exports = function(config) {
       'bower_components/tether/dist/js/tether.js',
       'bower_components/angular-facebook/lib/angular-facebook.js',
       'bower_components/nouislider/distribute/nouislider.min.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

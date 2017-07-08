@@ -8,131 +8,73 @@
  * Controller of the shoplyApp
  */
 angular.module('shoplyApp')
-  .controller('DashboardCtrl', function ($scope, api, modal, storage, $state, $rootScope, $timeout, permission) {
+  .controller('DashboardCtrl', function ($scope, modal,  api, storage, $state, $rootScope, $timeout) {
+    $scope.current_date = new Date();
+    $scope.form = {};
+    $scope.form.data = {};
+    $scope.form.data.system_quote = 5000;
+
     $scope.load = function(){
-      api.metadata("empleados").get().success(function(res){
-          $scope.empleados = res;
-      });
-
-      api.metadata("apps").get().success(function(res){
-          $scope.apps = res;
-      });
-
-      api.metadata("pedidos").get().success(function(res){
-          $scope.pedidos = res;
-      });
-
-      api.metadata("clientes").get().success(function(res){
-          $scope.clientes = res;
-      });
-
-      api.metadata("ventas").get().success(function(res){
-          $scope.ventas = res;
-      }); 
-
-      api.metadata("productos").get().success(function(res){
-          $scope.productos = res;
-      });
-
-      api.metadata("vendedores").get().success(function(res){
-          $scope.vendedores = res;
-      });
-
-      if(angular.fromJson(localStorage.company)){
-          $rootScope.user._company = angular.fromJson(localStorage.company);
-      }
-  	}
-
-    $scope.go = function($event){
-      if($event.code == "F2" || $event.key == "F2"){
-        $state.go('dashboard.facturacion');
-      }
+      $scope.form.data.pay_day = $scope.pay_day($scope.form.data.days[0]);
     }
 
-    $scope.callForEdit = function(){
-      $scope.$$childHead.edit($rootScope.grid.value);
+    $scope.new_credit = function(){
+      window.modal = modal.show({templateUrl : 'views/credits/new_credit.html', size:'lg', scope: $scope, backdrop: 'static'}, function($scope){
+           modal.confirm({
+                   closeOnConfirm : true,
+                   title: "Está Seguro?",
+                   text: "Confirma que desea realizar este prestamo?",
+                   confirmButtonColor: "#008086",
+                   type: "success" },
+
+                   function(isConfirm){ 
+
+                       if (isConfirm) {
+                          alert("Guardar data aqui");
+                          $scope.$close();
+                       }
+
+                    })
+      });
     }
 
-    $scope.callForDelete = function(){
-      $scope.$$childHead.delete($rootScope.grid.value);
+    $scope.delete_credit = function(){
+
     }
 
-    $scope.callForCreate = function (){
-      $scope.$$childHead.create();
+    $scope.update_credit = function(){
+
     }
 
-    $scope.callForDetails = function (){
-      $scope.$$childHead.detail();
+    $scope.pay_day = function (days){
+      var today = new Date();
+
+      return  new Date(today.getTime() + (days * 24 * 3600 * 1000));
     }
 
-    $scope.facturar = function(){
-      $scope.$$childHead.facturar();
+    $scope.totalize = function(){
+      $scope.form.data.total_payment = ($scope.form.data.amount[0]) + ($scope.form.data.interests) + ($scope.form.data.system_quote || 0);
     }
 
-    $scope.rememberCompany = function(remenber){
-        if(remenber){
-          storage.save('remenberCompany', company);
-          return;
+    $scope.$watch('form.data.days', function(o, n){
+        if(n){
+            $scope.form.data.pay_day = $scope.pay_day(n[0]);      
         }
 
-        storage.delete('remenberCompany');
-    }
+        if(o){
+            $scope.form.data.pay_day = $scope.pay_day(o[0]);      
+        }
+    });
 
-    $scope.connectCompany = function(){
-          var _user = $rootScope.user;
-          api.empresa($rootScope.grid.value._id).get().success(function(res){
-            $timeout(function(){
-              $rootScope.user._company = res;
-              storage.update('user', $rootScope.user);
-              toastr.success('Conectado con: ' + res.data.empresa , {timeOut: 10000});
-              $state.go('dashboard', {}, {reload: true});
-            });
-          });       
-    } 
+    $scope.$watch('form.data.amount', function(o, n){
+        if(n){
+              $scope.form.data.interests = (n[0] * (1.817 / 100));
+              $scope.totalize();      
+        }
 
-    $scope.cambiarEmpresa = function(){
-         window.modal  = modal.show({templateUrl : 'views/company/conectar.html', size :'sm', scope: $scope, backdrop:'static', windowClass: 'center-modal'}, function($scope){
-            var _user = $rootScope.user;
-            $scope.loading = true;
-            api.empresa($scope.company._id).get().success(function(res){
-              $timeout(function(){
-                $rootScope.user._company = res;
-                storage.update('user', $rootScope.user);
-                
-                if($scope.form && $scope.form.data.remenber){
-                  storage.save('company', res);
-                }
-                //$scope.$parent.remenberCompany('company', res);
-                toastr.success('Conectado con: ' + res.data.empresa , {timeOut: 10000});
-                $scope.loading = false;
-                $scope.$close();
-               $state.go('dashboard', {}, {reload: true});
-              }, 5000);
-            });     
-         });        
-    }
-
-    $scope.agregarIva = function(){
-        window.modal = modal.show({templateUrl : 'views/iva/agregar_ivas.html', size :'md', scope: $scope, backdrop:'static'}, function($scope){
-        $scope.$close();
-       });  
-    }
-
-    $scope.agregarFormasDePago = function(){
-        window.modal = modal.show({templateUrl : 'views/formaDePago/agregar_formaDePago.html', size :'md', scope: $scope, backdrop:'static'}, function($scope){
-        $scope.$close();
-       });  
-    }
-
-    $scope.agregarConsecutivo = function(){
-        window.modal = modal.show({templateUrl : 'views/contador/agregar_contadores.html', size :'md', scope: $scope, backdrop:'static'}, function($scope){
-          $scope.$close();
-       });  
-    }
-
-    $scope.agregarCasaComercial = function(){
-        window.modal = modal.show({templateUrl : 'views/casaComercial/agregar-casaComercial.html', size :'md', scope: $scope, backdrop:'static'}, function($scope){
-          $scope.$close();
-       });  
-    }
+        if(o){
+             $scope.form.data.interests = (o[0] * (1.817 / 100));
+             $scope.totalize();      
+        }
+    });
   });

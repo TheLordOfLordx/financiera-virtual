@@ -1,6 +1,7 @@
 'use strict';
+
 angular.module('shoplyApp')
-  .controller('ProfileCtrl', function ($scope, api, modal, constants, $state, storage, account, $rootScope) {
+  .controller('profileCtrl', function ($scope, api, modal, constants, $state, storage, account, $rootScope) {
     $scope.update = function(){
         api.user($rootScope.user._id).put($rootScope.user).success(function(res){
             if(res){

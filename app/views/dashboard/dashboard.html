@@ -1,4 +1,4 @@
-<div class="dashboard">
+<div class="dashboard" ng-controller="DashboardCtrl">
  <nav class="navbar navbar-toggleable-md" style="background-color:#002223!important;">
     <div class="container">
         <div class="navbar-translate">
@@ -7,23 +7,21 @@
                 <span class="navbar-toggler-bar bar2"></span>
                 <span class="navbar-toggler-bar bar3"></span>
             </button>
-            <a class="navbar-brand" href="#pablo">DAIMONT</a>
+            <a class="navbar-brand" ui-sref="home()" href="#/home" >
+              <img class="hidden-xs" style="width:70%;" src="../images/logo-main.png">
+              <span class="animated bounceInLeft" style="display: block;position: absolute;font-size: 7px;bottom: 0px;left: 44px;">Creditos rapidos y seguros</span>
+            </a>
         </div>
         <div class="collapse navbar-collapse justify-content-end" id="example-navbar-info">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#pablo">
+                    </a>
+                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#pablo">
+                        <i class="fa fa-credit-card text-primary"></i>
                         <p>Creditos</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#pablo">
-                        <p>Perfil</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#pablo">
-                        <p>Configuración</p>
                     </a>
                 </li>
                   <li class="nav-item">
@@ -31,30 +29,30 @@
                         <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
                             <img style="width:50%;border-radius:50%;" ng-src="{{user.picture.data.url}}">
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-header">Opciones</a>
-                            <a class="dropdown-item" href="#">Mis Prestamos</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Configuración</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Salir</a>
-                        </div>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+<div class="container">
+  <div class="row">
+      <ol class="breadcrumb" style="width:100%;">
+        <li class="breadcrumb-item"><a href="#">Daimont</a></li>
+        <li class="breadcrumb-item active">Panel</li>
+      </ol>
+  </div>
+</div>
 <div class="container" style="background-color: #ffffff;padding: 20px;">
   <div class="panel panel-default panel-table">
     <div class="panel-heading">
         <div class="row">
           <div class="col col-xs-6">
-            <h3 class="panel-title"><i class="fa fa-credit-card text-primary"></i> Mis Creditos</h3>
-            <p class="text-muted">Esta tabla de datos mostrara los creditos actuales.</p>
+            <h3 class="panel-title" style="margin-bottom: 10px;!important;"><i class="fa fa-credit-card text-primary"></i> Mis Creditos</h3>
+            <p class="text-muted">Creditos realizados recientemente.</p>
           </div>
           <div class="col col-xs-6 text-right">
-            <button type="button" class="btn btn-primary btn-create"><i class="now-ui-icons objects_diamond"></i> Nuevo Credito</button>
+            <button type="button" ng-click="new_credit()" class="btn btn-primary btn-create"><i class="now-ui-icons objects_diamond"></i> Nuevo Credito</button>
           </div>
         </div>
     </div>
@@ -91,6 +89,30 @@
             <td><button class="btn btn-primary btn-sm"><i class="fa fa-credit-card"></i> Pagar</button></td>
             <td><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Quitar</button></td>
           </tr>
+          <tr style="border-left: 10px solid #002223;">
+            <td>2</td>
+            <td><span class="badge badge-success">APROBADO</span></td>
+            <td>06/07/2017</td>
+            <td>500,000</td>
+            <td>5000</td>
+            <td>3000</td>
+            <td>2500</td>
+            <td>580,000</td>
+            <td><button class="btn btn-primary btn-sm"><i class="fa fa-credit-card"></i> Pagar</button></td>
+            <td><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Quitar</button></td>
+          </tr>
+          <tr style="border-left: 10px solid #002223;">
+            <td>3</td>
+            <td><span class="badge badge-primary">CANCELADO</span></td>
+            <td>06/07/2017</td>
+            <td>500,000</td>
+            <td>5000</td>
+            <td>3000</td>
+            <td>2500</td>
+            <td>580,000</td>
+            <td><button class="btn btn-primary btn-sm"><i class="fa fa-credit-card"></i> Pagar</button></td>
+            <td><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Quitar</button></td>
+          </tr>
         </tbody>
       </table>       
     </div>
@@ -116,4 +138,47 @@
       </li>
       </ul>
   </div> 
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<footer class="row footer footer-default">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="https://www.creative-tim.com">
+                                AYUDA
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://presentation.creative-tim.com">
+                                ACERCA DE
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.creative-tim.com">
+                                TERMINOS
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/creativetimofficial/now-ui-kit/blob/master/LICENSE.md">
+                               POLITICAS DE PRIVACIDAD
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="copyright">
+                    ©
+                    2017, Designed by
+                    <a href="http://www.invisionapp.com" target="_blank">Invision</a>. Coded by
+                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                </div>
+            </div>
+        </footer>
 </div>

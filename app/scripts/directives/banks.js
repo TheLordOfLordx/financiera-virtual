@@ -4,14 +4,14 @@ angular.module('shoplyApp')
   .directive('banksField', function () {
   	function ctrl($scope, api, modal, $rootScope){
         $scope.records = [
-          {name : 'Bancolombia.', img : '../images/bancolombia.png' },
-          {name : 'Davivienda', img : '../images/davivienda.png'  },
-          {name : 'Banco de Bogota', img : '../images/bogota.png'  },
-          {name : 'Banco corpbanca.', img : '../images/corpobanca.png'  },
-          {name : 'Banco de la republica.', img : '../images/republica.png'  },
-          {name : 'Citibank.', img : '../images/citi.png'  },
-          {name : 'Banco gnb.', img : '../images/gnb.png'  },
-          {name : 'Banco BBVA.', img : '../images/bbva.png'  }
+          {name : 'Bancolombia.', img : 'images/bancolombia.png' },
+          {name : 'Davivienda', img : 'images/davivienda.png'  },
+          {name : 'Banco de Bogota', img : 'images/bogota.png'  },
+          {name : 'Banco corpbanca.', img : 'images/corpobanca.png'  },
+          {name : 'Banco de la republica.', img : 'images/republica.png'  },
+          {name : 'Citibank.', img : 'images/citi.png'  },
+          {name : 'Banco gnb.', img : 'images/gnb.png'  },
+          {name : 'Banco BBVA.', img : 'images/bbva.png'  }
         ]
 
         $scope.myConfig = {

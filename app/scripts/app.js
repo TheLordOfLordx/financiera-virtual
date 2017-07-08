@@ -197,7 +197,7 @@ angular
           })
           .state('dashboard.change-password', {
                 url: '/change-password',
-                access: { requiredAuthentication: true },
+                access: { requiredAuthentication: false },
                 templateUrl: 'views/reset/change_password.html',
                 data: {
                   pageTitle: 'Cambiar clave'

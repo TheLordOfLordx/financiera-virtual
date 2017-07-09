@@ -25,8 +25,10 @@
                     </a>
                 </li>
                 <div class="pull-right navbar-text" ng-show="$root.user">
-                   {{$root.user.name || $root.user.fullname}}
-                  <img ng-src="{{user.picture.data.url}}">
+                  <a href="">
+                    <img ng-src="{{user.picture.data.url}}">
+                    <i class="now-ui-icons arrows-1_minimal-down"></i>
+                  </a>
                 </div>
             </ul>
         </div>

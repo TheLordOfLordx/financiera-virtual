@@ -10,3 +10,24 @@
     line-height: 40px;
     display: block;
 }
+
+
+.navbar-text img {
+  max-height:30px;
+  width:auto;
+  vertical-align:middle;
+  border-radius: 50%;
+}
+
+.navbar-text{
+    color:white;
+    margin-left:10px;
+}
+
+.navbar-text i{
+    top: 2px;
+    position: relative;
+    left: 5px;
+    font-weight: bolder;
+    color:rgb(0, 153, 159);    
+}

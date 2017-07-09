@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <div class="pull-right navbar-text" ng-show="$root.user">
-                   {{root.user.name || root.user.fullname}}
+                   {{$root.user.name || $root.user.fullname}}
                   <img ng-src="{{user.picture.data.url}}">
                 </div>
             </ul>

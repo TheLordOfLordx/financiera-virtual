@@ -15,30 +15,20 @@
         <div class="collapse navbar-collapse justify-content-end" id="example-navbar-info">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#pablo">
-                    </a>
+                  <a class="nav-link" href="#pablo">
+                    <i class="now-ui-icons users_circle-08"></i>
+                    <p>Profile</p>
+                  </a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#pablo">
-                        <i class="fa fa-credit-card text-primary"></i>
-                        <p>Creditos</p>
+                        <p>Discover</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <div class="dropdown button-dropdown">
-                        <a href="" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
-                            <img style="width:50%;border-radius:50%;" ng-src="{{user.picture.data.url}}">
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-header">Opciones</a>
-                            <a class="dropdown-item" href="#">Mis Prestamos</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Configuración</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Salir</a>
-                        </div>
-                    </div>
-                </li>
+                <div class="pull-right navbar-text" ng-show="$root.user">
+                   {{root.user.name || root.user.fullname}}
+                  <img ng-src="{{user.picture.data.url}}">
+                </div>
             </ul>
         </div>
     </div>

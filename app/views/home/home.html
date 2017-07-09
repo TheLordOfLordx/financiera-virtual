@@ -55,21 +55,10 @@
                             <p class="hidden-lg-up">Instagram</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                    <div class="dropdown button-dropdown">
-                        <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
-                            <img style="width:50%;border-radius:50%;" ng-src="{{user.picture.data.url}}">
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-header">Opciones</a>
-                            <a class="dropdown-item" href="#">Mis Prestamos</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Configuración</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Salir</a>
-                        </div>
+                    <div class="pull-right navbar-text" ng-show="$root.user">
+                       {{root.user.name || root.user.fullname}}
+                      <img ng-src="{{user.picture.data.url}}">
                     </div>
-                    </li>
                 </ul>
             </div>
         </div>

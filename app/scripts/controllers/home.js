@@ -8,7 +8,7 @@
  * Controller of the shoplyApp
  */
 angular.module('shoplyApp')
-  .controller('HomeCtrl', function ( $scope, $filter, Facebook, $timeout, storage ) {
+  .controller('HomeCtrl', function ( $scope, $filter, Facebook, $timeout, storage, $rootScope ) {
   	$scope.current_date = new Date();
     $scope.form = {};
     $scope.form.data = {};
@@ -34,13 +34,13 @@ angular.module('shoplyApp')
     $scope.getLoginStatus = function() {
       Facebook.getLoginStatus(function(response) {
         if(response.status === 'connected') {
-          $scope.loggedIn = true;
+          $rootScope.loggedIn = true;
           
           $scope.me(function(data){
-            $scope.user = data;
+            $rootScope.user = data;
           });
         } else {
-          $scope.loggedIn = false;
+          $rootScope.loggedIn = false;
         }
       });
     };
@@ -53,7 +53,7 @@ angular.module('shoplyApp')
       Facebook.login(function(response) {
         if(response.status == 'connected'){
           $scope.me(function(data){
-           $scope.user  = data;
+           $rootScope.user  = data;
           })          
         }
       }, { scope:'email' } );

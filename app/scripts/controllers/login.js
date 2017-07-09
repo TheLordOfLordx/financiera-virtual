@@ -27,14 +27,14 @@ angular.module('shoplyApp')
     $scope.getLoginStatus = function() {
       Facebook.getLoginStatus(function(response) {
         if(response.status === 'connected') {
-          $scope.loggedIn = true;
+          $rootScope.loggedIn = true;
           
           $scope.me(function(data){
-            $scope.user = data;
+            $rootScope.user = data;
             $state.go(constants.login_state_sucess);
           });
         } else {
-          $scope.loggedIn = false;
+          $rootScope.loggedIn = false;
         }
       });
     };
@@ -47,7 +47,7 @@ angular.module('shoplyApp')
       Facebook.login(function(response) {
         if(response.status == 'connected'){
           $scope.me(function(data){
-           $scope.user  = data;
+           $rootScope.user  = data;
            $state.go(constants.login_state_sucess);
           })          
         }

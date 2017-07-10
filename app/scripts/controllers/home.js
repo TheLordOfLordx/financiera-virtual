@@ -12,8 +12,7 @@ angular.module('shoplyApp')
   	$scope.current_date = new Date();
     $scope.form = {};
     $scope.form.data = {};
-    $scope.form.data.system_quote = 5000;
-
+    
     $scope.load = function(){
       if(storage.get("rememberEmail")){
         $scope.fromStore = true;
@@ -120,12 +119,18 @@ angular.module('shoplyApp')
 
     $scope.$watch('form.data.amount', function(o, n){
         if(n){
-              $scope.form.data.interests = (n[0] * (1.817 / 100));
+              $scope.form.data.interests = (n[0] * (1.6570 / 100));
+              $scope.form.data.system_quote = (o[0] * (9.9 / 100));
+              $scope.form.data.iva = (o[0] * (9.9 / 100));
+             
               $scope.totalize();      
         }
 
         if(o){
-             $scope.form.data.interests = (o[0] * (1.817 / 100));
+             $scope.form.data.interests = (o[0] * (1.6570 / 100));
+             $scope.form.data.system_quote = (o[0] * (9.9 / 100));
+             $scope.form.data.iva = (o[0] * (19 / 100));
+
              $scope.totalize();      
         }
     });

@@ -106,6 +106,14 @@
                                         <p  class="label-strong-primary">{{form.data.interests || 0 | currency:"$ ":0}} </p>
                                     </div> 
 
+
+                                    <div class="col-lg-6 text-left">
+                                        <label style="color:#101010;">Iva:</label>
+                                    </div>
+                                    <div class="col-lg-6 text-right">
+                                        <p  class="label-strong-primary">{{form.data.iva || 0 | currency:"$ ":0}} </p>
+                                    </div> 
+
                                     <div class="col-lg-6 text-left">
                                         <label style="color:#101010;">Gestión de Credito:</label>
                                     </div>
@@ -132,7 +140,7 @@
                                             </div>                                    
                                         </div>
                                 </div>
-                                <div class="footer text-center row">
+                                <div class="footer-card-data text-center row">
                                     <div class="col-md-3">
                                         <i style="font-size:25px;color: gray;" class="now-ui-icons shopping_credit-card"></i>
                                         <p style="color:gray;font-size:10px;">C. Bancaria</p>
@@ -159,7 +167,7 @@
                     <div class="col-lg-6" ng-hide="$root.switch_summary">
                         <div class="simulator_wrapper">
                             <h5 class="text-left">¿Cuánto dinero necesitas?</h5>
-                            <slider step="50000" ng-model="form.data.amount" initial="200000" range="[100000, 1000000]"></slider>
+                            <slider step="50000" ng-model="form.data.amount" initial="200000" range="[100000, 500000]"></slider>
                             <div class="row">
                                 <div class="col-lg-6 text-left">{{''}}</div>
                                 <div style="font-size:20px;margin-top: 20px;" class="col-lg-6 text-right">{{form.data.amount[0] || 0 | currency:"COP $ "}}</div>
@@ -214,7 +222,12 @@
                             <div class="col-lg-6 text-right">
                                 <p  class="label-strong-primary">{{form.data.interests || 0 | currency:"$ ":0 }}</p>
                             </div> 
-
+                            <div class="col-lg-6 text-left">
+                                <label style="color:#101010;">Iva:</label>
+                            </div>
+                            <div class="col-lg-6 text-right">
+                                <p  class="label-strong-primary">{{form.data.iva || 0 | currency:"$ ":0 }}</p>
+                            </div> 
                             <div class="col-lg-6 text-left">
                                 <label style="color:#101010;">Gestión de Credito:</label>
                             </div>
@@ -241,7 +254,7 @@
                                     </div>                                    
                                 </div>
                         </div>
-                        <div class="footer text-center row">
+                        <div class="footer-card-data text-center row">
                             <div class="col-md-3">
                                 <i style="font-size:25px;color: gray;" class="now-ui-icons shopping_credit-card"></i>
                                 <p style="color:gray;font-size:10px;">C. Bancaria</p>

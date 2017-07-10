@@ -121,7 +121,7 @@ angular.module('shoplyApp')
         if(n){
               $scope.form.data.interests = (n[0] * (1.817 / 100));
               $scope.form.data.system_quote = (o[0] * (9.9 / 100));
-              $scope.form.data.iva = (o[0] * (9.9 / 100));
+              $scope.form.data.iva = ($scope.form.data.system_quote * (19 / 100));
              
               $scope.totalize();      
         }
@@ -129,7 +129,7 @@ angular.module('shoplyApp')
         if(o){
              $scope.form.data.interests = (o[0] * (1.817 / 100));
              $scope.form.data.system_quote = (o[0] * (9.9 / 100));
-             $scope.form.data.iva = (o[0] * (19 / 100));
+             $scope.form.data.iva = ($scope.form.data.system_quote * (19 / 100));
 
              $scope.totalize();      
         }

@@ -53,6 +53,7 @@ module.exports = function(config) {
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/tether/dist/js/tether.js',
       'bower_components/bootstrap/dist/js/bootstrap.min.js',
+      'bower_components/Datedropper3/datedropper.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

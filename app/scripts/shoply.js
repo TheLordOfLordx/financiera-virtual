@@ -1,5 +1,6 @@
-$(document).ready(function () {
-    // MetsiMenu
+$(document).ready(function(){
+
 });
+    //  Activate the Tooltips
 
 

@@ -29,7 +29,8 @@
     "angular-facebook": "^0.2.3",
     "nouislider": "^10.0.0",
     "angular-bootstrap": "^2.5.0",
-    "bootstrap": "v4.0.0-alpha.6"
+    "bootstrap": "v4.0.0-alpha.6",
+    "Datedropper3": "https://github.com/felicegattuso/Datedropper3.git"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
@@ -55,6 +56,12 @@
       "main": [
         "dist/css/bootstrap.min.css",
         "dist/js/bootstrap.min.js"
+      ]
+    },
+    "Datedropper3": {
+      "main": [
+        "datedropper.min.css",
+        "datedropper.min.js"
       ]
     }
   }

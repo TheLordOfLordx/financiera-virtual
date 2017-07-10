@@ -35,3 +35,60 @@
 .footer-card-data{
    padding: 10px 0;
 }
+
+
+
+div.datedropper.datedrop-custom-theme {
+  border-radius: 8px;
+  width: 172px;
+}
+div.datedropper.datedrop-custom-theme .picker {
+  border-radius: 8px;
+  box-shadow: 0 0 32px 0px rgba(0, 0, 0, 0.1);
+}
+div.datedropper.datedrop-custom-theme .pick-l {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+div.datedropper.datedrop-custom-theme:before,
+div.datedropper.datedrop-custom-theme .pick-submit,
+div.datedropper.datedrop-custom-theme .pick-lg-b .pick-sl:before,
+div.datedropper.datedrop-custom-theme .pick-m,
+div.datedropper.datedrop-custom-theme .pick-lg-h {
+  background-color: #00999F;
+}
+div.datedropper.datedrop-custom-theme .pick-y.pick-jump,
+div.datedropper.datedrop-custom-theme .pick li span,
+div.datedropper.datedrop-custom-theme .pick-lg-b .pick-wke,
+div.datedropper.datedrop-custom-theme .pick-btn {
+  color: #00999F;
+}
+div.datedropper.datedrop-custom-theme .picker,
+div.datedropper.datedrop-custom-theme .pick-l {
+  background-color: #FFF;
+}
+div.datedropper.datedrop-custom-theme .picker,
+div.datedropper.datedrop-custom-theme .pick-arw,
+div.datedropper.datedrop-custom-theme .pick-l {
+  color: #4D4D4D;
+}
+div.datedropper.datedrop-custom-theme .pick-m,
+div.datedropper.datedrop-custom-theme .pick-m .pick-arw,
+div.datedropper.datedrop-custom-theme .pick-lg-h,
+div.datedropper.datedrop-custom-theme .pick-lg-b .pick-sl,
+div.datedropper.datedrop-custom-theme .pick-submit {
+  color: #FFF;
+}
+div.datedropper.datedrop-custom-theme.picker-tiny:before,
+div.datedropper.datedrop-custom-theme.picker-tiny .pick-m {
+  background-color: #FFF;
+}
+div.datedropper.datedrop-custom-theme.picker-tiny .pick-m,
+div.datedropper.datedrop-custom-theme.picker-tiny .pick-m .pick-arw {
+  color: #4D4D4D;
+}
+div.datedropper.datedrop-custom-theme.picker-lkd .pick-submit {
+  background-color: #FFF;
+  color: #4D4D4D;
+}
+

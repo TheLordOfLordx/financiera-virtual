@@ -18,6 +18,20 @@ angular.module('shoplyApp')
       $scope.form.data.pay_day = $scope.pay_day($scope.form.data.days[0]);
     }
 
+  $scope.status = {
+    isopen: false
+  };
+
+  $scope.toggled = function(open) {
+    console.log('Dropdown is now: ', open);
+  };
+
+  $scope.toggleDropdown = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.status.isopen = !$scope.status.isopen;
+  };
+
     $scope.new_credit = function(){
       window.modal = modal.show({templateUrl : 'views/credits/new_credit.html', size:'lg', scope: $scope, backdrop: 'static'}, function($scope){
            modal.confirm({

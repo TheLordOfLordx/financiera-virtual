@@ -48,10 +48,11 @@ module.exports = function(config) {
       'bower_components/angular-preload-image/angular-preload-image.js',
       'bower_components/angular-ui-utils/ui-utils.js',
       'bower_components/angular-ui-map/ui-map.js',
-      'bower_components/tether/dist/js/tether.js',
       'bower_components/angular-facebook/lib/angular-facebook.js',
       'bower_components/nouislider/distribute/nouislider.min.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'bower_components/tether/dist/js/tether.js',
+      'bower_components/bootstrap/dist/js/bootstrap.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

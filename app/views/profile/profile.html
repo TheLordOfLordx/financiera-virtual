@@ -15,10 +15,17 @@
         <div class="collapse navbar-collapse justify-content-end" id="example-navbar-info">
             <ul class="navbar-nav">
                 <div class="pull-right navbar-text" ng-show="$root.user">
-                  <a href="">
-                    <img ng-src="{{user.picture.data.url}}">
-                    <i class="now-ui-icons arrows-1_minimal-down"></i>
-                  </a>
+                  <div class="dropdown">
+                      <a href="" class="dropdown-toggle" id="about-us" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <img ng-src="{{user.picture.data.url}}">
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="about-us">
+                            <a class="dropdown-item" href="#">Configuración</a>
+                            <a class="dropdown-item" href="#">Creditos</a>
+                            <a class="dropdown-item" href="#">Planes</a>
+                            <a class="dropdown-item" href="#">Salir</a>
+                          </div>
+                      </a>                    
+                  </div>
                 </div>
             </ul>
         </div>
@@ -263,7 +270,7 @@
     <br />
     <br />
     <div class="col-lg-12 row" ng-show="basic.$valid && location.$valid && financeForm.$valid && banks.$valid ">
-        <button class="btn btn-primary" ng-click="update_profile()">Actualizar mi Perfil</button>
+       <button type="button" ng-click="update_profile()" class="btn btn-primary btn-create"><i class="fa fa-edit"></i>Actualizar</button>
     </div>
     <br /> 
     <br /> 

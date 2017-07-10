@@ -104,7 +104,7 @@ angular.module('shoplyApp')
     }
 
     $scope.totalize = function(){
-      $scope.form.data.total_payment = ($scope.form.data.amount[0]) + ($scope.form.data.interests) + ($scope.form.data.system_quote || 0);
+      $scope.form.data.total_payment = ($scope.form.data.amount[0]) + ($scope.form.data.interests) + ($scope.form.data.system_quote || 0)+ ($scope.form.data.iva || 0);
     }
 
     $scope.$watch('form.data.days', function(o, n){

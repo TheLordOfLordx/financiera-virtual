@@ -22,13 +22,13 @@
             <div class="col-lg-6">
               <div class="form-group">
               <label class="text-white">Contraseña*:</label>
-                <input type="password" required="true" name="password" ng-model="formRegister.data.password" class="form-control" placeholder="Contraseña">
+                <input type="password" disable-right-click ng-cut="$event.preventDefault()" ng-copy="$event.preventDefault()" ng-paste="$event.preventDefault()" required="true" name="password" ng-model="formRegister.data.password" class="form-control" placeholder="Contraseña">
               </div>            
             </div>
             <div class="col-lg-6">
               <div class="form-group">
               <label class="text-white">Confirmar Contraseña*:</label>
-                <input type="password" required="true" name="re-password" ng-model="formRegister.data.confirm" class="form-control" placeholder="Confirmar Contraseña">
+                <input type="password" disable-right-click ng-cut="$event.preventDefault()" ng-copy="$event.preventDefault()" ng-paste="$event.preventDefault()" required="true" name="re-password" ng-model="formRegister.data.confirm" class="form-control" placeholder="Confirmar Contraseña">
               </div>            
             </div>            
           </div>

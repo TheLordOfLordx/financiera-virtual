@@ -2,6 +2,7 @@
 
 angular.module('shoplyApp').directive('pageTitle', pageTitle);
 angular.module('shoplyApp').directive('icheck', icheck);
+angular.module('shoplyApp').directive('disableRightClick', disableRightClick);
 
 function pageTitle($rootScope, $timeout) {
     return {
@@ -54,3 +55,15 @@ function icheck($timeout) {
         }
     };
 };
+
+function disableRightClick (){
+    return {  
+        restrict: 'A',  
+        link: function(scope, element, attr) {  
+            element.bind('contextmenu', function(e) {  
+                e.preventDefault();  
+            })  
+        }  
+    }  
+}
+

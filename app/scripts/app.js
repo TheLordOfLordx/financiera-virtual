@@ -181,9 +181,9 @@ angular
                   pageTitle: 'Perfil'
                 }
           })
-          .state('forgot', {
-                url: '/forgot',
-                templateUrl: 'views/forgot/forgot.html',
+          .state('recover', {
+                url: '/recuperar',
+                templateUrl: 'views/recover/recover.html',
                 data: {
                   pageTitle: 'Recuperar clave'
                 }

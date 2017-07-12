@@ -57,6 +57,7 @@ angular.module('shoplyApp')
         if(response.status === 'connected') {
           $rootScope.loggedIn = true;
           storage.save('access_token', response.authResponse.accessToken);
+          console.log("getLoginStatus()", response);
           $scope.me(function(data){
             $rootScope.user = data;
           });
@@ -64,6 +65,9 @@ angular.module('shoplyApp')
           $rootScope.loggedIn = false;
         }
       });
+
+      console.log("$apply cicle");
+      $scope.$apply()
     };
 
     $scope.me = function(callback) {
@@ -88,6 +92,7 @@ angular.module('shoplyApp')
 
       Facebook.login(function(response) {
         if(response.status == 'connected'){
+            console.log("FacebookRegister()", response);
             storage.save('access_token', response.authResponse.accessToken);
             $scope.me(function(data){
                var new_user = {};
@@ -103,6 +108,9 @@ angular.module('shoplyApp')
         }
 
       }, { scope:'email' } );
+
+      console.log("$apply cicle");
+      $scope.$apply()
     };
 
     $scope.login = function(){

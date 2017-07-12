@@ -93,7 +93,10 @@ angular.module('shoplyApp')
       Facebook.login(function(response) {
         if(response.status == 'connected'){
             console.log("FacebookRegister()", response);
-            storage.save('access_token', response.authResponse.accessToken);
+            storage.save('access_token', angular.copy(response.authResponse.accessToken));
+            
+            $scope.$apply();
+
             $scope.me(function(data){
                var new_user = {};
                new_user.data = {};
@@ -108,9 +111,6 @@ angular.module('shoplyApp')
         }
 
       }, { scope:'email' } );
-
-      console.log("$apply cicle");
-      $scope.$apply()
     };
 
     $scope.login = function(){

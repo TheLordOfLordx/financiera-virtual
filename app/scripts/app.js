@@ -39,15 +39,13 @@ angular
                 $httpProvider.defaults.withCredentials = false;
                 
                 if(window.localStorage.token){
-                   $httpProvider.defaults.headers.common['x-shoply-auth'] =  window.localStorage.token ; // common
+                   $httpProvider.defaults.headers.common['x-shoply-auth'] =  window.localStorage.token ;
                    $httpProvider.defaults.headers.common['x-shoply-user'] =  angular.fromJson(window.localStorage.user) ?  angular.fromJson(window.localStorage.user)._id : null  ; // common
-                   
-                   if(angular.fromJson(window.localStorage.user)._company){
-                      $httpProvider.defaults.headers.common['x-shoply-company']  = angular.fromJson(window.localStorage.user)._company._id ||  angular.fromJson(window.localStorage.user)._company || angular.fromJson(localStorage.company)._id ||  $rootScope.user._company;
-                   }else if(localStorage.company){
-                      $httpProvider.defaults.headers.common['x-shoply-company']  =  angular.fromJson(localStorage.company)._id ||  $rootScope.user._company;
-                   }
-                }
+                 }
+
+                 if(window.localStorage.access_token){
+                    $httpProvider.defaults.headers.common['access_token'] =  window.localStorage.access_token;
+                 }
                  
                 console.log(config, 'request')
                 

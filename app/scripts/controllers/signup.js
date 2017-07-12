@@ -72,10 +72,11 @@ angular.module('shoplyApp')
 
     $scope.facebook_login = function() {
       Facebook.login(function(response) {
+         console.log("from fb", response);
         if(response.status == 'connected'){
-          $scope.me(function(data){
-           $scope.user  = data;
-          })          
+            $scope.me(function(data){
+             $scope.user  = data;
+            })          
         }
       }, { scope:'email' } );
     };

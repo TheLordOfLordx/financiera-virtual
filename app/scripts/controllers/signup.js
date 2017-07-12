@@ -55,13 +55,13 @@ angular.module('shoplyApp')
     $scope.getLoginStatus = function() {
       Facebook.getLoginStatus(function(response) {
         if(response.status === 'connected') {
-          $scope.loggedIn = true;
+          $rootScope.loggedIn = true;
           
           $scope.me(function(data){
-            $scope.user = data;
+            $rootScope.user = data;
           });
         } else {
-          $scope.loggedIn = false;
+          $rootScope.loggedIn = false;
         }
       });
     };
@@ -74,6 +74,10 @@ angular.module('shoplyApp')
       var _success = function(data){
         if(data){
            toastr.success('Gracias por Registrarte :)');
+           $rootScope.user = data;
+           $rootScope.loggedIn = true;
+           
+           $state.go('login');
         }
       };
 

@@ -94,7 +94,7 @@ angular.module('shoplyApp')
                new_user.data.facebook_id = data.id;
                new_user.email = data.email;
 
-               account.register(new_user).then(_success, _error);
+              account.usuario().register(new_user).then(_success, _error);
             });          
         }
 

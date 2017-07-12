@@ -31,7 +31,7 @@ angular.module('shoplyApp')
           
           $scope.me(function(data){
             $rootScope.user = data;
-            storage.save('access_token', _token);
+            storage.save('access_token', data.access_token);
             $state.go(constants.login_state_sucess);
           });
         } else {
@@ -49,7 +49,7 @@ angular.module('shoplyApp')
         if(response.status == 'connected'){
           $scope.me(function(data){
            $rootScope.user  = data;
-           storage.save('access_token', _token);
+           storage.save('access_token', data.access_token);
            $state.go(constants.login_state_sucess);
           })          
         }

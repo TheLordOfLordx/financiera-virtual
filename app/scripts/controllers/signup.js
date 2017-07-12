@@ -76,7 +76,6 @@ angular.module('shoplyApp')
            toastr.success('Gracias por Registrarte :)');
            $rootScope.user = data;
            $rootScope.loggedIn = true;
-
            $state.go('login');
         }
       };

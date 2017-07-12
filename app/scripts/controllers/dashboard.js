@@ -48,12 +48,12 @@ angular.module('shoplyApp')
                    function(isConfirm){ 
 
                        if (isConfirm) {
-                          api().credits().post($scope.form).success(function(res){
+                          api.credits().post($scope.form).success(function(res){
                             if(res){
                                alert("guardado")
                             } 
                           });
-                          
+
                           $scope.$close();
                        }
 

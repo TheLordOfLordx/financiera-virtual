@@ -28,10 +28,10 @@ angular.module('shoplyApp')
       Facebook.getLoginStatus(function(response) {
         if(response.status === 'connected') {
           $rootScope.loggedIn = true;
+          
           $scope.me(function(data){
             $rootScope.user = data;
             storage.save('uid', data.id.toString());
-            $state.go(constants.login_state_sucess);
           });
         } else {
           $rootScope.loggedIn = false;

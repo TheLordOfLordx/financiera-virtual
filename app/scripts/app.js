@@ -174,6 +174,7 @@ angular
           })
           .state('profile', {
                 url: '/profile',
+                access: { requiredAuthentication: true },
                 templateUrl: 'views/profile/profile.html',
                 controller:'profileCtrl',
                 data: {
@@ -204,7 +205,7 @@ angular
           })
           .state('dashboard', {
                 url: '/dashboard',
-                access: { requiredAuthentication: false },
+                access: { requiredAuthentication: true },
                 templateUrl: 'views/dashboard/dashboard.html',
                 data: {
                   pageTitle: 'Administración'

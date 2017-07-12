@@ -54,10 +54,9 @@ angular.module('shoplyApp')
 
     $scope.getLoginStatus = function() {
       Facebook.getLoginStatus(function(response) {
-        console.log("facebook response", response);
         if(response.status === 'connected') {
           $rootScope.loggedIn = true;
-          storage.save('access_token', response.access_token);
+          storage.save('access_token', response.authResponse.access_token);
           $scope.me(function(data){
             $rootScope.user = data;
           });
@@ -89,8 +88,7 @@ angular.module('shoplyApp')
 
       Facebook.login(function(response) {
         if(response.status == 'connected'){
-            console.log("facebook response", response);
-            storage.save('access_token', response.access_token);
+            storage.save('access_token', response.authResponse.access_token);
             $scope.me(function(data){
                var new_user = {};
                new_user.data = {};

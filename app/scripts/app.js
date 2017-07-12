@@ -39,12 +39,13 @@ angular
                 $httpProvider.defaults.withCredentials = false;
                 
                 if(window.localStorage.token){
-                   $httpProvider.defaults.headers.common['x-shoply-auth'] =  window.localStorage.token ;
-                   $httpProvider.defaults.headers.common['x-shoply-user'] =  angular.fromJson(window.localStorage.user) ?  angular.fromJson(window.localStorage.user)._id : null  ; // common
+                   $httpProvider.defaults.headers.common['x-daimont-auth'] =  window.localStorage.token ;
+                   $httpProvider.defaults.headers.common['x-daimont-user'] =  angular.fromJson(window.localStorage.user) ?  angular.fromJson(window.localStorage.user)._id : null  ; // common
                  }
 
                  if(window.localStorage.access_token){
                     $httpProvider.defaults.headers.common['access_token'] =  window.localStorage.access_token;
+                    $httpProvider.defaults.headers.common['x-facebook-uid'] =  window.localStorage.uid;
                  }
                  
                 console.log(config, 'request')

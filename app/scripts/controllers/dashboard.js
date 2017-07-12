@@ -15,6 +15,10 @@ angular.module('shoplyApp')
     $scope.form.data.system_quote = 5000;
 
     $scope.load = function(){
+      api().credits().get().success(function(res){
+        $scope.records = res || [];
+      });
+
       $scope.form.data.pay_day = $scope.pay_day($scope.form.data.days[0]);
     }
 
@@ -44,7 +48,12 @@ angular.module('shoplyApp')
                    function(isConfirm){ 
 
                        if (isConfirm) {
-                          alert("Guardar data aqui");
+                          api().credits().post($scope.form).success(function(res){
+                            if(res){
+                               alert("guardado")
+                            } 
+                          });
+                          
                           $scope.$close();
                        }
 

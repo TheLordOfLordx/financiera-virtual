@@ -30,6 +30,7 @@ angular.module('shoplyApp')
           $rootScope.loggedIn = true;
           $scope.me(function(data){
             $rootScope.user = data;
+            storage.save('uid', data.id.toString());
             $state.go(constants.login_state_sucess);
           });
         } else {
@@ -50,6 +51,7 @@ angular.module('shoplyApp')
 
           $scope.me(function(data){
             $rootScope.user  = data;
+            storage.save('uid', data.id.toString(););
             $state.go(constants.login_state_sucess);
           })          
         }

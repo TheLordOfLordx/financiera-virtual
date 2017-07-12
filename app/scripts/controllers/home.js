@@ -109,11 +109,17 @@ angular.module('shoplyApp')
 
     $scope.$watch('form.data.days', function(o, n){
         if(n){
-            $scope.form.data.pay_day = $scope.pay_day(n[0]);      
+            $scope.form.data.pay_day = $scope.pay_day(n[0]); 
+            $scope.form.data.interests = ( $scope.form.data.interests / 30 ) * (n[0]);
+            $scope.form.data.system_quote = ($scope.form.data.system_quote / 30) * (n[0]); 
+            $scope.form.data.iva = ($scope.form.data.iva / 30) * (n[0]);
         }
 
         if(o){
-            $scope.form.data.pay_day = $scope.pay_day(o[0]);      
+            $scope.form.data.pay_day = $scope.pay_day(o[0]); 
+            $scope.form.data.interests = ( $scope.form.data.interests / 30 ) * (o[0]);
+            $scope.form.data.system_quote = ($scope.form.data.system_quote / 30) * (o[0]); 
+            $scope.form.data.iva = ($scope.form.data.iva / 30) * (o[0]);
         }
     });
 

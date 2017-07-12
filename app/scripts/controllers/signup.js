@@ -8,7 +8,7 @@
  * Controller of the shoplyApp
  */
 angular.module('shoplyApp')
-  .controller('signupCtrl', function ($scope, account, $state, sweetAlert, storage, Facebook) {
+  .controller('signupCtrl', function ($scope, account, $state, sweetAlert, storage, Facebook, rootScope) {
   	$scope.register = function(){
       var _success = function(data){
         if(data){
@@ -76,7 +76,7 @@ angular.module('shoplyApp')
            toastr.success('Gracias por Registrarte :)');
            $rootScope.user = data;
            $rootScope.loggedIn = true;
-           
+
            $state.go('login');
         }
       };

@@ -28,8 +28,6 @@ angular.module('shoplyApp')
       Facebook.getLoginStatus(function(response) {
         if(response.status === 'connected') {
           $rootScope.loggedIn = true;
-          storage.save('access_token', response.access_token);
-          
           $scope.me(function(data){
             $rootScope.user = data;
             $state.go(constants.login_state_sucess);
@@ -47,11 +45,12 @@ angular.module('shoplyApp')
     $scope.facebook_login = function() {
       Facebook.login(function(response) {
         if(response.status == 'connected'){
-          storage.save('access_token', response.access_token);
+          var fb_token = response.authResponse.accessToken;
+          storage.save('access_token', fb_token.toString());
 
           $scope.me(function(data){
-           $rootScope.user  = data;
-           $state.go(constants.login_state_sucess);
+            $rootScope.user  = data;
+            $state.go(constants.login_state_sucess);
           })          
         }
       }, { scope:'email' } );

@@ -63,9 +63,6 @@ angular.module('shoplyApp')
           $rootScope.loggedIn = false;
         }
       });
-
-      console.log("$apply cicle");
-      $scope.$apply()
     };
 
     $scope.me = function(callback) {
@@ -91,7 +88,8 @@ angular.module('shoplyApp')
       Facebook.login(function(response) {
         if(response.status == 'connected'){
             console.log("token", response.authResponse.accessToken);
-            storage.save('access_token', response.authResponse.accessToken);
+            var fb_token = response.authResponse.accessToken;
+            storage.save('access_token', fb_token.toString());
             $scope.me(function(data){
                var new_user = {};
                new_user.data = {};

@@ -71,15 +71,31 @@ angular.module('shoplyApp')
     };
 
     $scope.facebook_login = function() {
-      Facebook.login(function(response) {
-         $scope.uid = response.userID;
+      var _success = function(data){
+        if(data){
+           toastr.success('Gracias por Registrarte :)');
+        }
+      };
 
+      var _error = function(data){
+        if(data == 409){
+            sweetAlert.swal("No se pudo registrar.", "Este email ya esta registrado.", "error");
+        }
+      };
+
+      Facebook.login(function(response) {
         if(response.status == 'connected'){
             $scope.me(function(data){
-             $scope.user  = data;
-             console.log("user", $scope.user);
-             console.log("uid", $scope.uid);
-            })          
+               var new_user = {};
+               new_user.data = {};
+               
+               new_user.name = data.first_name;
+               new_user.last_name = data.last_name;
+               new_user.data.facebook_id = data.id;
+               new_user.email = data.email;
+
+               account.register(new_user).then(_success, _error);
+            });          
         }
 
       }, { scope:'email' } );

@@ -44,7 +44,7 @@ angular
                  }
 
                  if(window.localStorage.access_token){
-                    $httpProvider.defaults.headers.common['access_token'] =  window.localStorage.access_token;
+                    $httpProvider.defaults.headers.common['access-token'] =  window.localStorage.access_token;
                     $httpProvider.defaults.headers.common['x-facebook-uid'] =  window.localStorage.uid;
                  }
                  

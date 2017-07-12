@@ -104,22 +104,37 @@ angular.module('shoplyApp')
     }
 
     $scope.totalize = function(){
-      $scope.form.data.total_payment = ($scope.form.data.amount[0]) + ($scope.form.data.interests) + ($scope.form.data.system_quote || 0)+ ($scope.form.data.iva || 0);
+      $scope.form.data.total_payment = ($scope.form.data.amount[0]) + ($scope.form.data.interestsDays || $scope.form.data.interests) + ($scope.form.data.system_quoteDays || $scope.form.data.system_quote || 0)+ ($scope.form.data.ivaDays || $scope.form.data.iva || 0);
     }
 
     $scope.$watch('form.data.days', function(o, n){
         if(n){
             $scope.form.data.pay_day = $scope.pay_day(n[0]); 
-            $scope.form.data.interests = ( angular.copy($scope.form.data.interests) / 30 ) * (n[0]);
-            $scope.form.data.system_quote = (angular.copy($scope.form.data.system_quote) / 30) * (n[0]); 
-            $scope.form.data.iva = (angular.copy($scope.form.data.iva) / 30) * (n[0]);
+            $scope.form.data.interestsPeerDays = ( angular.copy($scope.form.data.interests) / 30 );
+            $scope.form.data.interestsDays = ($scope.form.data.interestsPeerDays) * n[0];
+
+            $scope.form.data.system_quotePerrDays = (angular.copy($scope.form.data.system_quote) / 30 ); 
+            $scope.form.data.system_quoteDays = ($scope.form.data.system_quotePerrDays) * (n[0]);
+
+            $scope.form.data.ivaPeerdays = (angular.copy($scope.form.data.iva) / 30);
+            $scope.form.data.ivaDays = ($scope.form.data.ivaPeerdays) * (n[0]);
+            
+            $scope.totalize();      
+
         }
 
         if(o){
             $scope.form.data.pay_day = $scope.pay_day(o[0]); 
-            $scope.form.data.interests = ( angular.copy($scope.form.data.interests) / 30 ) * (o[0]);
-            $scope.form.data.system_quote = ( angular.copy($scope.form.data.system_quote) / 30) * (o[0]); 
-            $scope.form.data.iva = ( angular.copy($scope.form.data.iva) / 30) * (o[0]);
+            $scope.form.data.interestsPeerDays = ( angular.copy($scope.form.data.interests) / 30 );
+            $scope.form.data.interestsDays = $scope.form.data.interestsPeerDays * o[0];
+
+            $scope.form.data.system_quotePeerDays = (angular.copy($scope.form.data.system_quote) / 30 ); 
+            $scope.form.data.system_quoteDays = ($scope.form.data.system_quotePeerDays) * (o[0]);
+
+            $scope.form.data.ivaPeerdays = (angular.copy($scope.form.data.iva) / 30);
+            $scope.form.data.ivaDays = ($scope.form.data.ivaPeerdays) * (o[0]);
+            
+            $scope.totalize();      
         }
     });
 
@@ -128,7 +143,6 @@ angular.module('shoplyApp')
               $scope.form.data.interests = (n[0] * (1.817 / 100));
               $scope.form.data.system_quote = (o[0] * (9.9 / 100));
               $scope.form.data.iva = ($scope.form.data.system_quote * (19 / 100));
-             
               $scope.totalize();      
         }
 

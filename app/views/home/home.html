@@ -100,20 +100,25 @@
                                     <div class="col-lg-6 text-right">
                                         <p  class="label-strong-primary">{{ form.data.amount[0] | currency:"$ "}}</p>
                                     </div>
+                                    <div class="col-lg-6 text-left">
+                                        <label style="color:#101010;">Gestión de Credito:</label>
+                                    </div>
+                                    <div class="col-lg-6 text-right">
+                                        <p  class="label-strong-primary">{{form.data.system_quote || 0 | currency:"$ "}}</p>
+                                    </div> 
 
                                     <div class="col-lg-6 text-left">
                                         <label style="color:#101010;">Interes:</label>
                                     </div>
                                     <div class="col-lg-6 text-right">
-                                        <p  class="label-strong-primary">{{form.data.interests || 0 | currency:"$ ":0}} </p>
+                                        <p  class="label-strong-primary">{{form.data.interestsDays || form.data.interests || 0 | currency:"$ ":0}} </p>
                                     </div> 
-
 
                                     <div class="col-lg-6 text-left">
                                         <label style="color:#101010;">Iva:</label>
                                     </div>
                                     <div class="col-lg-6 text-right">
-                                        <p  class="label-strong-primary">{{form.data.iva || 0 | currency:"$ ":0}} </p>
+                                        <p  class="label-strong-primary">{{form.data.ivaDays || form.data.iva || 0 | currency:"$ ":0}} </p>
                                     </div> 
 
                                     <div class="col-lg-6 text-left">
@@ -217,25 +222,25 @@
                             <div class="col-lg-6 text-right">
                                 <p  class="label-strong-primary">{{ form.data.amount[0] | currency:"$ ":0}}</p>
                             </div>
-
+                            <div class="col-lg-6 text-left">
+                                <label style="color:#101010;">Gestión de Credito:</label>
+                            </div>
+                            <div class="col-lg-6 text-right">
+                                <p  class="label-strong-primary">{{form.data.system_quoteDays || form.data.system_quote || 0 | currency:"$ ":0 }}</p>
+                            </div> 
                             <div class="col-lg-6 text-left">
                                 <label style="color:#101010;">Interes:</label>
                             </div>
                             <div class="col-lg-6 text-right">
-                                <p  class="label-strong-primary">{{form.data.interests || 0 | currency:"$ ":0 }}</p>
+                                <p  class="label-strong-primary">{{ form.data.interestsDays || form.data.interests || 0 | currency:"$ ":0 }}</p>
                             </div> 
                             <div class="col-lg-6 text-left">
                                 <label style="color:#101010;">Iva:</label>
                             </div>
                             <div class="col-lg-6 text-right">
-                                <p  class="label-strong-primary">{{form.data.iva || 0 | currency:"$ ":0 }}</p>
+                                <p  class="label-strong-primary">{{form.data.ivaDays || form.data.iva || 0 | currency:"$ ":0 }}</p>
                             </div> 
-                            <div class="col-lg-6 text-left">
-                                <label style="color:#101010;">Gestión de Credito:</label>
-                            </div>
-                            <div class="col-lg-6 text-right">
-                                <p  class="label-strong-primary">{{form.data.system_quote || 0 | currency:"$ ":0 }}</p>
-                            </div> 
+
                             <hr style="1px dashed #858585 !important;" />                       
 
                             <div class="col-lg-6 text-left">

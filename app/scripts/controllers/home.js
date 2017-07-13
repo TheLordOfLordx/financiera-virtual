@@ -96,8 +96,9 @@ angular.module('shoplyApp')
 
               storage.save('token', _token);
               storage.save('user', _user);
+              storage.save('uid', _user._id);
 
-              $rootScope.isLogged = res.user;
+              $rootScope.isLogged = true;
               $rootScope.user = storage.get('user');
               $state.go(constants.login_state_sucess);          
           }else{

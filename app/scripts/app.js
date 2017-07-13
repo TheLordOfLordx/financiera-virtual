@@ -52,7 +52,7 @@ angular
                 
                 if(config.method == 'POST'){
                     config.data.metadata = config.data.metadata || {}
-                    config.data.metadata._author = window.localStorage.user ? angular.fromJson(window.localStorage.user)._id : null; 
+                    config.data.metadata._author = window.localStorage.uid || null; 
                   }
                 /*for (var x in config.data) {
                     if (typeof config.data[x] === 'boolean') {

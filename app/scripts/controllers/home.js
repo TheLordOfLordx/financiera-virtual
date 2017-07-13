@@ -24,6 +24,29 @@ angular.module('shoplyApp')
       $scope.form.data.pay_day = $scope.pay_day($scope.form.data.days[0]);
   	}
 
+    $scope.new_credit = function(){
+       modal.confirm({
+               closeOnConfirm : true,
+               title: "Está Seguro?",
+               text: "Confirma que desea realizar este prestamo?",
+               confirmButtonColor: "#008086",
+               type: "success" },
+
+               function(isConfirm){ 
+
+                   if (isConfirm) {
+                      api.credits().post($scope.form).success(function(res){
+                        if(res){
+                           alert("guardado")
+                        } 
+                      });
+
+                      $scope.$close();
+                   }
+
+                });
+    }
+
 
     $scope.$watch(function() {
       return Facebook.isReady();

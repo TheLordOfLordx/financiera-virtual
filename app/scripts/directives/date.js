@@ -5,7 +5,7 @@
 
     return {
       replace:true,
-      template: '<input data-theme="datedrop-custom-theme" data-toggle="datedropper" data-init-set="false" data-format="d-m-Y" type="text" data-modal="true"  id="fecha" data-lang="es" class="form-control" enableread/>',
+      template: '<input data-theme="datedrop-custom-theme" data-large-mode="true" data-toggle="datedropper" data-init-set="false" data-format="d-m-Y" type="text" data-modal="true"  id="fecha" data-lang="es" class="form-control" enableread/>',
       restrict: 'EA',
       scope : {
         ngModel : "=",

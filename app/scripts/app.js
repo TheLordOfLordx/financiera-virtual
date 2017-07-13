@@ -118,6 +118,9 @@ angular
           .state('home.empezar', {
               url: 'home/empezar',
               templateUrl: 'views/forms/register.html',
+              params: {
+                      credit: null
+              },
               data: {
                 pageTitle: 'Registrarse y Continuar'
               }
@@ -125,6 +128,9 @@ angular
           .state('home.continuar', {
               url: 'home/continuar',
               templateUrl: 'views/forms/login.html',
+              params: {
+                credit: null
+              },
               data: {
                 pageTitle: 'Ingresar y Continuar'
               }

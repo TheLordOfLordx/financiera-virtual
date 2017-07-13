@@ -143,11 +143,11 @@
                                 </div>
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <a  href="#/empezar" ui-sref="home.empezar()" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Registrarme</a>
+                                                <a  href="#/empezar" ui-sref="home.empezar({ credit : form})" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Registrarme</a>
                                                 
                                             </div>
                                             <div class="col-lg-6">
-                                                <a href="#/continuar" ui-sref="home.continuar()" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Tengo Cuenta</a>
+                                                <a href="#/continuar" ui-sref="home.continuar({ credit : form})" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Tengo Cuenta</a>
                                             </div>                                    
                                         </div>
                                 </div>
@@ -195,8 +195,8 @@
                             </div>
                             <br />
                             <br />                            
-                            <br />
-                            <br />
+                            <br />                            
+                            <br />                            
                             <div class="row">
                                 <div class="col-lg-6 text-left">
                                    <a href=""><img src="images/ico_appstore.svg" style="width:65%;margin-top:15px;"></a> 
@@ -262,6 +262,7 @@
                                 <p class="label-strong-primary" style="color:green;!important">{{form.data.total_payment || 0 | currency:"$ ":0}} COP</p>
                             </div>
                         </div>
+                                <br />
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <a  href="#/empezar" ui-sref="home.empezar()" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Registrarme</a>

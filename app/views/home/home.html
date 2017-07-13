@@ -91,7 +91,7 @@
                                         <label style="color:#101010;"><i class="now-ui-icons ui-1_calendar-60" ></i>&nbsp;Fecha de Pago:</label>
                                     </div>
                                     <div class="col-lg-6 text-right">
-                                        <p style="color:#101010;"><span class="badge badge-primary">{{ form.data.pay_day || current_date | date:"yyyy - MM - dd" }}</span></p>
+                                        <p style="color:#101010;"><span class="badge badge-primary">{{ form.data.pay_day || current_date | | date: 'MMM-dd-yyyy' }}</span></p>
                                     </div> 
                                     <div class="col-lg-6 text-left">
                                         <label style="color:#101010;">Monto Solicitado:</label>
@@ -217,7 +217,7 @@
                                 <label style="color:#101010;"><i class="now-ui-icons ui-1_calendar-60" ></i>&nbsp;Fecha de Pago:</label>
                             </div>
                             <div class="col-lg-6 text-right">
-                                <p style="color:#101010;"><span class="badge badge-primary">{{ form.data.pay_day || current_date | date:"yyyy - MM - dd" }}</span></p>
+                                <p style="color:#101010;"><span class="badge badge-primary">{{ form.data.pay_day || current_date | | date: 'MMM-dd-yyyy' }}</span></p>
                             </div> 
                             <div class="col-lg-6 text-left">
                                 <label style="color:#101010;">Monto Solicitado:</label>

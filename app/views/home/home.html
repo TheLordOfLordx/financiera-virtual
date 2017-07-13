@@ -31,10 +31,13 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="images/blurred-image-1.jpg">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <li class="nav-item" ng-show="!$root.isLogged">
+                        <button style="position: relative;top: 8px;" class="btn btn-primary btn-simple btn-sm" type="button">panel</button>
+                    </li>
+                    <li class="nav-item" ng-show="!$root.isLogged">
                         <a class="nav-link" href="#/signup" ui-sref="signup">Registrarse</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" ng-show="!$root.isLogged">
                         <a class="nav-link" href="#/login" ui-sref="login" >Entrar</a>
                     </li>
                     <li class="nav-item">
@@ -104,7 +107,13 @@
                                         <label style="color:#101010;">Gestión de Credito:</label>
                                     </div>
                                     <div class="col-lg-6 text-right">
-                                        <p  class="label-strong-primary">{{form.data.system_quote || 0 | currency:"$ "}}</p>
+                                        <p  class="label-strong-primary">{{ form.data.amount[0] | currency:"$ "}}</p>
+                                    </div>
+                                    <div class="col-lg-6 text-left">
+                                        <label style="color:#101010;">Costo de financiación:</label>
+                                    </div>
+                                    <div class="col-lg-6 text-right">
+                                        <p  class="label-strong-primary">{{form.data.finance_quote || 0 | currency:"$ "}}</p>
                                     </div> 
 
                                     <div class="col-lg-6 text-left">
@@ -227,6 +236,12 @@
                             </div>
                             <div class="col-lg-6 text-right">
                                 <p  class="label-strong-primary">{{form.data.system_quoteDays || form.data.system_quote || 0 | currency:"$ ":0 }}</p>
+                            </div> 
+                            <div class="col-lg-6 text-left">
+                                <label style="color:#101010;">Costo de financiación:</label>
+                            </div>
+                            <div class="col-lg-6 text-right">
+                                <p  class="label-strong-primary">{{form.data.finance_quote || 0 | currency:"$ "}}</p>
                             </div> 
                             <div class="col-lg-6 text-left">
                                 <label style="color:#101010;">Interes:</label>

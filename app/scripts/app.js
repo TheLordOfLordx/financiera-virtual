@@ -214,7 +214,6 @@ angular
   }).run(["$rootScope", "constants", "storage", "$state","sounds", "api", "$window", function($rootScope, constants, storage, $state, sounds, api, $window){
         $rootScope.currency = constants.currency;
         $rootScope.base = constants.uploadFilesUrl;
-        $rootScope.isLogged = storage.get('user');
         $rootScope.user = storage.get('user');
         $rootScope.state = $state;
         $rootScope.online = navigator.onLine;
@@ -259,7 +258,7 @@ angular
       $rootScope.$on('$stateChangeStart', function(event, nextRoute, toParams, fromState, fromParams){
             console.log("nextRoute", nextRoute);
 
-            if(nextRoute.name === 'home.empezar' || nextRoute.name === 'home.continuar' || nextRoute.name === 'home.sms'){
+            if(nextRoute.name === 'home.empezar' || nextRoute.name === 'home.continuar'){
                 $rootScope.switch_summary = true; 
             }else{
                 $rootScope.switch_summary = false; 
@@ -269,9 +268,9 @@ angular
               window.modal.close();
             }
             
-            if (nextRoute != null && nextRoute.access != null && nextRoute.access.requiredAuthentication && !storage.get('token')) {
-                    event.preventDefault();
-                    $state.transitionTo('login');
+            if (nextRoute != null && nextRoute.access != null && nextRoute.access.requiredAuthentication && !storage.get('token') && !storage.get('access_token')) {
+                  event.preventDefault();
+                  $state.transitionTo('login');
             }
       });
   }]);

@@ -12,6 +12,7 @@ angular.module('shoplyApp')
   	$scope.current_date = new Date();
     $scope.form = {};
     $scope.form.data = {};
+    $scope.form.data.finance_quote = 12990;
 
     $scope.load = function(){
       if(storage.get("rememberEmail")){
@@ -104,7 +105,7 @@ angular.module('shoplyApp')
     }
 
     $scope.totalize = function(){
-      $scope.form.data.total_payment = ($scope.form.data.amount[0]) + ($scope.form.data.interestsDays || $scope.form.data.interests) + ($scope.form.data.system_quoteDays || $scope.form.data.system_quote || 0)+ ($scope.form.data.ivaDays || $scope.form.data.iva || 0);
+      $scope.form.data.total_payment = ($scope.form.data.amount[0]) + ($scope.form.data.interestsDays || $scope.form.data.interests) + ($scope.form.data.system_quoteDays || $scope.form.data.system_quote || 0) + ($scope.form.data.ivaDays || $scope.form.data.iva || 0) + ( $scope.form.data.finance_quote || 0);
     }
 
     $scope.$watch('form.data.days', function(o, n){
@@ -140,16 +141,16 @@ angular.module('shoplyApp')
 
     $scope.$watch('form.data.amount', function(o, n){
         if(n){
-              $scope.form.data.interests = (n[0] * (1.817 / 100));
-              $scope.form.data.system_quote = (o[0] * (9.9 / 100));
-              $scope.form.data.iva = ($scope.form.data.system_quote * (19 / 100));
+              $scope.form.data.interests = (n[0] * (2.500 / 100));
+              $scope.form.data.system_quote = (o[0] * (5.99 / 100));
+              $scope.form.data.iva = (($scope.form.data.system_quote + $scope.form.data.finance_quote) * (19 / 100));
               $scope.totalize();      
         }
 
         if(o){
-             $scope.form.data.interests = (o[0] * (1.817 / 100));
-             $scope.form.data.system_quote = (o[0] * (9.9 / 100));
-             $scope.form.data.iva = ($scope.form.data.system_quote * (19 / 100));
+             $scope.form.data.interests = (o[0] * (2.500 / 100));
+             $scope.form.data.system_quote = (o[0] * (5.99 / 100));
+             $scope.form.data.iva = (($scope.form.data.system_quote + $scope.form.data.finance_quote) * (19 / 100));
 
              $scope.totalize();      
         }

@@ -145,12 +145,12 @@
                                         <div class="col-lg-12">
                                            <a  href="#/empezar" ng-show="$root.islogged" ng-click="new_credit({credit : form})" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Solicitar</a> 
                                         </div>
-                                        <div class="col-lg-6" ng-show="!$root.islogged">
+                                        <div class="col-lg-6" ng-hide="!$root.islogged">
                                             <a  href="#/empezar" ui-sref="home.empezar({credit : form})" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Registrarme</a>
                                             
                                         </div>
                                         <div class="col-lg-6">
-                                            <a href="#/continuar" ng-show="!$root.islogged" ui-sref="home.continuar({credit : form})" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Tengo Cuenta</a>
+                                            <a href="#/continuar" ng-hide="!$root.islogged" ui-sref="home.continuar({credit : form})" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Tengo Cuenta</a>
                                         </div>                                    
                                     </div>
                                 </div>
@@ -267,12 +267,12 @@
                                     <div class="col-lg-12">
                                        <a  href="#/empezar" ng-show="$root.islogged" ng-click="new_credit({credit : form})" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Solicitar</a> 
                                     </div>
-                                    <div class="col-lg-6" ng-show="!$root.islogged">
+                                    <div class="col-lg-6" ng-hide="!$root.islogged">
                                         <a  href="#/empezar" ui-sref="home.empezar({credit : form})" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Registrarme</a>
                                         
                                     </div>
                                     <div class="col-lg-6">
-                                        <a href="#/continuar" ng-show="!$root.islogged" ui-sref="home.continuar({credit : form})" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Tengo Cuenta</a>
+                                        <a href="#/continuar" ng-hide="!$root.islogged" ui-sref="home.continuar({credit : form})" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Tengo Cuenta</a>
                                     </div>                                    
                                 </div>
                         </div>

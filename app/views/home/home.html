@@ -100,23 +100,22 @@
                                         <p  class="label-strong-primary">{{ form.data.amount[0] | currency:"$ "}}</p>
                                     </div>
                                     <div class="col-lg-6 text-left">
+                                        <label style="color:#101010;">Interes:</label>
+                                    </div>
+                                    <div class="col-lg-6 text-right">
+                                        <p  class="label-strong-primary">{{form.data.interestsDays || form.data.interests || 0 | currency:"$ ":0}} </p>
+                                    </div> 
+                                    <div class="col-lg-6 text-left">
                                         <label style="color:#101010;">Gestión de Credito:</label>
                                     </div>
                                     <div class="col-lg-6 text-right">
-                                        <p  class="label-strong-primary">{{ form.data.amount[0] | currency:"$ "}}</p>
+                                        <p  class="label-strong-primary">{{form.data.system_quoteDays || form.data.system_quote || 0   | currency:"$ ":0 }}</p>
                                     </div>
                                     <div class="col-lg-6 text-left">
                                         <label style="color:#101010;">Costo de financiación:</label>
                                     </div>
                                     <div class="col-lg-6 text-right">
                                         <p  class="label-strong-primary">{{form.data.finance_quote || 0 | currency:"$ "}}</p>
-                                    </div> 
-
-                                    <div class="col-lg-6 text-left">
-                                        <label style="color:#101010;">Interes:</label>
-                                    </div>
-                                    <div class="col-lg-6 text-right">
-                                        <p  class="label-strong-primary">{{form.data.interestsDays || form.data.interests || 0 | currency:"$ ":0}} </p>
                                     </div> 
 
                                     <div class="col-lg-6 text-left">
@@ -188,7 +187,7 @@
                             <br />
                             <br />
                             <h5 class="text-left">¿Cuándo puedes pagar?</h5>
-                            <slider step="1" ng-model="form.data.days" initial="30" range="[1, 30]"></slider>
+                            <slider step="1" ng-model="form.data.days" initial="15" range="[1, 30]"></slider>
                             <div class="row">
                                 <div style="font-size:20px;margin-top: 20px;" class="col-lg-6 text-left"></div>
                                 <div style="font-size:20px;margin-top: 20px;" ng-init="form.data.date = currentDate" class="col-lg-6 text-right">{{'en ' + form.data.days + ' dias.'}}</div>                            
@@ -227,10 +226,16 @@
                                 <p  class="label-strong-primary">{{ form.data.amount[0] | currency:"$ ":0}}</p>
                             </div>
                             <div class="col-lg-6 text-left">
+                                <label style="color:#101010;">Interes:</label>
+                            </div>
+                            <div class="col-lg-6 text-right">
+                                <p  class="label-strong-primary">{{ form.data.interestsDays || form.data.interests || 0 | currency:"$ ":0 }}</p>
+                            </div> 
+                            <div class="col-lg-6 text-left">
                                 <label style="color:#101010;">Gestión de Credito:</label>
                             </div>
                             <div class="col-lg-6 text-right">
-                                <p  class="label-strong-primary">{{form.data.system_quoteDays || form.data.system_quote || 0 | currency:"$ ":0 }}</p>
+                                <p  class="label-strong-primary">{{form.data.system_quoteDays || form.data.system_quote  | currency:"$ ":0 }}</p>
                             </div> 
                             <div class="col-lg-6 text-left">
                                 <label style="color:#101010;">Costo de financiación:</label>
@@ -238,12 +243,7 @@
                             <div class="col-lg-6 text-right">
                                 <p  class="label-strong-primary">{{form.data.finance_quote || 0 | currency:"$ "}}</p>
                             </div> 
-                            <div class="col-lg-6 text-left">
-                                <label style="color:#101010;">Interes:</label>
-                            </div>
-                            <div class="col-lg-6 text-right">
-                                <p  class="label-strong-primary">{{ form.data.interestsDays || form.data.interests || 0 | currency:"$ ":0 }}</p>
-                            </div> 
+
                             <div class="col-lg-6 text-left">
                                 <label style="color:#101010;">Iva:</label>
                             </div>

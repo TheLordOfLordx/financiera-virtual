@@ -138,11 +138,11 @@ angular.module('shoplyApp')
             $scope.form.data.interestsPeerDays = ( angular.copy($scope.form.data.interests) / 30 );
             $scope.form.data.interestsDays = ($scope.form.data.interestsPeerDays) * n[0];
 
-            $scope.form.data.system_quotePerrDays = (angular.copy($scope.form.data.system_quote) / 30 ); 
-            $scope.form.data.system_quoteDays = ($scope.form.data.system_quotePerrDays) * (n[0]);
+            $scope.form.data.system_quotePeerDays = (angular.copy($scope.form.data.system_quote) / 30 ); 
+            $scope.form.data.system_quoteDays = ($scope.form.data.system_quotePeerDays) * (n[0]);
 
             $scope.form.data.ivaPeerdays = (angular.copy($scope.form.data.iva) / 30);
-            $scope.form.data.ivaDays = ($scope.form.data.ivaPeerdays) * (n[0]);
+            $scope.form.data.ivaDays = ($scope.form.data.finance_quote + $scope.form.data.system_quoteDays || $scope.form.data.system_quote ) * (19 / 100);
             
             $scope.totalize();      
 
@@ -157,7 +157,7 @@ angular.module('shoplyApp')
             $scope.form.data.system_quoteDays = ($scope.form.data.system_quotePeerDays) * (o[0]);
 
             $scope.form.data.ivaPeerdays = (angular.copy($scope.form.data.iva) / 30);
-            $scope.form.data.ivaDays = ($scope.form.data.ivaPeerdays) * (o[0]);
+            $scope.form.data.ivaDays = ($scope.form.data.finance_quote + $scope.form.data.system_quoteDays || $scope.form.data.system_quote ) * (19 / 100);
             
             $scope.totalize();      
         }
@@ -165,18 +165,35 @@ angular.module('shoplyApp')
 
     $scope.$watch('form.data.amount', function(o, n){
         if(n){
-              $scope.form.data.interests = (n[0] * (2.500 / 100));
+              $scope.form.data.interests = (n[0] * (2.499 / 100));
               $scope.form.data.system_quote = (o[0] * (5.99 / 100));
               $scope.form.data.iva = (($scope.form.data.system_quote + $scope.form.data.finance_quote) * (19 / 100));
+              
+              $scope.form.data.interestsPeerDays = ( angular.copy($scope.form.data.interests) / 30 );
+              $scope.form.data.interestsDays = ($scope.form.data.interestsPeerDays) * $scope.form.data.days[0];
+
+              $scope.form.data.system_quotePeerDays = (angular.copy($scope.form.data.system_quote) / 30 ); 
+              $scope.form.data.system_quoteDays = ($scope.form.data.system_quotePeerDays) * ($scope.form.data.days[0]);
+
+              $scope.form.data.ivaPeerdays = (angular.copy($scope.form.data.iva) / 30);
+              $scope.form.data.ivaDays = ($scope.form.data.finance_quote + $scope.form.data.system_quoteDays ||  $scope.form.data.system_quote  ) * (19 / 100);
               $scope.totalize();      
         }
 
         if(o){
-             $scope.form.data.interests = (o[0] * (2.500 / 100));
-             $scope.form.data.system_quote = (o[0] * (5.99 / 100));
-             $scope.form.data.iva = (($scope.form.data.system_quote + $scope.form.data.finance_quote) * (19 / 100));
+              $scope.form.data.interests = (o[0] * (2.499 / 100));
+              $scope.form.data.system_quote = (o[0] * (5.99 / 100));
+              $scope.form.data.iva = (($scope.form.data.system_quote + $scope.form.data.finance_quote) * (19 / 100));
+              
+              $scope.form.data.interestsPeerDays = ( angular.copy($scope.form.data.interests) / 30 );
+              $scope.form.data.interestsDays = ($scope.form.data.interestsPeerDays) * $scope.form.data.days[0];
 
-             $scope.totalize();      
+              $scope.form.data.system_quotePeerDays = (angular.copy($scope.form.data.system_quote) / 30 ); 
+              $scope.form.data.system_quoteDays = ($scope.form.data.system_quotePeerDays) * ($scope.form.data.days[0]);
+
+              $scope.form.data.ivaPeerdays = (angular.copy($scope.form.data.iva) / 30);
+              $scope.form.data.ivaDays = ($scope.form.data.finance_quote + $scope.form.data.system_quoteDays ||  $scope.form.data.system_quote  ) * (19 / 100);
+              $scope.totalize();       
         }
     });
   });

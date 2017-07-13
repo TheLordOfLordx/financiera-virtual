@@ -11,7 +11,6 @@
 angular
   .module('shoplyApp', [
     'ui.bootstrap',
-    'ngMask',
     'ngAnimate',
     'ngCookies',
     'ngResource',

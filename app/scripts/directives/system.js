@@ -3,6 +3,7 @@
 angular.module('shoplyApp').directive('pageTitle', pageTitle);
 angular.module('shoplyApp').directive('icheck', icheck);
 angular.module('shoplyApp').directive('disableRightClick', disableRightClick);
+angular.module('shoplyApp').directive('uiDate', uiDate);
 
 function pageTitle($rootScope, $timeout) {
     return {
@@ -67,3 +68,14 @@ function disableRightClick (){
     }  
 }
 
+function uiDate(){
+    return {
+      require: '?ngModel',
+      link: function($scope, element, attrs, controller) {
+          element.mask("99-99-9999",{completed: function() {
+              controller.$setViewValue(Date.parse(this.val(),"dd-MM-yyyy"));
+              $scope.$apply();
+          }});
+      }
+    }; 
+}

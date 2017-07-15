@@ -15,7 +15,7 @@ angular.module('shoplyApp')
     $scope.form.data.system_quote = 5000;
 
     $scope.load = function(){
-      api().credits().add( "/" + storage.get('uid') || $rootScope.user._id ).get().success(function(res){
+      api.credits().add( "/" + storage.get('uid') || $rootScope.user._id ).get().success(function(res){
         $scope.records = res || [];
       });
 

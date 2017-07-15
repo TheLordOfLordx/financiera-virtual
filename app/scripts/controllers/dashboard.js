@@ -15,26 +15,12 @@ angular.module('shoplyApp')
     $scope.form.data.system_quote = 5000;
 
     $scope.load = function(){
-      api().credits().get().success(function(res){
+      api().credits().add( "/" + storage.get('uid') || $rootScope.user._id ).get().success(function(res){
         $scope.records = res || [];
       });
 
       $scope.form.data.pay_day = $scope.pay_day($scope.form.data.days[0]);
     }
-
-  $scope.status = {
-    isopen: false
-  };
-
-  $scope.toggled = function(open) {
-    console.log('Dropdown is now: ', open);
-  };
-
-  $scope.toggleDropdown = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-    $scope.status.isopen = !$scope.status.isopen;
-  };
 
     $scope.new_credit = function(){
       window.modal = modal.show({templateUrl : 'views/credits/new_credit.html', size:'lg', scope: $scope, backdrop: 'static'}, function($scope){

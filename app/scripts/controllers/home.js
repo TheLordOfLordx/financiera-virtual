@@ -35,6 +35,9 @@ angular.module('shoplyApp')
                function(isConfirm){ 
 
                    if (isConfirm) {
+                    
+                      $scope.form.data._user = storage.get('uid') || $rootScope.user._id;
+
                       api.credits().post($scope.form).success(function(res){
                         if(res){
                            alert("guardado")

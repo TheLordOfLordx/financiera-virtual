@@ -40,12 +40,11 @@ angular
                 
                 if(window.localStorage.token){
                    $httpProvider.defaults.headers.common['x-daimont-auth'] =  window.localStorage.token ;
-                   $httpProvider.defaults.headers.common['x-daimont-user'] =  angular.fromJson(window.localStorage.user) ?  angular.fromJson(window.localStorage.user)._id : null  ; // common
+                   $httpProvider.defaults.headers.common['x-daimont-user'] =  window.localStorage.uid || null  ; // common
                  }
 
                  if(window.localStorage.access_token){
                     $httpProvider.defaults.headers.common['access-token'] =  window.localStorage.access_token;
-                    $httpProvider.defaults.headers.common['x-facebook-uid'] =  window.localStorage.uid;
                  }
                  
                 console.log(config, 'request')

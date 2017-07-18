@@ -8,7 +8,7 @@
  * Controller of the shoplyApp
  */
 angular.module('shoplyApp')
-  .controller('HomeCtrl', function ( $scope, $filter, Facebook, $timeout, storage, $rootScope, modal, api) {
+  .controller('HomeCtrl', function ( $scope, $filter, Facebook, $timeout, storage, $rootScope, modal, api, $state) {
   	$scope.current_date = new Date();
     $scope.form = {};
     $scope.form.data = {};
@@ -20,8 +20,6 @@ angular.module('shoplyApp')
 
         $scope.form.data.email = storage.get("rememberEmail");
       }
-      
-      $scope.form.data.pay_day = $scope.pay_day($scope.form.data.days[0]);
   	}
 
     $scope.new_credit = function(){
@@ -40,14 +38,14 @@ angular.module('shoplyApp')
 
                       api.credits().post($scope.form).success(function(res){
                         if(res){
-                           alert("guardado")
+                          sweetAlert.close();
+                          $state.go('dashboard');
                         } 
                       });
-
-                      $scope.$close();
+                      
                    }
 
-                });
+        });
     }
 
 

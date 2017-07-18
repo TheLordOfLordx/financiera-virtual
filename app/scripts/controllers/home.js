@@ -8,7 +8,7 @@
  * Controller of the shoplyApp
  */
 angular.module('shoplyApp')
-  .controller('HomeCtrl', function ( $scope, $filter, Facebook, $timeout, storage, $rootScope ) {
+  .controller('HomeCtrl', function ( $scope, $filter, Facebook, $timeout, storage, $rootScope, modal ) {
   	$scope.current_date = new Date();
     $scope.form = {};
     $scope.form.data = {};

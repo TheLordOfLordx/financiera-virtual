@@ -87,7 +87,7 @@
             <th>Monto</th>
             <th>Interes</th>
             <th>Gestión</th>
-            <th>Dcto. Pronto pago</th>
+            <th>Iva</th>
             <th>Total a Pagar</th>
             <th style="width: 36px;"></th>
             <th style="width: 36px;"></th>
@@ -95,14 +95,14 @@
         </thead>
         <tbody>
           <tr style="border-left: 10px solid #002223;" ng-repeat="record in records">
-            <td>1</td>
+            <td>record.$index</td>
             <td><span class="badge badge-default">PENDIENTE</span></td>
-            <td>06/07/2017</td>
-            <td>500,000</td>
-            <td>5000</td>
-            <td>3000</td>
-            <td>2500</td>
-            <td>580,000</td>
+            <td>{record.data.pay_day | moment: 'format': 'MMMM DD, YYYY' }}</td>
+            <td>{{record.data.amount[0] | currency:"$ ":0}}</td>
+            <td>{{record.data.interestsDays | currency:"$ ":0}}</td>
+            <td>{{record.data.system_quoteDays | currency:"$ ":0}}</td>
+            <td>{{record.data.system_quoteDays | currency:"$ ":0}}</td>
+            <td>{{record.data.ivaDays | currency:"$ ":0}}</td>
             <td><button class="btn btn-primary btn-sm"><i class="fa fa-credit-card"></i> Pagar</button></td>
             <td><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Quitar</button></td>
           </tr>

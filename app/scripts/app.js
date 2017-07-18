@@ -210,7 +210,7 @@ angular
           })
           .state('dashboard', {
                 url: '/dashboard',
-                access: { requiredAuthentication: true },
+                access: { requiredAuthentication: false },
                 templateUrl: 'views/dashboard/dashboard.html',
                 data: {
                   pageTitle: 'Administración'

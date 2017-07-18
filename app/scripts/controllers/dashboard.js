@@ -61,7 +61,7 @@ angular.module('shoplyApp')
                         
                         record.data.hidden = true;
 
-                        api.update(record._id).post(record).success(function(res){
+                        api.credits(record._id).put(record).success(function(res){
                           if(res){
                              sweetAlert.close();
                           } 

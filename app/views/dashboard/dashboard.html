@@ -96,7 +96,7 @@
         </thead>
         <tbody>
           <tr style="border-left: 10px solid #002223;" ng-repeat="record in records" ng-hide="record.data.hidden">
-            <td>{{record.$index}}</td>
+            <td>{{( $index + 1 )}}</td>
             <td><span class="badge badge-default">{{record.data.status || 'PENDIENTE'}}</span></td>
             <td>{{record.data.pay_day | moment: 'format': 'MMMM DD, YYYY' }}</td>
             <td>{{record.data.amount[0] | currency:"$ ":0}}</td>

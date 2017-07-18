@@ -95,16 +95,16 @@
         </thead>
         <tbody>
           <tr style="border-left: 10px solid #002223;" ng-repeat="record in records" ng-hide="record.data.hidden">
-            <td>{{(record.$index + 1)}}</td>
-            <td><span class="badge badge-default">PENDIENTE</span></td>
+            <td>{{((record.$index) + 1)}}</td>
+            <td><span class="badge badge-default">{{record.data.status || 'PENDIENTE'}}</span></td>
             <td>{{record.data.pay_day | moment: 'format': 'MMMM DD, YYYY' }}</td>
             <td>{{record.data.amount[0] | currency:"$ ":0}}</td>
             <td>{{record.data.interestsDays | currency:"$ ":0}}</td>
             <td>{{record.data.system_quoteDays | currency:"$ ":0}}</td>
             <td>{{record.data.system_quoteDays | currency:"$ ":0}}</td>
             <td>{{record.data.ivaDays | currency:"$ ":0}}</td>
-            <td><button class="btn btn-primary btn-sm"><i class="fa fa-credit-card"></i> Pagar</button></td>
-            <td><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Quitar</button></td>
+            <td><button class="btn btn-primary btn-sm" ng-click="pay_credit()" ><i class="fa fa-credit-card"></i> Pagar</button></td>
+            <td><button class="btn btn-danger btn-sm" ng-click="delete_credit()"><i class="fa fa-trash"></i> Quitar</button></td>
           </tr>
         </tbody>
       </table>       

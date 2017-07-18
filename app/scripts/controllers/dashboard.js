@@ -36,11 +36,9 @@ angular.module('shoplyApp')
                        if (isConfirm) {
                           api.credits().post($scope.form).success(function(res){
                             if(res){
-                               alert("guardado")
+                               sweetAlert.close();
                             } 
                           });
-
-                          $scope.$close();
                        }
 
                     })
@@ -48,7 +46,31 @@ angular.module('shoplyApp')
     }
 
     $scope.delete_credit = function(){
+      var record = this.record;
 
+      window.modal = modal.show({templateUrl : 'views/credits/new_credit.html', size:'lg', scope: $scope, backdrop: 'static'}, function($scope){
+           modal.confirm({
+                   closeOnConfirm : true,
+                   title: "Está Seguro?",
+                   text: "Confirma que desea eliminar este prestamo?",
+                   confirmButtonColor: "#008086",
+                   type: "success" },
+
+                   function(isConfirm){ 
+
+                       if (isConfirm) {
+                          
+                          record.data.hidden = true;
+
+                          api.update(record._id).post(record).success(function(res){
+                            if(res){
+                               sweetAlert.close();
+                            } 
+                          });
+                       }
+
+                    })
+      });
     }
 
     $scope.update_credit = function(){

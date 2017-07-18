@@ -46,31 +46,29 @@ angular.module('shoplyApp')
     }
 
     $scope.delete_credit = function(){
-      var record = this.record;
+         var record = this.record;
+         
+         modal.confirm({
+                 closeOnConfirm : true,
+                 title: "Está Seguro?",
+                 text: "Confirma que desea eliminar este prestamo?",
+                 confirmButtonColor: "#008086",
+                 type: "success" },
 
-      window.modal = modal.show({templateUrl : 'views/credits/new_credit.html', size:'lg', scope: $scope, backdrop: 'static'}, function($scope){
-           modal.confirm({
-                   closeOnConfirm : true,
-                   title: "Está Seguro?",
-                   text: "Confirma que desea eliminar este prestamo?",
-                   confirmButtonColor: "#008086",
-                   type: "success" },
+                 function(isConfirm){ 
 
-                   function(isConfirm){ 
+                     if (isConfirm) {
+                        
+                        record.data.hidden = true;
 
-                       if (isConfirm) {
-                          
-                          record.data.hidden = true;
+                        api.update(record._id).post(record).success(function(res){
+                          if(res){
+                             sweetAlert.close();
+                          } 
+                        });
+                     }
 
-                          api.update(record._id).post(record).success(function(res){
-                            if(res){
-                               sweetAlert.close();
-                            } 
-                          });
-                       }
-
-                    })
-      });
+          });
     }
 
     $scope.update_credit = function(){

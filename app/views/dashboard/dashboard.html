@@ -105,7 +105,7 @@
             <td>{{record.data.finance_quote | currency:"$ ":0}}</td>
             <td>{{record.data.ivaDays | currency:"$ ":0}}</td>
             <td>{{record.data.total_payment | currency:"$ ":0}}</td>
-            <td><button class="btn btn-primary btn-sm" ng-click="pay_credit()" ><i class="fa fa-credit-card"></i> Pagar</button></td>
+            <td><button ng-disabled="record.data.status == 'Paid'" class="btn btn-primary btn-sm" ng-click="pay_credit()" ><i class="fa fa-credit-card"></i> Pagar</button></td>
             <td><button class="btn btn-danger btn-sm" ng-click="delete_credit()"><i class="fa fa-trash"></i> Quitar</button></td>
           </tr>
         </tbody>

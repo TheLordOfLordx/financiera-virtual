@@ -72,6 +72,7 @@ angular
 
                     window.localStorage.clear();
                     delete rootScope.isLogged;
+                    delete rootScope.user;
                     
                     if(!window.location.hash.match("login")){
                          sweetAlert.swal({

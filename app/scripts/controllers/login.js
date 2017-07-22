@@ -90,7 +90,7 @@ angular.module('shoplyApp')
   	}
 
     $scope.logout = function(){
-      window.localstorage.clear();
+      window.localStorage.clear();
       $state.go('home');
     }
 

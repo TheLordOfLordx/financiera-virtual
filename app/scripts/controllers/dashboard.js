@@ -64,6 +64,7 @@ angular.module('shoplyApp')
                         api.credits(record._id).put(record).success(function(res){
                           if(res){
                              sweetAlert.close();
+                             $scope.record.splice( $scope.record.indexOf(this.record), 1);
                           } 
                         });
                      }

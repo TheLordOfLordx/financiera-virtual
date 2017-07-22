@@ -10,7 +10,7 @@
     </li>
     
       <li class="page-item" ng-repeat="pageNumber in pages track by tracker(pageNumber, $index)" ng-class="{ active : pagination.current == pageNumber, disabled : pageNumber == '...' }">
-          <a class="page-link" href="">{{ pageNumber }}</a>
+          <a class="page-link" href="" ng-click="setCurrent(pageNumber)">{{ pageNumber }}</a>
       </li>
     
     <li class="page-item" ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }">

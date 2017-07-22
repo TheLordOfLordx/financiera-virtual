@@ -112,8 +112,6 @@
               pagination-id="credits_entity"
               dir-paginate="record in records | orderBy:'-createdAt'                
               | itemsPerPage: 5 " 
-
-              ng-hide="record.data.hidden"
               >
             <td>{{( $index + 1 )}}</td>
             <td><span class="badge badge-default">{{record.data.status || 'PENDIENTE'}}</span></td>

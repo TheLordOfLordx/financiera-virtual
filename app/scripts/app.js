@@ -70,8 +70,7 @@ angular
 
                     case 401:
 
-                    storage.delete('token');
-                    storage.delete('user');
+                    window.localStorage.clear();
                     delete rootScope.isLogged;
                     
                     if(!window.location.hash.match("login")){
@@ -90,36 +89,21 @@ angular
                                 window.location = "#/login";
                                
                             });
-                    }else{
-                        return $q.reject(rejection);
-                        break;
+
+                         rootScope.$apply();
                     }
+                    else
+                       rootScope.$apply();
+                       return $q.reject(rejection);
+
+                      break;
 
                     default:
-                      return $q.reject(rejection);
-                      break;
-                 
-                    case 500:
-                          window.localStorage.clear();
-                          delete rootScope.isLogged;
-                          
-                          if(!window.location.hash.match("login")){
-                               sweetAlert.swal({
-                                      title: "La sesión ha expirado",
-                                      text: "Tiempo de sesión agotado, por favor ingrese nuevamente",
-                                      imageUrl:"images/expired.png"
-                                  }, function(){
+                    return $q.reject(rejection);
+                    break;
 
-                                       if(window.sweet)
-                                          window.sweet.hide();
-                                       if(window.modal)
-                                          window.modal.close();
-
-                                      window.location = "#/login";
-                                  });
-                          }
                  }
-
+                  
                 }
         };
     });

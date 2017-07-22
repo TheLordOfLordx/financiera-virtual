@@ -270,7 +270,7 @@
                                         <a  href="" ng-click="new_credit()" class="btn btn-success btn-block">Solicitar</a>                           
                                     </div>
                                 </div>
-                                <div class="row" ng-hide="$root.isLogged">
+                                <div class="row" ng-hide="$root.user || $root.isLogged">
                                     <div class="col-lg-6">
                                         <a  href="#/empezar" ui-sref="home.empezar({credit : form})" class="btn btn-primary btn-block btn-sm"></i>&nbsp;Registrarme</a>
                                         

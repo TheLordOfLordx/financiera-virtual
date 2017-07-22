@@ -30,7 +30,7 @@ angular
   ])
   .config(function ($stateProvider, $httpProvider, constants, $urlRouterProvider, FacebookProvider, paginationTemplateProvider) {
         FacebookProvider.init('448351572192242');
-        paginationTemplateProvider.setPath('path/to/dirPagination.tpl.html');
+        paginationTemplateProvider.setPath('views/system-utils/pagination.tpl.html');
         $httpProvider.interceptors.push(function($injector, $q, sweetAlert, storage) {
         var rootScope = $injector.get('$rootScope');
 

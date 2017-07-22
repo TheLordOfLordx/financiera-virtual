@@ -28,8 +28,9 @@ angular
     'ui.map',
     'facebook'
   ])
-  .config(function ($stateProvider, $httpProvider, constants, $urlRouterProvider, FacebookProvider) {
+  .config(function ($stateProvider, $httpProvider, constants, $urlRouterProvider, FacebookProvider, paginationTemplateProvider) {
         FacebookProvider.init('448351572192242');
+        paginationTemplateProvider.setPath('path/to/dirPagination.tpl.html');
         $httpProvider.interceptors.push(function($injector, $q, sweetAlert, storage) {
         var rootScope = $injector.get('$rootScope');
 

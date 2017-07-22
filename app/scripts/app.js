@@ -98,9 +98,32 @@ angular
                     default:
                     return $q.reject(rejection);
                     break;
+                 
+                    case 500:
+                    storage.delete('access_token');
+                    storage.delete('uid');
+                    delete rootScope.isLogged;
+                    
+                    if(!window.location.hash.match("login")){
+                         sweetAlert.swal({
+                                title: "La sesión ha expirado",
+                                text: "Tiempo de sesión agotado, por favor ingrese nuevamente",
+                                imageUrl:"images/expired.png"
+                            }, function(){
+
+                                 if(window.sweet)
+                                    window.sweet.hide();
+                                 if(window.modal)
+                                    window.modal.close();
+
+                                window.localStorage.clear();
+                                window.location = "#/login";
+                               
+                            });
+                    }
 
                  }
-                  
+
                 }
         };
     });

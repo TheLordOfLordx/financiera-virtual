@@ -223,7 +223,7 @@ angular
   }).run(["$rootScope", "constants", "storage", "$state","sounds", "api", "$window", function($rootScope, constants, storage, $state, sounds, api, $window){
         $rootScope.currency = constants.currency;
         $rootScope.base = constants.uploadFilesUrl;
-        $rootScope.user = storage.get('user');
+        $rootScope.user = angular.fromJson(storage.get('user'));
         $rootScope.state = $state;
         $rootScope.online = navigator.onLine;
 

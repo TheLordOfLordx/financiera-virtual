@@ -90,38 +90,34 @@ angular
                                 window.location = "#/login";
                                
                             });
+                    }else{
+                        return $q.reject(rejection);
+                        break;
                     }
-                    else
-                      return $q.reject(rejection);
-                      break;
 
                     default:
-                    return $q.reject(rejection);
-                    break;
+                      return $q.reject(rejection);
+                      break;
                  
                     case 500:
-                    storage.delete('access_token');
-                    storage.delete('uid');
-                    delete rootScope.isLogged;
-                    
-                    if(!window.location.hash.match("login")){
-                         sweetAlert.swal({
-                                title: "La sesión ha expirado",
-                                text: "Tiempo de sesión agotado, por favor ingrese nuevamente",
-                                imageUrl:"images/expired.png"
-                            }, function(){
+                          window.localStorage.clear();
+                          delete rootScope.isLogged;
+                          
+                          if(!window.location.hash.match("login")){
+                               sweetAlert.swal({
+                                      title: "La sesión ha expirado",
+                                      text: "Tiempo de sesión agotado, por favor ingrese nuevamente",
+                                      imageUrl:"images/expired.png"
+                                  }, function(){
 
-                                 if(window.sweet)
-                                    window.sweet.hide();
-                                 if(window.modal)
-                                    window.modal.close();
+                                       if(window.sweet)
+                                          window.sweet.hide();
+                                       if(window.modal)
+                                          window.modal.close();
 
-                                window.localStorage.clear();
-                                window.location = "#/login";
-                               
-                            });
-                    }
-
+                                      window.location = "#/login";
+                                  });
+                          }
                  }
 
                 }

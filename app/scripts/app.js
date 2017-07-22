@@ -46,6 +46,7 @@ angular
 
                  if(window.localStorage.access_token){
                     $httpProvider.defaults.headers.common['access-token'] =  window.localStorage.access_token;
+                    $httpProvider.defaults.headers.common['x-daimont-user'] =  window.localStorage.uid || null  ; // common
                  }
                  
                 console.log(config, 'request')

@@ -87,6 +87,10 @@ angular.module('shoplyApp')
 
     $scope.logout = function(){
       window.localStorage.clear();
+      
+      delete $rootScope.isLogged;
+      delete $rootScope.user;
+
       $state.go('home');
     }
 

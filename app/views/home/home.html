@@ -265,9 +265,9 @@
                                 <p class="label-strong-primary" style="color:green;!important">{{form.data.total_payment || 0 | currency:"$ ":0}} COP</p>
                             </div>
                         </div>
-                                <div class="row" ng-hide="!$root.isLogged" >
+                                <div class="row" ng-hide="!$root.isLogged || !$root.user" >
                                     <div class="col-lg-12">
-                                        <button ng-click="new_credit()" class="btn btn-success btn-block">Solicitar</button>                           
+                                        <a  href="" ng-click="new_credit()" class="btn btn-success btn-block">Solicitar</a>                           
                                     </div>
                                 </div>
                                 <div class="row" ng-hide="$root.isLogged">

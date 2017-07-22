@@ -110,11 +110,9 @@
         <tbody>
           <tr style="border-left: 10px solid #002223;" 
               pagination-id="credits_entity"
-              template-url="views/"
               dir-paginate="record in records | orderBy:'-createdAt'                
               | itemsPerPage: 5 " 
               ng-hide="record.data.hidden">
-
             <td>{{( $index + 1 )}}</td>
             <td><span class="badge badge-default">{{record.data.status || 'PENDIENTE'}}</span></td>
             <td>{{record.data.pay_day | moment: 'format': 'MMMM DD, YYYY' }}</td>
@@ -134,7 +132,7 @@
     <br /> 
     <br /> 
   <div> 
-  <dir-pagination-controls class="pull-right" pagination-id="OrdenesEntity"></dir-pagination-controls>
+  <dir-pagination-controls class="pull-right" pagination-id="credits_entity"></dir-pagination-controls>
     <ul class="pagination pagination-primary">
       <li class="page-item active">
           <a class="page-link" href="#">1</a>

@@ -47,7 +47,8 @@ angular.module('shoplyApp')
 
     $scope.delete_credit = function(){
          var record = this.record;
-         
+         var original = this.record;
+
          modal.confirm({
                  closeOnConfirm : true,
                  title: "Está Seguro?",
@@ -64,7 +65,7 @@ angular.module('shoplyApp')
                         api.credits(record._id).put(record).success(function(res){
                           if(res){
                              sweetAlert.close();
-                             $scope.records.splice( $scope.records.indexOf(this.record), 1);
+                             $scope.records.splice($scope.records.indexOf(original), 1);
                           } 
                         });
                      }

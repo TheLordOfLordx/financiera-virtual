@@ -226,6 +226,7 @@ angular
         $rootScope.currency = constants.currency;
         $rootScope.base = constants.uploadFilesUrl;
         $rootScope.user = angular.fromJson(storage.get('user'));
+        $rootScope.isLogged = storage.get('access_token') || storage.get('token')
         $rootScope.state = $state;
         $rootScope.online = navigator.onLine;
 

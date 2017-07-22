@@ -85,6 +85,11 @@ angular.module('shoplyApp')
       $scope.form.data.total_payment = ($scope.form.data.amount[0]) + ($scope.form.data.interests) + ($scope.form.data.system_quote || 0);
     }
 
+    $scope.logout = function(){
+      window.localstorage.clear();
+      $state.go('home');
+    }
+
     $scope.$watch('form.data.days', function(o, n){
         if(n){
             $scope.form.data.pay_day = $scope.pay_day(n[0]);      

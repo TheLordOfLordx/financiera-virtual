@@ -89,6 +89,11 @@ angular.module('shoplyApp')
         account.usuario().ingresar($scope.form.data).then(_success, _error); 
   	}
 
+    $scope.logout = function(){
+      window.localstorage.clear();
+      $state.go('home');
+    }
+
     $scope.remember = function(remember){
       if(remember && $scope.form.data.email){
         storage.save('rememberEmail', $scope.form.data.email);

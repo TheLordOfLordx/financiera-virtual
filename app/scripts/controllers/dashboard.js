@@ -13,6 +13,8 @@ angular.module('shoplyApp')
     $scope.form = {};
     $scope.form.data = {};
     $scope.form.data.system_quote = 5000;
+    $scope.items_tasks = [];
+
 
     $scope.load = function(){
       api.credits().get().success(function(res){
@@ -20,6 +22,14 @@ angular.module('shoplyApp')
       });
 
       $scope.form.data.pay_day = $scope.pay_day($scope.form.data.days[0]);
+    }
+
+    $scope.add = function(){
+      if(this.record.add){
+        $scope.items_tasks.push(this.record._id);
+      }else{
+        $scope.items_tasks.splice($scope.items_tasks.indexOf(this.record._id), 1);
+      }
     }
 
     $scope.new_credit = function(){

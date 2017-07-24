@@ -74,6 +74,31 @@ angular.module('shoplyApp')
     };
 
     $scope.facebook_login = function() {
+      if($state.current.name == 'home.continuar'){
+         modal.confirm({
+                 closeOnConfirm : true,
+                 title: "Está Seguro?",
+                 text: "Confirma que desea realizar este prestamo?",
+                 confirmButtonColor: "#008086",
+                 type: "success" },
+
+                 function(isConfirm){ 
+
+                     if (isConfirm) {
+                      
+                        $scope.form.data._user = storage.get('uid') || $rootScope.user._id;
+
+                        api.credits().post($scope.form).success(function(res){
+                          if(res){
+                            sweetAlert.close();
+                            $state.go('dashboard');
+                          } 
+                        });
+                        
+                     }
+          });
+      }
+
       Facebook.login(function(response) {
         if(response.status == 'connected'){
           $scope.me(function(data){

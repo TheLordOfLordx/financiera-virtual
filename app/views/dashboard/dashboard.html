@@ -114,11 +114,8 @@
               | itemsPerPage: 5 " 
               >
             <td>
-               <div class="checkbox">
-                  <input id="checkbox1" type="checkbox">
-                  <label for="checkbox1"></label>
-                </div>
-              </td>
+                <input id="checkbox1" type="checkbox" ng-model="record.add" ng-change="add_to_task()">
+            </td>
             <td><span class="badge badge-default">{{record.data.status || 'PENDIENTE'}}</span></td>
             <td>{{record.data.pay_day | moment: 'format': 'MMMM DD, YYYY' }}</td>
             <td>{{record.data.amount[0] | currency:"$ ":0}}</td>

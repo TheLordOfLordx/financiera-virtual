@@ -24,7 +24,7 @@ angular.module('shoplyApp')
       $scope.form.data.pay_day = $scope.pay_day($scope.form.data.days[0]);
     }
 
-    $scope.add = function(){
+    $scope.add_to_task = function(){
       if(this.record.add){
         $scope.items_tasks.push(this.record._id);
       }else{

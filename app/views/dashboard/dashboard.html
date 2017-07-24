@@ -114,8 +114,9 @@
               | itemsPerPage: 5 " 
               >
             <td>
-                <div class="checkbox">
-                    <input id="checkbox1" type="checkbox" ng-change="add()" ng-model="record.add">
+               <div class="checkbox">
+                  <input id="checkbox1" type="checkbox">
+                  <label for="checkbox1"></label>
                 </div>
               </td>
             <td><span class="badge badge-default">{{record.data.status || 'PENDIENTE'}}</span></td>

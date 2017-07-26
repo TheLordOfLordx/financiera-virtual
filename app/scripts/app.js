@@ -218,6 +218,17 @@ angular
                   pageTitle: 'Cambiar clave'
                 }
           })
+          .state('detail', {
+                url: '/detail',
+                access: { requiredAuthentication: true },
+                templateUrl: 'views/credits/credit_detail.html',
+                params: {
+                  credit: null
+                },
+                data: {
+                  pageTitle: 'Cambiar clave'
+                }
+          })
           .state('dashboard', {
                 url: '/dashboard',
                 access: { requiredAuthentication: true },

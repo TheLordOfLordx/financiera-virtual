@@ -53,7 +53,11 @@ angular
                 
                 if(config.method == 'POST'){
                     config.data.metadata = config.data.metadata || {}
-                    config.data.metadata._author = window.localStorage.uid || null; 
+                    config.data.metadata._author = window.localStorage.uid || null;
+                    
+                    if(window.localStorage.access_token){
+                        config.data.metadata._provider = 'FACEBOOK'; 
+                    } 
                   }
                 /*for (var x in config.data) {
                     if (typeof config.data[x] === 'boolean') {

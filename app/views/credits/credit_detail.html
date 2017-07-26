@@ -65,11 +65,11 @@
     <div class="panel-heading">
         <div class="row">
           <div class="col col-xs-6">
-            <h3 class="panel-title" style="margin-bottom: 10px;!important;"><i class="fa fa-credit-card text-primary"></i> Mis Creditos</h3>
-            <p class="text-muted">Creditos realizados recientemente.</p>
+            <h3 class="panel-title" style="margin-bottom: 10px;!important;"><i class="fa fa-credit-card text-primary"></i>Detalle de Credito</h3>
+            <p class="text-muted">Información del credito actual.</p>
           </div>
           <div class="col col-xs-6 text-right">
-            <button type="button" ng-click="new_credit()" class="btn btn-primary btn-create"><i class="now-ui-icons objects_diamond"></i> Nuevo Credito</button>
+            <button type="button" ng-click="new_credit()" class="btn btn-primary btn-create"><i class="now-ui-icons objects_diamond"></i>Aprobar</button>
           </div>
         </div>
     </div>
@@ -77,65 +77,9 @@
     <br>
     <div class="panel-body">
       <div class="row">
-          <div class="col-lg-6 form-group" ng-show="items_tasks.length > 0">
-              <button class="btn btn-primary"><i class="now-ui-icons ui-2_like" style=""></i>&nbsp;Aprobar</button>
-              <button class="btn btn-warning"><i class="now-ui-icons ui-2_like" style="-webkit-transform: rotate(180deg);
-    transform: rotate(180deg);"></i>&nbsp;Rechazar</button>
-          </div>
-          <div class="col-lg-6 form-group">
-            <div class="pull-right">
-                <button class="btn btn-default btn-icon  btn-icon-mini btn-round">
-                  <i class="fa fa-filter"></i>
-                </button>
-            </div>            
-          </div>
+
       </div>
-    <div class="table-responsive">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Estado del Credito</th>
-            <th>Fecha de pago</th>
-            <th>Monto</th>
-            <th>Interes</th>
-            <th>C. Gestión</th>
-            <th>C. Financiación</th>
-            <th>Iva</th>
-            <th>Total</th>
-            <th style="width: 36px;"></th>
-            <th style="width: 36px;"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-click="detail()" style="border-left: 10px solid #002223;" 
-              pagination-id="credits_entity"
-              dir-paginate="record in records | orderBy:'-createdAt'                
-              | itemsPerPage: 5 " 
-              >
-            <td>
-                <input id="checkbox1" type="checkbox" ng-model="record.add" ng-change="add_to_task()">
-            </td>
-            <td><span class="badge badge-default">{{record.data.status || 'PENDIENTE'}}</span></td>
-            <td>{{record.data.pay_day | moment: 'format': 'MMMM DD, YYYY' }}</td>
-            <td>{{record.data.amount[0] | currency:"$ ":0}}</td>
-            <td>{{record.data.interestsDays | currency:"$ ":0}}</td>
-            <td>{{record.data.system_quoteDays | currency:"$ ":0}}</td>
-            <td>{{record.data.finance_quote | currency:"$ ":0}}</td>
-            <td>{{record.data.ivaDays | currency:"$ ":0}}</td>
-            <td>{{record.data.total_payment | currency:"$ ":0}}</td>
-            <td ng-click="$event.stopPropagation()"><button ng-disabled="record.data.status == 'Paid'" class="btn btn-primary btn-sm" ng-click="pay_credit()" ><i class="fa fa-credit-card"></i> Pagar</button></td>
-            <td ng-click="$event.stopPropagation()"><button class="btn btn-danger btn-sm" ng-click="delete_credit()"><i class="fa fa-trash"></i> Quitar</button></td>
-          </tr>
-        </tbody>
-      </table>       
     </div>
-    </div>
-    <br /> 
-    <br /> 
-  <div class="pull-left"> 
-    <dir-pagination-controls class="pull-right" pagination-id="credits_entity"></dir-pagination-controls>
-  </div> 
 </div>
 <br />
 <br />

@@ -115,7 +115,7 @@
               dir-paginate="record in records | orderBy:'-createdAt'                
               | itemsPerPage: 5 " 
               >
-            <td>
+            <td ng-click="$event.stopPropagation()">
                 <input id="checkbox1" type="checkbox" ng-model="record.add" ng-change="add_to_task()">
             </td>
             <td><span class="badge badge-default">{{record.data.status || 'PENDIENTE'}}</span></td>

@@ -175,6 +175,9 @@ angular
           .state('login', {
               url: '/login',
               templateUrl: 'views/login/login.html',
+              params : {
+                mailed : null
+              },
               data: {
                 pageTitle: 'Entrar'
               } 
@@ -233,21 +236,21 @@ angular
                 }
           })
           .state('recover', {
-                url: '/recuperar',
+                url: '/recover',
                 templateUrl: 'views/recover/recover.html',
                 data: {
                   pageTitle: 'Recuperar clave'
                 }
           })
           .state('reset', {
-                url: '/reset/:token',
+                url: '/account/reset/:token',
                 templateUrl: 'views/reset/reset.html',
                 data: {
                   pageTitle: 'Cambiar clave'
                 }
           })
           .state('dashboard.change-password', {
-                url: '/change-password',
+                url: '/account/change-password',
                 access: { requiredAuthentication: false },
                 templateUrl: 'views/reset/change_password.html',
                 data: {

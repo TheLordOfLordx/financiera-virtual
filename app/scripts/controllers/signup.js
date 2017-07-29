@@ -8,12 +8,12 @@
  * Controller of the shoplyApp
  */
 angular.module('shoplyApp')
-  .controller('signupCtrl', function ($scope, account, $state, sweetAlert, storage, Facebook, $rootScope) {
+  .controller('signupCtrl', function ($scope, account, $state, sweetAlert, storage, Facebook, $rootScope, modal) {
   	
     $scope.register = function(){
       var _success = function(data){
         if(data){
-           toastr.success('Gracias por Registrarte :)');
+           toastr.warning('Gracias por Registrarte');
            delete $scope.formRegister;
            $state.go('login');
         }
@@ -37,6 +37,48 @@ angular.module('shoplyApp')
             modal.incompleteForm();
       }
   	};
+
+    $scope.register_and_request = function(){
+      if($scope.signup.$invalid){
+            modal.incompleteForm();
+            return;
+      }
+
+      var _success = function(data){
+        if(data){
+           delete $scope.formRegister;
+           $state.go('login', { mailed: true});
+        }
+      };
+
+      var _error = function(data){
+        if(data == 409){
+            sweetAlert.swal("No se pudo registrar.", "Este email ya esta registrado.", "error");
+        }
+      };
+
+     modal.confirm({
+             closeOnConfirm : true,
+             title: "Está Seguro?",
+             text: "Confirma que desea realizar este credito?",
+             confirmButtonColor: "#008086",
+             type: "success" },
+             function(isConfirm){ 
+                 if (isConfirm) {
+                      if($scope.signup.$valid){
+                        if($scope.formRegister.data.password != $scope.formRegister.data.confirm_password){
+                            sweetAlert.swal("Formulario Incompleto.", "las contraseñas no coinciden.", "error");
+                            return;
+                        }
+
+                        account.usuario().register(angular.extend($scope.formRegister.data, {username : $scope.formRegister.data.email, credit : $scope.$parent.$parent.form})).then(_success, _error);
+                      
+                      }else if($scope.signup.$invalid){
+                            modal.incompleteForm();
+                      } 
+                 }
+              })
+    }
 
     $scope.load = function(){
       if(storage.get("rememberEmail")){

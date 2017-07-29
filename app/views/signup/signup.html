@@ -114,7 +114,7 @@
                         </div>
                         <div class="footer text-center">
                             <a  href="" ng-disabled="signup.$invalid" ng-click="register()" class="btn btn-primary btn-round btn-lg btn-block">Registrarme</a>
-                            <a href="" ng-click="facebook_login()" class="btn btn-round btn-lg btn-block btn-facebook-auth"><i class="fa fa-facebook" ></i>&nbsp;{{user ? user.name : 'Entrar con Facebook'}}</a>
+                            <a href="" ng-click="facebook_login()" class="btn btn-round btn-lg btn-block btn-facebook-auth"><i class="fa fa-facebook" ></i>&nbsp;{{user ? user.name : 'Registrarme con Facebook'}}</a>
                         </div>
                         <div class="pull-left">
                             <h6>
@@ -123,7 +123,7 @@
                         </div>
                         <div class="pull-right">
                             <h6>
-                                <a href="" class="link-darkness">Recuperar Contraseña</a>
+                                <a href="#/recover" ui-sref="recover()" class="link-darkness">Recuperar Contraseña</a>
                             </h6>
                         </div>
                     </form>

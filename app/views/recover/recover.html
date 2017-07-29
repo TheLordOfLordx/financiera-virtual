@@ -1,4 +1,4 @@
-<div class="login-page" ng-controller="HomeCtrl" ng-init="getLoginStatus()">
+<div class="login-page" ng-controller="RecoverCtrl">
     <!-- Navbar -->
     <nav class="navbar navbar-toggleable-md bg-primary fixed-top navbar-transparent hidden-md-down" color-on-scroll="500">
         <div class="container">
@@ -76,22 +76,24 @@
     <div class="page-header" filter-color="orange">
         <div class="page-header-image"></div>
         <div class="container">
-            <div class="col-md-4 content-center hidden-md-down">
-                <div class="recover-header">
-                        <h3>Cambiar Contraseña</h3>
-                        <p style="color:white;">Podemos ayudarte a cambiar tu contraseña mediante tu dirección de correo electrónico de DAIMONT enlazada a la cuenta.
-                        </p>                
-                </div>
-                <hr />  
+            <div class="col-md-4 content-center hidden-md-down" style="top: 40%;">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card card-login card-padding">
-                            <form class="recover">
+                        <h5>Recuperar Contraseña</h5>
+                        <div class="card card-recover card-padding">
+                            <div ng-show="mailed" class="animated bounceInDown row alert alert-primary" role="alert" style="font-size:12px;position:relative;top:-12px;">
+                                <div class="container">
+                                    Hemos enviado un enlace de recuperación a tu correo.<span style="font-weight: bold;
+    text-decoration: underline;"> Expira en 1 Hora</span>
+                                </div>
+                            </div>                        
+                            <form class="recover" name="recover_form">
                                 <div class="form-group">
                                     <label class="pull-left" style="color:black;">Tu correo electronico</label>
-                                    <input type="email" ng-model="form.data.email"  class="form-control" placeholder="Escriba el correo electronico">
+                                    <input type="email" required ng-model="form.data.email"  class="form-control" placeholder="Escriba el correo electronico">
                                 </div>
-                                <button class="btn btn-primary btn-sm pull-left">Recuperar</button> 
+                                <button class="btn btn-primary pull-left" ng-click="recover()">Recuperar</button>
+                                <a href="" ng-click="resend()" class="text-primary pull-right">Reenviar correo.</a> 
                             </form>
                         </div>
                     </div>
@@ -101,7 +103,7 @@
                 </div>
             </div>
         </div>
-        <footer class="footer hidden-md-down">
+        <footer class="footer hidden-md-down footer-opacity">
             <div class="container">
                 <nav>
                     <ul>

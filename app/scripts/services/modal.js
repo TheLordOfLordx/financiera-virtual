@@ -82,6 +82,7 @@ angular.module('shoplyApp')
         		   var options = {
                         confirmButtonText: "Ok",
                         showCancelButton: false,
+             			confirmButtonColor: "#008086",
                         title: "Formulario no completado",
                         text: "Los campos con (*) son obligatorios",
                         type: "error"

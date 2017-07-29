@@ -1,4 +1,4 @@
-<div class="login-page" ng-controller="LoginCtrl">
+<div class="login-page" ng-controller="LoginCtrl" ng-init="load()">
     <!-- Navbar -->
     <nav class="navbar navbar-toggleable-md bg-primary fixed-top navbar-transparent " color-on-scroll="500">
         <div class="container">
@@ -81,6 +81,11 @@
         <div class="container">
             <div class="col-md-4 content-center">
                 <div class="card card-login card-padding">
+                <div class="row alert alert-primary" role="alert" ng-show="mailed" style="font-size:12px;position:relative;top:-12px;">
+                    <div class="container">
+                        Hemos Enviado un enlace de activación a tu correo.
+                    </div>
+                </div>
                     <form name="loginForm" class="form" method="" action="">
                         <div class="header header-primary text-center">
                             <div class="logo-container">
@@ -111,12 +116,12 @@
                         </div>
                         <div class="pull-left">
                             <h6>
-                                <a href="" class="link-darkness">Registrarse</a>
+                                <a href="#/singup" class="link-darkness" ui-sref="signup()" >Registrarse</a>
                             </h6>
                         </div>
                         <div class="pull-right">
                             <h6>
-                                <a href="" class="link-darkness">Recuperar Contraseña</a>
+                                <a href="#/recover" class="link-darkness" ui-sref="recover()" >Recuperar Contraseña</a>
                             </h6>
                         </div>
                     </form>

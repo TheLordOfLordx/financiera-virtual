@@ -8,8 +8,10 @@
  * Controller of the shoplyApp
  */
 angular.module('shoplyApp')
-  .controller('LoginCtrl', function ($scope, sweetAlert, constants, $state, storage, account, $rootScope, Facebook) {
+  .controller('LoginCtrl', function ($scope, sweetAlert, constants, $state, storage, account, $rootScope, Facebook, $stateParams) {
   	$scope.load = function(){
+      $scope.mailed = $stateParams.mailed || null;
+      
       if(storage.get("rememberEmail")){
         $scope.fromStore = true;
         $scope.form = {};

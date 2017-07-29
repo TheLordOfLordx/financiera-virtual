@@ -60,45 +60,6 @@ angular.module('shoplyApp')
         }
       }, { scope:'email' } );
     };
-
-    $scope.facebook_login_request = function() {
-      Facebook.login(function(response) {
-        if(response.status == 'connected'){
-          var fb_token = response.authResponse.accessToken;
-          storage.save('access_token', fb_token.toString());
-
-          $scope.me(function(data){
-            $rootScope.user  = data;
-            $rootScope.isLogged = true;
-            storage.save('uid', data.id.toString());
-            storage.save('user', data);
-             modal.confirm({
-                     closeOnConfirm : true,
-                     title: "Está Seguro?",
-                     text: "Confirma que desea realizar este prestamo?",
-                     confirmButtonColor: "#008086",
-                     type: "success" },
-
-                     function(isConfirm){ 
-
-                         if (isConfirm) {
-                          
-                            $scope.form.data._user = storage.get('uid') || $rootScope.user._id;
-
-                            api.credits().post($scope.form).success(function(res){
-                              if(res){
-                                alert("saved")
-                              } 
-                            });
-                            
-                         }
-
-              });
-          })          
-        }
-      }, { scope:'email' } );
-    };
-
   	$scope.login = function(){
   		if($scope.loginForm.$invalid){
             modal.incompleteForm();

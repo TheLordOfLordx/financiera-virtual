@@ -80,6 +80,41 @@ angular.module('shoplyApp')
               })
     }
 
+  $scope.facebook_login_request = function() {
+     modal.confirm({
+             closeOnConfirm : true,
+             title: "Está Seguro?",
+             text: "Confirma que desea realizar este prestamo?",
+             confirmButtonColor: "#008086",
+             type: "success" },
+
+             function(isConfirm){ 
+                 if (isConfirm) {
+                    Facebook.login(function(response) {
+                      if(response.status == 'connected'){
+                        var fb_token = response.authResponse.accessToken;
+                        storage.save('access_token', fb_token.toString());
+
+                        $scope.me(function(data){
+                          $rootScope.user  = data;
+                          $rootScope.isLogged = true;
+                          storage.save('uid', data.id.toString());
+                          storage.save('user', data);
+                          
+                          $scope.form.data._user = storage.get('uid') || $rootScope.user._id;
+                          api.credits().post($scope.form).success(function(res){
+                            if(res){
+                              alert("saved")
+                            } 
+                          });
+                        })          
+                      }
+                    }, { scope:'email' } );                  
+                 }
+      });
+
+    };    
+
     $scope.load = function(){
       if(storage.get("rememberEmail")){
         $scope.fromStore = true;

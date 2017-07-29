@@ -189,25 +189,25 @@ angular
           })
           .state('profile', {
                 url: '/profile',
-                access: { requiredAuthentication: true },
+                access: { requiredAuthentication: false },
                 templateUrl: 'views/profile/profile.html',
                 controller:'profileCtrl',
                 data: {
                   pageTitle: 'Perfil'
                 }
           })
-          .state('profile.basic_info', {
-                url: '/profile/basic/',
-                access: { requiredAuthentication: true },
+          .state('profile.basic', {
+                url: '/update/basic',
+                access: { requiredAuthentication: false },
                 templateUrl: 'views/profile/basic_info.html',
                 controller:'profileCtrl',
                 data: {
                   pageTitle: 'Información Basica'
                 }
           })
-          .state('profile.location_info', {
-                url: '/profile/location/',
-                access: { requiredAuthentication: true },
+          .state('profile.location', {
+                url: '/update/location',
+                access: { requiredAuthentication: false },
                 templateUrl: 'views/profile/location_info.html',
                 controller:'profileCtrl',
                 data: {
@@ -215,12 +215,21 @@ angular
                 }
           })
           .state('profile.finance', {
-                url: '/profile/finance/',
-                access: { requiredAuthentication: true },
+                url: '/update/finance',
+                access: { requiredAuthentication: false },
                 templateUrl: 'views/profile/finance_info.html',
-                controller:'Información Financiera',
+                controller:'profileCtrl',
                 data: {
-                  pageTitle: 'Perfil'
+                  pageTitle: 'Información Financiera'
+                }
+          })
+          .state('profile.bank', {
+                url: '/update/bank',
+                access: { requiredAuthentication: false },
+                templateUrl: 'views/profile/bank_info.html',
+                controller:'profileCtrl',
+                data: {
+                  pageTitle: 'Información Bancaria'
                 }
           })
           .state('recover', {

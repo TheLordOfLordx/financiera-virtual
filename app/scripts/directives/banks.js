@@ -29,8 +29,8 @@ angular.module('shoplyApp')
           render: {
                 option: function(item, escape) {
                     if(item.img){
-                      return '<div><img style="border:2px solid #efefef;width:50px;height:50px;margin-right:5px;" src="'+item.img+'" />' +
-                           '<span>'+escape(item.name)+'</span></div>'
+                      return '<div><img class="bank-dropdown-items" src="'+item.img+'" />' +
+                           '<span class="bank-dropdown-value">'+escape(item.name)+'</span></div>'
                     }
               }
           },

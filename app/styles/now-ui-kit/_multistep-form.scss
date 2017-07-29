@@ -66,7 +66,7 @@
 /*progressbar*/
 #progressbar {
     padding: 0px;
-    margin-bottom: 70px;
+    margin-bottom: 30px;
     overflow: hidden;
     counter-reset: step;
 }
@@ -79,6 +79,7 @@
     width: 25%;
     float: left;
     position: relative;
+    letter-spacing: 1px;
 }
 
 #progressbar li:before {
@@ -91,7 +92,7 @@
 	color: #333;
 	background: white;
 	border-radius: 3px;
-	margin: 0 auto 5px auto;
+	margin: 0 auto 10px auto;
 }
 /*progressbar connectors*/
 #progressbar li:after {

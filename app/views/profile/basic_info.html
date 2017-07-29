@@ -3,28 +3,31 @@
 
 <div class="row">
     <div class="col-lg-6">
-        <input type="text" class="form-control" name="email" placeholder="Nombres" />
+        <input type="text" ng-model="form.data.nombres" class="form-control" name="nombres" placeholder="Nombres" />
     </div>
     <div class="col-lg-6">
-        <input type="text" class="form-control" name="email" placeholder="Apellidos" />
+        <input type="text" ng-model="form.data.apellidos" class="form-control" name="apellidos" placeholder="Apellidos" />
     </div>
 </div>
 <div class="row">
     <div class="col-lg-6">
-        <input type="text" class="form-control" name="email" placeholder="Cedula" />
+        <input type="text" ng-model="form.data.cedula" class="form-control" name="cedula" placeholder="Cedula" />
     </div>
     <div class="col-lg-6">
-        <input type="text" class="form-control" name="email" placeholder="Fecha de Expedición" />
+        <input type="text" class="form-control" name="fecha_nacimiento" placeholder="dd-mm-aaaa" ui-date ng-model="form.data.fecha_nacimiento">
     </div>
 </div>
 <div class="row">
     <div class="col-lg-6">
-        <input type="text" class="form-control" name="email" placeholder="Fecha de Nacimiento" />
+        <input type="text" ng-model="form.data.fecha_expedicion" name="fecha_expedición" class="form-control" placeholder="dd-mm-aaaa" ui-date ng-model="form.data.fecha_expedicion">
     </div>
     <div class="col-lg-6">
-        <input type="text" class="form-control" name="email" placeholder="Sexo" />
+        <div class="form-group">
+            <selectize required config="{create:false, maxItems:1, valueField: 'value', labelField: 'text', placeholder:'Sexo'}" options='[{value:"Masculino", text:"Masculino"}, {value:"Femenino", text:"Femenino"}]' ng-model="form.data.sexo"></selectize>        
+        </div>
     </div>
 </div>
-<a ui-shref=".profile.location_info()" href="#/location"  class="next action-button">Continuar</a>
-<input type="button" name="previous" class="previous action-button" value="Previous" />
+<a href="" ng-click="go_back()"  class="btn btn-primary bold">Anterior</a>
+<a ui-sref="profile.location" href="#/update/location"  class="btn btn-primary bold">Continuar</a>
+
 

@@ -196,6 +196,33 @@ angular
                   pageTitle: 'Perfil'
                 }
           })
+          .state('profile.basic_info', {
+                url: '/profile/basic/',
+                access: { requiredAuthentication: true },
+                templateUrl: 'views/profile/basic_info.html',
+                controller:'profileCtrl',
+                data: {
+                  pageTitle: 'Información Basica'
+                }
+          })
+          .state('profile.location_info', {
+                url: '/profile/location/',
+                access: { requiredAuthentication: true },
+                templateUrl: 'views/profile/location_info.html',
+                controller:'profileCtrl',
+                data: {
+                  pageTitle: 'Información residencial'
+                }
+          })
+          .state('profile.finance', {
+                url: '/profile/finance/',
+                access: { requiredAuthentication: true },
+                templateUrl: 'views/profile/finance_info.html',
+                controller:'Información Financiera',
+                data: {
+                  pageTitle: 'Perfil'
+                }
+          })
           .state('recover', {
                 url: '/recuperar',
                 templateUrl: 'views/recover/recover.html',

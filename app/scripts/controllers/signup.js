@@ -80,38 +80,6 @@ angular.module('shoplyApp')
               })
     }
 
-  $scope.facebook_login_request = function() {
-     modal.confirm({
-             closeOnConfirm : true,
-             title: "Está Seguro?",
-             text: "Confirma que desea realizar este prestamo?",
-             confirmButtonColor: "#008086",
-             type: "success" },
-
-             function(isConfirm){ 
-                 if (isConfirm) {
-                    Facebook.login(function(response) {
-                      if(response.status == 'connected'){
-                          var fb_token = response.authResponse.accessToken;
-                          storage.save('access_token', fb_token.toString());
-                          storage.save('uid', response.authResponse.userID.toString());
-                          
-                          $scope.form.data._user = storage.get('uid') || $rootScope.user._id;
-                          api.credits().post($scope.form).success(function(res){
-                            if(res){
-                              /*storage.save('user', data);
-                              $rootScope.user  = data;
-                              $rootScope.isLogged = true;*/
-                              alert("saved")
-                            } 
-                          });
-                      }
-                    }, { scope:'email' } );                  
-                 }
-      });
-
-    };    
-
     $scope.load = function(){
       if(storage.get("rememberEmail")){
         $scope.fromStore = true;
@@ -173,6 +141,7 @@ angular.module('shoplyApp')
                new_user.last_name = data.last_name;
                new_user.data.facebook_id = data.id;
                new_user.email = data.email;
+               new_user.data.credit = $scope.$parent$parent.form;
 
               account.usuario().register(new_user).then(_success, _error);
             });          

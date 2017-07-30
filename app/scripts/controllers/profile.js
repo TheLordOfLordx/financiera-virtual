@@ -11,6 +11,13 @@ angular.module('shoplyApp')
             });            
         }
 
+        if($rootScope.user){
+            $scope.form = {};
+            $scope.form.data = {};
+            $scope.form.data.name = $rootScope.user.name;
+            $scope.form.data.last_name = $rootScope.user.last_name;
+        }
+
         $state.go('profile.basic');
     }
 

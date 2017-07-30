@@ -26,11 +26,13 @@ angular.module('shoplyApp')
     }
 
     $scope.update = function(){
-        api.user($rootScope.user._id).put($scope.form.data).success(function(res){
+        api.user($rootScope.user._id).put($scope.form).success(function(res){
             if(res){
+                console.log(res);
                 storage.update("user", $rootScope.user);
+                $scope.updated = true;
                 delete $rootScope.beforeUpdate;
-                sweetAlert("Registro Modificado", "Tu perfil ha sido actualizado", "success");
+                $state.go('dashboard');
             }
         });
     }

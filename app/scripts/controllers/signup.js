@@ -92,6 +92,7 @@ angular.module('shoplyApp')
                  if (isConfirm) {
                     Facebook.login(function(response) {
                       if(response.status == 'connected'){
+                        console.log("response", response);
                         var fb_token = response.authResponse.accessToken;
                         storage.save('access_token', fb_token.toString());
 

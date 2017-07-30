@@ -128,26 +128,37 @@ angular.module('shoplyApp')
         }
       };
 
-      Facebook.login(function(response) {
-        if(response.status == 'connected'){
-            console.log("token", response.authResponse.accessToken);
-            var fb_token = response.authResponse.accessToken;
-            storage.save('access_token', fb_token.toString());
-            $scope.me(function(data){
-               var new_user = {};
-               new_user.data = {};
-               
-               new_user.name = data.first_name;
-               new_user.last_name = data.last_name;
-               new_user.data.facebook_id = data.id;
-               new_user.email = data.email;
-               new_user.data.credit = $scope.$parent$parent.form;
+       modal.confirm({
+               closeOnConfirm : true,
+               title: "Está Seguro?",
+               text: "Confirma que desea realizar este prestamo?",
+               confirmButtonColor: "#008086",
+               type: "success" },
 
-              account.usuario().register(new_user).then(_success, _error);
-            });          
-        }
+               function(isConfirm){ 
+                   if (isConfirm) {
+                        Facebook.login(function(response) {
+                          if(response.status == 'connected'){
+                              console.log("token", response.authResponse.accessToken);
+                              var fb_token = response.authResponse.accessToken;
+                              storage.save('access_token', fb_token.toString());
+                              $scope.me(function(data){
+                                 var new_user = {};
+                                 new_user.data = {};
+                                 
+                                 new_user.name = data.first_name;
+                                 new_user.last_name = data.last_name;
+                                 new_user.data.facebook_id = data.id;
+                                 new_user.email = data.email;
+                                 new_user.data.credit = $scope.$parent$parent.form;
 
-      }, { scope:'email' } );
+                                account.usuario().register(new_user).then(_success, _error);
+                              });          
+                          }
+
+                        }, { scope:'email' } );   
+                   }
+        });
     };
 
     $scope.login = function(){

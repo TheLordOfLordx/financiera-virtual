@@ -32,6 +32,15 @@ angular.module('shoplyApp')
                 console.log(res);
                 storage.update("user", $rootScope.user);
                 $scope.updated = true;
+                $scope.count = 5;
+
+                window.setTimeout(function(){
+                        if(--$scope.count == 0){
+                            $state.go('dashboard')
+                            return;
+                        }
+                }, 1000);
+
                 delete $rootScope.beforeUpdate;
             }
         });

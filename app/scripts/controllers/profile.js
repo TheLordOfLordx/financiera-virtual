@@ -21,6 +21,22 @@ angular.module('shoplyApp')
         $state.go('profile.basic');
     }
 
+    $scope.counter = 5;
+    
+    $scope.onTimeout = function(){
+    
+    if($scope.counter == 0){
+            $scope.stop()
+        return;
+    }
+        $scope.counter--;
+        mytimeout = $timeout($scope.onTimeout,1000);
+    }
+        
+    $scope.stop = function(){
+        $timeout.cancel(mytimeout);
+    }
+
     $scope.go_back = function(){
         window.history.back();
     }
@@ -32,17 +48,7 @@ angular.module('shoplyApp')
                 console.log(res);
                 storage.update("user", $rootScope.user);
                 $scope.updated = true;
-                $scope.count = 5;
-
-                window.setTimeout(function(){
-                    $scope.count ++;
-
-                    if(--$scope.count == 0){
-                        $state.go('dashboard')
-                        return;
-                    }
-                }, 1000);
-
+                var mytimeout = $timeout($scope.onTimeout,1000);
                 delete $rootScope.beforeUpdate;
             }
         });

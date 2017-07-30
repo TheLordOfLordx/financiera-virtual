@@ -38,6 +38,31 @@ angular.module('shoplyApp')
       }
   	};
 
+
+    $scope.login = function(){
+        var _success = function(res){
+          if(res.user.type == "CLIENT" || res.user.type == "ADMINISTRATOR"){
+              var  _user =  res.user;
+              var  _token = res.token;
+              storage.save('token', _token);
+              storage.save('user', _user);
+              storage.save('uid', _user._id);
+              $rootScope.isLogged = true;
+              $rootScope.user = storage.get('user');
+              $state.go(constants.login_state_sucess);          
+          }else{
+            sweetAlert.swal("Inhabilitado.", "Privilegios son insuficientes.", "error");
+            $scope.unprivileged = true;
+          }
+        };
+
+        var _error = function(res){
+            $scope.failed = true;
+        };
+
+        account.usuario().ingresar($scope.form.data).then(_success, _error); 
+    }
+
     $scope.register_and_request = function(){
       if($scope.signup.$invalid){
             modal.incompleteForm();
@@ -46,8 +71,7 @@ angular.module('shoplyApp')
 
       var _success = function(data){
         if(data){
-           delete $scope.formRegister;
-           $state.go('login', { mailed: true});
+           $scope.login();
         }
       };
 
@@ -70,7 +94,7 @@ angular.module('shoplyApp')
                             sweetAlert.swal("Formulario Incompleto.", "las contraseñas no coinciden.", "error");
                             return;
                         }
-                        
+
                         $scope.$parent.$parent.form.data.status = 'Pendiente';
                         account.usuario().register(angular.extend($scope.formRegister.data, {username : $scope.formRegister.data.email, credit : $scope.$parent.$parent.form})).then(_success, _error);
                       
@@ -168,34 +192,26 @@ angular.module('shoplyApp')
     };
 
     $scope.login = function(){
-      if($scope.loginForm.$invalid){
-            modal.incompleteForm();
-            return;
-      }
-
         var _success = function(res){
-          if(res.user.type == "EMPLOYE" || res.user.type == "ADMINISTRATOR" || res.user.type == "OWNER"){
+          if(res){
               var  _user =  res.user;
-              var  _permission = res.user._permission;
               var  _token = res.token;
 
               storage.save('token', _token);
               storage.save('user', _user);
-
-              $rootScope.isLogged = res.user;
-              $rootScope.user = storage.get('user');
-              $state.go(constants.login_state_sucess);          
-          }else{
-            sweetAlert.swal("Inhabilitado.", "Privilegios son insuficientes.", "error");
-            $scope.unprivileged = true;
+              storage.save('uid', _user._id);
+              
+              $rootScope.isLogged = true;
+              $rootScope.user = res;
           }
+
         };
 
         var _error = function(res){
             $scope.failed = true;
         };
 
-        account.usuario().ingresar($scope.form.data).then(_success, _error); 
+        account.usuario().ingresar({ email : $scope.formRegister.data.email, password : $scope.formRegister.data.password }).then(_success, _error); 
     }
 
     $scope.remember = function(remember){

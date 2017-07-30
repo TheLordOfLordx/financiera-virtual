@@ -6,7 +6,7 @@ angular.module('shoplyApp')
         if($stateParams.token){
             api.user().add('activate/').post({ activation_token : $stateParams.token }).success(function(res){
                 if(res){
-                    alert("activado")
+                    $scope.activated = true;
                 }
             });            
         }

@@ -26,7 +26,7 @@ angular.module('shoplyApp')
     }
 
     $scope.update = function(){
-        api.user($rootScope.user._id).put($rootScope.user).success(function(res){
+        api.user($rootScope.user._id).put($scope.form.data).success(function(res){
             if(res){
                 storage.update("user", $rootScope.user);
                 delete $rootScope.beforeUpdate;

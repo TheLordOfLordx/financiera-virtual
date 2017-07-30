@@ -56,7 +56,8 @@
                         <div class="pull-right navbar-text" ng-show="$root.user || $root.isLogged">
                           <div class="dropdown">
                               <a href="" class="dropdown-toggle" id="about-us" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <img ng-src="{{user.picture.data.url}}">
+                                  <img ng-show="user.picture.data.url" ng-src="{{user.picture.data.url}}">
+                                  <img ng-show="!user.picture.data.avatar" class="rounded-circle img-raised" ng-src="images/no_avatar.gif">
                                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="about-us">
                                     <a class="dropdown-header">Opciones</a>
                                     <a class="dropdown-item" href="#"><span class="badge badge-default">Plan Basico</span></a>

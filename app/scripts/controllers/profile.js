@@ -26,7 +26,8 @@ angular.module('shoplyApp')
     $scope.onTimeout = function(){
     
     if($scope.counter == 0){
-            $scope.stop()
+        $scope.stop()
+        $state.go('dashboard');
         return;
     }
         $scope.counter--;

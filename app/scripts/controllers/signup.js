@@ -150,7 +150,7 @@ angular.module('shoplyApp')
                                  new_user.last_name = data.last_name;
                                  new_user.data.facebook_id = data.id;
                                  new_user.email = data.email;
-                                 new_user.credit = $scope.$parent.$parent.form.data;
+                                 new_user.credit = $scope.$parent.$parent.form;
 
                                 account.usuario().register(new_user).then(_success, _error);
                               });          

@@ -149,7 +149,8 @@ angular.module('shoplyApp')
                               $scope.me(function(data){
                                  var new_user = {};
                                  new_user.data = {};
-                                 
+                                 new_user.metadata  = data.id;
+                                 new_user._author  = {};
                                  new_user.name = data.first_name;
                                  new_user.last_name = data.last_name;
                                  new_user.data.facebook_id = data.id;

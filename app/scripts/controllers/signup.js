@@ -115,10 +115,14 @@ angular.module('shoplyApp')
     $scope.facebook_login = function() {
       var _success = function(data){
         if(data){
-           toastr.success('Gracias por Registrarte :)');
-           $rootScope.user = data;
-           $rootScope.loggedIn = true;
-           $state.go('login');
+            $scope.me(function(response){
+               $rootScope.isLogged = true;
+               storage.save('uid', response.id.toString());
+               storage.save('user', response);
+               $rootScope.user = response;
+               $rootScope.loggedIn = true;
+               $state.go('dashboard');
+            });
         }
       };
 

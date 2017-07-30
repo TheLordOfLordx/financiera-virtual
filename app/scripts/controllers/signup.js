@@ -200,9 +200,11 @@ angular.module('shoplyApp')
               storage.save('token', _token);
               storage.save('user', _user);
               storage.save('uid', _user._id);
-              
+
               $rootScope.isLogged = true;
               $rootScope.user = res;
+
+              $state.go('login', {mailed : true});
           }
 
         };

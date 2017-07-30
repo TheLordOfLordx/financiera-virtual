@@ -191,7 +191,7 @@ angular
                 }
           })
           .state('profile', {
-                url: '/profile',
+                url: '/profile/:token',
                 access: { requiredAuthentication: false },
                 templateUrl: 'views/profile/profile.html',
                 controller:'profileCtrl',

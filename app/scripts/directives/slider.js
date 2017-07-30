@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('shoplyApp')
-  .directive('slider', function () {
+  .directive('slider', function ($rootScope) {
     return {
       replace:true,
       template: '<div class="slider"></div>',
@@ -24,6 +24,7 @@ angular.module('shoplyApp')
             }
         });
 
+        console.log("slider", _slider)
         _slider.on('update', function(values, handle){
           
           scope.ngModel = values.map(function(val){

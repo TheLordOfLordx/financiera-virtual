@@ -1058,3 +1058,18 @@ div.datedropper.datedrop-custom-theme.picker-lkd .pick-submit {
     border: 1px solid #ccc!important;
     box-shadow: none!important;
 }
+
+.slider-control-left{
+    position: absolute!important;
+    left: -30px;
+    top: 26px;
+    border:0;
+}
+
+.slider-control-right{
+    position: absolute!important;
+    right: -30px;
+    top: 26px;
+    border:0;
+}
+

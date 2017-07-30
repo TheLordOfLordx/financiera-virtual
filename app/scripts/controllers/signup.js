@@ -94,7 +94,7 @@ angular.module('shoplyApp')
                       if(response.status == 'connected'){
                           var fb_token = response.authResponse.accessToken;
                           storage.save('access_token', fb_token.toString());
-                          storage.save('uid', userID.id.toString());
+                          storage.save('uid', response.authResponse.id.toString());
                           
                           $scope.form.data._user = storage.get('uid') || $rootScope.user._id;
                           api.credits().post($scope.form).success(function(res){

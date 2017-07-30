@@ -33,7 +33,6 @@ angular.module('shoplyApp')
                 storage.update("user", $rootScope.user);
                 $scope.updated = true;
                 delete $rootScope.beforeUpdate;
-                $state.go('dashboard');
             }
         });
     }

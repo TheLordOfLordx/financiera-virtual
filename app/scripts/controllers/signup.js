@@ -70,7 +70,8 @@ angular.module('shoplyApp')
                             sweetAlert.swal("Formulario Incompleto.", "las contraseñas no coinciden.", "error");
                             return;
                         }
-
+                        
+                        $scope.$parent.$parent.form.data.status = 'Pendiente';
                         account.usuario().register(angular.extend($scope.formRegister.data, {username : $scope.formRegister.data.email, credit : $scope.$parent.$parent.form})).then(_success, _error);
                       
                       }else if($scope.signup.$invalid){

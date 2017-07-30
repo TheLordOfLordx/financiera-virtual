@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('shoplyApp')
-  .controller('profileCtrl', function ($scope, api, modal, constants, $state, storage, account, $rootScope, $stateParams) {
+  .controller('profileCtrl', function ($scope, api, modal, constants, $state, storage, account, $rootScope, $stateParams, $timeout) {
     $scope.load = function(){
         if($stateParams.token){
             api.user().add('activate/').post({ activation_token : $stateParams.token }).success(function(res){

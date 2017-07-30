@@ -35,10 +35,12 @@ angular.module('shoplyApp')
                 $scope.count = 5;
 
                 window.setTimeout(function(){
-                        if(--$scope.count == 0){
-                            $state.go('dashboard')
-                            return;
-                        }
+                    $scope.count ++;
+
+                    if(--$scope.count == 0){
+                        $state.go('dashboard')
+                        return;
+                    }
                 }, 1000);
 
                 delete $rootScope.beforeUpdate;

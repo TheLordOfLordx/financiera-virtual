@@ -8,7 +8,7 @@
  * Controller of the shoplyApp
  */
 angular.module('shoplyApp')
-  .controller('LoginCtrl', function ($scope, sweetAlert, constants, $state, storage, account, $rootScope, Facebook, $stateParams) {
+  .controller('LoginCtrl', function ($scope, sweetAlert, constants, $state, storage, account, $rootScope, Facebook, $stateParams, modal) {
   	$scope.load = function(){
       $scope.mailed = $stateParams.mailed || null;
       delete $scope.form;
@@ -69,7 +69,7 @@ angular.module('shoplyApp')
        modal.confirm({
                closeOnConfirm : true,
                title: "Está Seguro?",
-               text: "Confirma que desea realizar este prestamo?",
+               text: "Confirma que desea pedir este credito?",
                confirmButtonColor: "#008086",
                type: "success" },
 

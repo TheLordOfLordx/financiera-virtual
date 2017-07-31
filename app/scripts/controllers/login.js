@@ -47,20 +47,57 @@ angular.module('shoplyApp')
     };
 
     $scope.facebook_login = function() {
-      Facebook.login(function(response) {
-        if(response.status == 'connected'){
-          var fb_token = response.authResponse.accessToken;
-          storage.save('access_token', fb_token.toString());
-
-          $scope.me(function(data){
-            $rootScope.user  = data;
-            $rootScope.isLogged = true;
-            storage.save('uid', data.id.toString());
-            storage.save('user', data);
-            $state.go(constants.login_state_sucess);
-          })          
+      var _success = function(data){
+        if(data){
+            $scope.me(function(response){
+               $rootScope.isLogged = true;
+               storage.save('uid', response.id.toString());
+               storage.save('user', response);
+               $rootScope.user = response;
+               $rootScope.loggedIn = true;
+               $state.go('dashboard');
+            });
         }
-      }, { scope:'email' } );
+      };
+
+      var _error = function(data){
+        if(data == 409){
+            sweetAlert.swal("No se pudo registrar.", "Este email ya esta registrado.", "error");
+        }
+      };
+
+       modal.confirm({
+               closeOnConfirm : true,
+               title: "Está Seguro?",
+               text: "Confirma que desea realizar este prestamo?",
+               confirmButtonColor: "#008086",
+               type: "success" },
+
+               function(isConfirm){ 
+                   if (isConfirm) {
+                        Facebook.login(function(response) {
+                          if(response.status == 'connected'){
+                              console.log("token", response.authResponse.accessToken);
+                              var fb_token = response.authResponse.accessToken;
+                              storage.save('access_token', fb_token.toString());
+                              $scope.me(function(data){
+                                 var new_user = {};
+                                 new_user.data = {};
+                                 new_user.metadata  = {};
+                                 new_user.metadata._author  = data.id;
+                                 new_user.name = data.first_name;
+                                 new_user.last_name = data.last_name;
+                                 new_user.data.facebook_id = data.id;
+                                 new_user.email = data.email;
+                                 new_user.credit = $scope.$parent.$parent.form;
+
+                                account.usuario().register(new_user).then(_success, _error);
+                              });          
+                          }
+
+                        }, { scope:'email' } );   
+                   }
+        });
     };
   	$scope.login = function(){
   		if($scope.loginForm.$invalid){

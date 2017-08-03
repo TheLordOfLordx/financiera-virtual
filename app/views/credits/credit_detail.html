@@ -79,20 +79,119 @@
       <div class="row">
           <div class="col-lg-6">
           <div style="width:100%;height:auto;">
-                  <h5>Información de Credito</h5>
-                  <div class="form-group">
-                      <label>Monto</label>
+              <h5>Información de Credito</h5>
+
+              <div class="row"> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Monto</label>
                       <p>{{credit.data.amount[0] | currency:"$ ":0 || 0}}</p>
                   </div> 
-                  <div class="form-group">
-                      <label>Interes</label>
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Interes</label>
                       <p>{{credit.data.interestsDays | currency:"$ ":0 || 0}}</p>
-                  </div>              
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Gestión de credito</label>
+                      <p>{{credit.data.finance_quote | currency:"$ ":0 || 0}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Costo de financiación</label>
+                      <p>{{credit.data.finance_quote | currency:"$ ":0 || 0}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Iva</label>
+                      <p>{{credit.data.ivaDays | currency:"$ ":0 || 0}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Total</label>
+                      <p><strong>{{credit.data.total_payment | currency:"$ ":0 || 0}}</strong></p>
+                  </div> 
+              </div>  
           </div>
           </div>
           <div class="col-lg-6">
           <div style="width:100%;height:auto;"> </div>
               <h5>Información del cliente</h5>
+              <div class="row"> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Nombres</label>
+                      <p>{{credit._user.data.name}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Apellidos</label>
+                      <p>{{credit._user.data.last_name}}</p>
+                  </div>
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Sexo</label>
+                      <p>{{credit._user.data.sexo}}</p>
+                  </div>
+                  <div class="form-group col-lg-6">
+                      <label class="bold">CC:</label>
+                      <p>{{credit._user.data.cedula}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Departamento</label>
+                      <p>{{credit._user.data.departamento}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Ciudad</label>
+                      <p>{{credit._user.data.ciudad}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Fecha de nacimiento</label>
+                      <p>{{credit._user.data.fecha_nacimiento}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Fecha de expedición</label>
+                      <p>{{credit._user.data.fecha_expedicion}}</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-6">
+          <div style="width:100%;height:auto;"> </div>
+              <h5>Información Financiera</h5>
+              <div class="row"> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Nivel de Estudio</label>
+                      <p>{{credit._user.data.nivel_estudio}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Perfil actual:</label>
+                      <p>{{credit._user.data.perfil_actual}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Tipo de Vivienda</label>
+                      <p>{{credit._user.data.tipo_vivienda}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Estrato</label>
+                      <p>{{credit._user.data.estrato}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Ingresos</label>
+                      <p>{{credit._user.data.ingresos_totales}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Egresos</label>
+                      <p>{{credit._user.data.egresos_totales}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Cuentas bancarias</label>
+                      <p>{{credit._user.data.numero_cuentas_bancaria}}</p>
+                  </div>
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Tarjeta de credito</label>
+                      <p>{{credit._user.data.tarjeta_credito}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Banco</label>
+                      <p>{{credit._user.data.banco_desembolso}}</p>
+                  </div> 
+                  <div class="form-group col-lg-6">
+                      <label class="bold">Numero de Cuenta</label>
+                      <p>{{credit._user.data.numero_cuenta}}</p>
+                  </div>
+              </div>
           </div>
       </div>
     </div>

@@ -5,11 +5,12 @@
 
     return {
       replace:true,
-      template: '<input data-theme="datedrop-custom-theme" data-large-mode="true" data-init-set="false" data-format="d-m-Y" type="text"  id="fecha" data-lang="es" class="form-control" enableread/>',
+      template: '<input data-theme="datedrop-custom-theme" data-translate-mode="true" data-modal="true" data-large-default="true" data-large-mode="true" data-format="d-m-Y" type="text"  id="fecha" data-lang="es" class="form-control" />',
       restrict: 'EA',
       scope : {
         ngModel : "=",
         placeholder : "@",
+        modal : '@',
         required : '@'
       },
       controller :ctrl,

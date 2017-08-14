@@ -14,18 +14,64 @@ angular.module('shoplyApp')
     $scope.form.data = {};
     $scope.form.data.system_quote = 5000;
     $scope.items_tasks = [];
-
+    $scope.Records  = false;
 
     $scope.load = function(){
       api.credits().get().success(function(res){
-        $scope.records = res || [];
+          $scope.records = res || [];
+          $scope.current_credit = res[0];
+          $scope.Records  = true;          
       });
 
       $scope.form.data.pay_day = $scope.pay_day($scope.form.data.days[0]);
     }
 
+    $scope.toFormData = function(obj, form, namespace) {
+        var fd = form || new FormData();
+        var formKey;
+        
+        for(var property in obj) {
+          if(obj.hasOwnProperty(property) && obj[property]) {
+            if (namespace) {
+              formKey = namespace + '[' + property + ']';
+            } else {
+              formKey = property;
+            }
+           
+            // if the property is an object, but not a File, use recursivity.
+            if (obj[property] instanceof Date) {
+              fd.append(formKey, obj[property].toISOString());
+            }
+            else if (typeof obj[property] === 'object' && !(obj[property] instanceof File)) {
+              $scope.toFormData(obj[property], fd, formKey);
+            } else { // if it's a string or a File object
+              fd.append(formKey, obj[property]);
+            }
+          }
+        }
+        
+        return fd;
+    }
+
     $scope.detail = function(){
       $state.go('detail', { credit : this.record } );
+    }
+
+    $scope.payment = function(){
+      window.modal = modal.show({templateUrl : 'views/dashboard/payment.html', size:'lg', scope: this, backdrop: 'static', keyboard  : false}, function($scope){
+          
+          api.payments().post($scope.toFormData($scope.$parent.form.data), {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type':undefined, enctype:'multipart/form-data'}
+                }).success(function(res){
+            if(res){
+                $scope.payment_done = true;
+                $scope.$close();
+                $scope.$apply();
+            }
+          });
+
+      }); 
     }
 
     $scope.add_to_task = function(){

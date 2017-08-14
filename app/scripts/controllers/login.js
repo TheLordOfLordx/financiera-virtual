@@ -121,12 +121,39 @@ angular.module('shoplyApp')
           }
         };
 
-        var _error = function(res){
-            $scope.failed = true;
+        var _error = function(data){
+          if(data == 409){
+              sweetAlert.swal("No se pudo registrar.", "Este email ya esta registrado.", "error");
+          }
         };
 
         account.usuario().ingresar($scope.form.data).then(_success, _error); 
   	}
+
+    $scope.login_request = function(){
+      if($scope.loginForm.$invalid){
+            modal.incompleteForm();
+            return;
+      }
+
+     modal.confirm({
+             closeOnConfirm : true,
+             title: "Está Seguro?",
+             text: "Confirma que desea realizar este credito?",
+             confirmButtonColor: "#008086",
+             type: "success" },
+             function(isConfirm){ 
+                 if (isConfirm) {
+                      if($scope.loginForm.$valid){
+                        $scope.$parent.$parent.form.data.status = 'Pendiente';
+                        $scope.login();
+                      
+                      }else if($scope.login.$invalid){
+                        modal.incompleteForm();
+                      } 
+                 }
+              })
+    }
 
     $scope.logout = function(){
       window.localStorage.clear();

@@ -1111,3 +1111,38 @@ div.datedropper.datedrop-custom-theme.picker-lkd .pick-submit {
     top: -4px;
 }
 
+
+.modal.modal-mini .modal-dialog {
+     max-width: 400px;
+    margin: 0 auto;
+}
+
+.monospace{
+      font-family: monospace;
+}
+
+.font-12{
+  font-size:12px; 
+}
+
+.align-middle{
+    display: flex;
+    vertical-align: middle;
+    flex: 1;
+    align-items: center;  
+}
+
+.credit-item-border{
+    border-bottom: 1px solid;
+    border-style: dashed;
+    border-top: 0px;
+    border-left: 0;
+    border-right: 0;
+    border-color: rgba(251, 251, 251, 0.7);
+}
+
+.n-m{
+  margin:0px;
+}
+
+

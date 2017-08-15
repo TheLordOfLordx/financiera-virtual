@@ -9,8 +9,8 @@
  */
 angular.module('shoplyApp')
   .constant('constants', {
-  	base_url : "http://13.59.230.244:8080/api/",
-    socket : "http://www.daimont.com:8080",                          
+  	base_url : "https://13.59.230.244:8080/api/",
+    socket : "https://www.daimont.com:8080",                          
   	login_state_sucess : 'dashboard',
     uploadURL : "http://www.daimont.com:8080/api/uploads",
     base_resource : "http://www.daimont.com:8080/api/resource/",
